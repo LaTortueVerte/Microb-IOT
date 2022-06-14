@@ -21,14 +21,14 @@ to add a sensor with his actuator.
 
 In order to realize this solution, we will use a set of programmable boards. 
 First, an FPGA to which will be attached a camera and a PIR sensor (presence detector). 
-Again, an arduino on which can be attached modules according to the needs of users. 
+Again, an Arduino on which can be attached modules according to the needs of users. 
 These modules are therefore;  
 DHT11 sensors that will send the temperature and humidity of the room to the user
 A thermal camera and a MQ2 sensor that will detect the presence of smoke in the room. The actuator will open a water valve that will extinguish the fire 
 A water level sensor that will detect a flood, the actuator will be here a small pump to empty the water.
 
-Finally the last board will be a Raspberry Pi which will communicate with the arduino and the FPGA using the UART protocol. 
-This one allows first to make the link between the FPGA and the arduino but especially to be able to make them communicate with the cloud via AWS. 
+Finally the last board will be a Raspberry Pi which will communicate with the Arduino and the FPGA using the UART protocol. 
+This one allows first to make the link between the FPGA and the Arduino but especially to be able to make them communicate with the cloud via AWS. 
 
 ---
 
@@ -38,14 +38,14 @@ les B'IoT sont des modules plug & play qui s'ajoute aux module principal pour y 
 
 Afin de pouvoir réaliser cette solution, nous allons utiliser un ensemble de cartes programmables. 
 D'abord, un FPGA auquel sera attaché une caméra ainsi qu'un PIR sensor (détecteur de présence). 
-Encore, un arduino sur lesquels pourront être attachés des modules selon les besoins des utilisateurs. 
+Encore, un Arduino sur lesquels pourront être attachés des modules selon les besoins des utilisateurs. 
 Ces modules sont donc;  
 Capteurs DHT11 qui renverra la température et l'humidité de la salle afin de la renvoyer à l'utilisateur
 Une caméra thermique ainsi qu'un capteur MQ2 qui va détecter la présence de fumée dans la salle l'actionneur permettra ici d'ouvrir une valve d'eau qui éteindra l'incendie 
 Un capteur de niveau d'eau qui détectera une inondation, l'actionneur sera ici une petite pompe pour vider l'eau.
 
-Enfin le dernière carte sera un Raspberry Pi qui communiquera grâce au protocole UART avec l'arduino ainsi qu'avec le FPGA. 
-Celui-ci permet d’abord de faire le lien entre le FPGA et l’arduino mais surtout de pouvoir les faire communiquer avec le cloud via AWS. 
+Enfin le dernière carte sera un Raspberry Pi qui communiquera grâce au protocole UART avec l'Arduino ainsi qu'avec le FPGA. 
+Celui-ci permet d’abord de faire le lien entre le FPGA et l’Arduino mais surtout de pouvoir les faire communiquer avec le cloud via AWS. 
 
 ## A little pitch
 

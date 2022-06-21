@@ -100,7 +100,7 @@ void loop()
       // ventilo switched on
       // ventOn = true;
       // +ventilo à 100%
-      switchventOn(&ventOn);
+      switch_vent_on(&ventOn);
     }
     if (difpositive)
     { // s'il fait moins chaud dehors
@@ -191,14 +191,14 @@ void loop()
     analogWrite(motorDCPin, 0); // désactivation de la pompe
   }
 
-  // Partie incendie
+  /*// Partie incendie
   // Si MQ9 detecte un incendie (à regarder comment)
   digitalRead(ledIncendiePIN, HIGH);
   Serial.println("Incendie détecté")
       analogWrite(motorDCPin, 0); // switch off le ventilateur
   // servo moteur ferme la porte
 
-  delay(2000);
+  delay(2000);*/
 }
 
 void switch_vent_on(boolean *ventOn)
@@ -247,7 +247,7 @@ float get_temp_out(float reading)
 {
   float voltage = reading * (5000 / 1024.0);
   float tempout = (voltage - 500) / 10;
-  retrun tempout;
+  return tempout;
 }
 
 void set_temp_flags(float tempin, boolean *hotTemp, boolean *goodTemp, boolean *coldTemp)

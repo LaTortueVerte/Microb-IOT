@@ -60,7 +60,7 @@ void setup()
 void loop()
 {
 
-  /*// récupère la donnée du capteur de température extérieur
+  // récupère la donnée du capteur de température extérieur
   reading = analogRead(tempExtPIN);
   tempout = get_temp_out(reading);
 
@@ -175,7 +175,7 @@ void loop()
   {
     Serial.print("Ils fait claire, eteint la lumière ! luminosité : ");
     Serial.println(ldrStatus);
-  }*/
+  }
 
   // Partie dégâts des eaux
   readLevel = digitalRead(DegEauxInPIN);
@@ -190,17 +190,17 @@ void loop()
     analogWrite(motorDCPin, 0); // désactivation de la pompe
   }
 
-  /*// Partie incendie
+  // Partie incendie
   // Si MQ9 detecte un incendie (à regarder comment)
   digitalRead(ledIncendiePIN, HIGH);
   Serial.println("Incendie détecté")
       analogWrite(motorDCPin, 0); // switch off le ventilateur
   // servo moteur ferme la porte
 
-  delay(2000);*/
+  delay(2000);
 }
 
-/*void switch_vent_on(boolean *ventOn)
+void switch_vent_on(boolean *ventOn)
 {
   float Ftemp = (temperature - 15) * (255 / 15);
   int Pw = min(255, max(0, Ftemp));
@@ -269,4 +269,4 @@ void set_temp_flags(float tempin, boolean *hotTemp, boolean *goodTemp, boolean *
     *goodTemp = true;
     *coldTemp = false;
   }
-}*/
+}

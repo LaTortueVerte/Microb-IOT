@@ -177,9 +177,10 @@ void loop()
     Serial.println(ldrStatus);
   }
 
-  // Partie dégâts des eaux
-  readLevel = digitalRead(DegEauxInPIN);
-  if (readLevel == LOW)
+  // Partie dégâts des eaux - source : https://www.instructables.com/Water-Level-Alarm-Using-Arduino/
+
+  readLevel = digitalRead(DegEauxInPIN); //DegEauxInPIN et LEDY agissent ensemble comme un interrupteur
+  if (readLevel == LOW) //Le circuit est fermé
   {
     digitalWrite(LEDY, HIGH);
     analogWrite(motorDCPin, 255); // activation de la pompe au maximum

@@ -11,6 +11,7 @@
 #define LEDY 10         // led alerte degat des eaux --> coupure électricité des prises de la pièce
 #define LEDR 11         // led alerte incendit
 #define mq9AOutPIN A2   // detection pin de sortie analogique du MQ9 pour les gaz
+#define tempExtPIN A5
 
 #define DHTTYPE DHT11
 DHT dht(DHTPIN, DHTTYPE);
@@ -19,13 +20,11 @@ monServomoteur.attach(servmotorPIN);
 
 // Variables
 int readLevel;
-/*
-float tempin;
+
+float reading;
 float tempout;
-float diftemp = tempin - tempout;
-if(!diftemp){
-  difpositive = false;
-}*/
+float humidity;
+float tempin;
 
 boolean polluted = false;   // le local est pollué par des gaz
 boolean hotTemp = false;    // il fait trop chaud dans le loc
@@ -58,24 +57,18 @@ void setup()
 
 void loop()
 {
-  delay(2000);
+
+  // récupère la donnée du capteur de température extérieur
+  reading = analogRead(tempExtPIN);
+  tempout = get_temp_out(reading);
 
   // recupère les infos du DHT11 pour la température et l'humidité
-  float humidity = dht.readHumidity();
-  float temperature = dht.readTemperature();
+  humidity = dht.readHumidity();
+  tempin = dht.readTemperature();
 
-  // reinitialise les flags
-  /*polluted = false;    // sensor
-  hotTemp = false;     // sensor
-  goodTemp = true;     // sensor
-  coldTemp = false;    // sensor
-  difpositive = false; // sensor
-  isHumid = false;     // sensor
-  ventOn = false;      // actionneur
-  windowOpen = false;  // actionneur
-  alerteUser = false;  // actionneur
-*/
-  // debut du module du check d'états
+  difpositive = is_temp_positive(tempin, tempout);
+
+  set_temp_flags(tempin, &hotTemp, &goodTemp, &coldTemp);
 
   // Module qualité d'air
 
@@ -85,15 +78,15 @@ void loop()
     if (!windowOpen)
     {
       // window opens
-      open_window();
+      open_window(&windowOpen);
     }
     if (!ventOn)
     {
       // ventilo switch on
-      switch_vent_on();
+      switch_vent_on(&ventOn);
     }
     // alerter l'utilisateur
-    void alerte_user();
+    alerte_user(&alerteUser);
   }
 
   // si la température est trop élevée à l'intérieur
@@ -105,14 +98,14 @@ void loop()
       // ventilo switched on
       // ventOn = true;
       // +ventilo à 100%
-      switchventOn();
+      switchventOn(&ventOn);
     }
     if (difpositive)
     { // s'il fait moins chaud dehors
       if (!windowOpen)
       {
         // window opens
-        open_window();
+        open_window(&windowOpen);
       }
     }
     else if (!difpositive)
@@ -120,7 +113,7 @@ void loop()
       if (windowOpen)
       {
         // window closes
-        close_window();
+        close_window(&windowOpen);
       }
     }
   }
@@ -132,14 +125,14 @@ void loop()
     if (ventOn)
     {
       // ventilo switched off
-      switch_vent_off();
+      switch_vent_off(&ventOn);
     }
     if (difpositive)
     { // s'il fait moins chaud dehors
       if (windowOpen)
       {
         // window closes
-        close_window();
+        close_window(&windowOpen);
       }
     }
     else if (!difpositive)
@@ -147,7 +140,7 @@ void loop()
       if (!windowOpen)
       {
         // window opens
-        open_window();
+        open_window(&windowOpen);
       }
     }
   }
@@ -155,28 +148,18 @@ void loop()
   else if (humidity > 80)
   {
     isHumid = true;
-    open_window();
+    open_window(&windowOpen);
   }
 
   // else il fait bon et l'air est pur
   else
   {
-    // ventilateur moins fort
+    if (!ventOn)
+    {
+      // ventilo switch on
+      switch_vent_on(&ventOn);
+    }
   }
-
-  // Affichage de l'humidité et de la température sur le moniteur série
-  Serial.print(F("Humidity: "));
-  Serial.print(humidity);
-  Serial.print(F("%  Temperature: "));
-  Serial.print(temperature);
-  Serial.println(F("°C "));
-
-  // Le moteur s'active si la température est trop élevée
-  float Ftemp = (temperature - 15) * (255 / 15);
-  int Pw = min(255, max(0, Ftemp));
-  analogWrite(motorDCPin, Pw);
-
-  //( Partie intrusion à utiliser sur FPGA )
 
   // Test la luminosité
 
@@ -212,76 +195,76 @@ void loop()
       analogWrite(motorDCPin, 0); // switch off le ventilateur
   // servo moteur ferme la porte
 
-  /*
-    // actionneurs
-
-    if (difpositive == true)
-    {
-    }
-
-    // Allume ou éteint la ventillation suivant la variable ventOn
-    if (ventOn == true)
-    {
-      analogWrite(motorDCPin, HIGH);
-    }
-    else
-    {
-      analogWrite(motorDCPin, LOW);
-    }
-
-    // ouvre ou ferme la fenêtre suivant la variable windowOpen
-    if (windowOpen == true)
-    {
-      Servo.write(180);
-    }
-    else
-    {
-      Servo.write(0);
-    }
-
-    // préviens l'utilisateur de la polution via la led jaune
-
-    if (polluted == true)
-    {
-      analogWrite(LEDY, HIGH);
-    }
-    else
-    {
-      analogWrite(LEDY, LOW);
-    }*/
-
-  // changer les valeurs de la memoire
+  delay(2000);
 }
 
-void switch_vent_on()
+void switch_vent_on(boolean *ventOn)
 {
-  analogWrite(motorDCPin, HIGH);
-  ventOn = true;
+  float Ftemp = (temperature - 15) * (255 / 15);
+  int Pw = min(255, max(0, Ftemp));
+  analogWrite(motorDCPin, Pw);
+  *ventOn = true;
 }
-void switch_vent_off()
+void switch_vent_off(boolean *ventOn)
 {
-  analogWrite(motorDCPin, LOW);
-  ventOn = false;
+  analogWrite(motorDCPin, 0);
+  *ventOn = false;
 }
 
-void open_window()
+void open_window(boolean *windowOpen)
 {
   Servo.write(90);
-  windowOpen = true;
+  *windowOpen = true;
 }
-void close_window()
+void close_window(boolean *windowOpen)
 {
   Servo.write(0);
-  windowOpen = false;
+  *windowOpen = false;
 }
 
-void alerte_user()
+void alerte_user(boolean *alerteUser)
 {
+  // rajouter un envoie de message à la rasPi jusqu'à l'utilisateur
   digitalWrite(LEDAQ, HIGH);
-  alerteUser = true;
+  *alerteUser = true;
 }
-void finish_user_alerte()
+void finish_user_alerte(boolean *alerteUser)
 {
   digitalWrite(LEDAQ, LOW);
-  alerteUser = false;
+  *alerteUser = false;
+}
+
+boolean is_temp_positive(float tempin, float tempout)
+{
+  float diftemp = tempin - tempout;
+  return (0 < diftemp);
+}
+
+float get_temp_out(float reading)
+{
+  float voltage = reading * (5000 / 1024.0);
+  float tempout = (voltage - 500) / 10;
+  retrun tempout;
+}
+
+void set_temp_flags(float tempin, boolean *hotTemp, boolean *goodTemp, boolean *coldTemp)
+{
+  if (tempin > 24)
+  {
+    *hotTemp = true;
+    *goodTemp = false;
+    *coldTemp = false;
+  }
+  else if (tempin < 18)
+  {
+    *hotTemp = false;
+    *goodTemp = false;
+    *coldTemp = true;
+  }
+  else
+  {
+    *hotTemp = false;
+    *goodTemp = true;
+    *coldTemp = false;
+  }
 }

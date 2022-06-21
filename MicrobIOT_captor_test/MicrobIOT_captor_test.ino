@@ -7,11 +7,11 @@
 #define servmotorPIN 5  // actionneur moteur pour simuler l'ouverture/fermeture de la fenetre
 #define IncendiePIN 6   // actionneur LED Rouge activation d'un sytème qui éteint l'incendie
 #define mq9DOutPIN 8    // detection pin de sortie numérique du MQ9 pour les gaz
+#define mq9AOutPIN A2   // detection pin de sortie analogique du MQ9 pour les gaz
 #define LEDAQ 9         // led alerte mauvaise qualité d'air
 #define LEDY 10         // led alerte degat des eaux --> coupure électricité des prises de la pièce
 #define LEDR 11         // led alerte incendit
-#define mq9AOutPIN A2   // detection pin de sortie analogique du MQ9 pour les gaz
-#define tempExtPIN A5
+#define tempExtPIN A5   // detetion de la température extérieure
 
 #define DHTTYPE DHT11
 DHT dht(DHTPIN, DHTTYPE);
@@ -42,17 +42,19 @@ void setup()
 {
   Serial.begin(9600);
   dht.begin();
-
+  pinMode(DHTPIN, INPUT);
   pinMode(ldrPin, INPUT);
+  pinMode(motorWaterPin, OUTPUT);
   pinMode(motorDCPin, OUTPUT);
+  pinMode(DegEauxInPIN, INPUT);
   pinMode(servmotorPIN, OUTPUT);
   pinMode(IncendiePIN, OUTPUT);
-  pinMode(DegEauxInPIN, INPUT);
+  pinMode(mq9DOutPIN, OUTPUT);
+  pinMode(mq9AOutPIN, OUTPUT);
   pinMode(LEDAQ, OUTPUT);
   pinMode(LEDY, OUTPUT);
   pinMode(LEDR, OUTPUT);
-  pinMode(mq9DOutPIN, OUTPUT);
-  pinMode(mq9AOutPIN, OUTPUT);
+  pinMode(tempExtPIN, INTPUT);
 }
 
 void loop()

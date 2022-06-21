@@ -16,7 +16,7 @@
 #define DHTTYPE DHT11
 DHT dht(DHTPIN, DHTTYPE);
 
-monServomoteur.attach(servmotorPIN);
+//monServomoteur.attach(servmotorPIN);
 
 // Variables
 int readLevel;
@@ -54,7 +54,7 @@ void setup()
   pinMode(LEDAQ, OUTPUT);
   pinMode(LEDY, OUTPUT);
   pinMode(LEDR, OUTPUT);
-  pinMode(tempExtPIN, INTPUT);
+  pinMode(tempExtPIN, INPUT);
 }
 
 void loop()
@@ -100,7 +100,7 @@ void loop()
       // ventilo switched on
       // ventOn = true;
       // +ventilo à 100%
-      switchventOn(&ventOn);
+      switch_vent_on(&ventOn);
     }
     if (difpositive)
     { // s'il fait moins chaud dehors
@@ -177,27 +177,28 @@ void loop()
     Serial.println(ldrStatus);
   }
 
-  // Partie dégâts des eaux
-  readLevel = digitalRead(DegEauxInPIN);
-  if (readLevel == LOW)
+  // Partie dégâts des eaux - source : https://www.instructables.com/Water-Level-Alarm-Using-Arduino/
+
+  readLevel = digitalRead(DegEauxInPIN); //DegEauxInPIN et LEDY agissent ensemble comme un interrupteur
+  if (readLevel == LOW) //Le circuit est fermé
   {
     digitalWrite(LEDY, HIGH);
-    analogWrite(motorWaterPin, 255); // activation de la pompe au maximum
+    analogWrite(motorDCPin, 255); // activation de la pompe au maximum
   }
   else
   {
     digitalWrite(LEDY, LOW);
-    analogWrite(motorWaterPin, 0); // désactivation de la pompe
+    analogWrite(motorDCPin, 0); // désactivation de la pompe
   }
 
-  // Partie incendie
+  /*// Partie incendie
   // Si MQ9 detecte un incendie (à regarder comment)
   digitalRead(ledIncendiePIN, HIGH);
   Serial.println("Incendie détecté")
       analogWrite(motorDCPin, 0); // switch off le ventilateur
   // servo moteur ferme la porte
 
-  delay(2000);
+  delay(2000);*/
 }
 
 void switch_vent_on(boolean *ventOn)
@@ -246,7 +247,7 @@ float get_temp_out(float reading)
 {
   float voltage = reading * (5000 / 1024.0);
   float tempout = (voltage - 500) / 10;
-  retrun tempout;
+  return tempout;
 }
 
 void set_temp_flags(float tempin, boolean *hotTemp, boolean *goodTemp, boolean *coldTemp)

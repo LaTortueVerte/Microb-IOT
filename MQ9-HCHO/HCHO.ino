@@ -8,7 +8,7 @@ void setup()
 }
 void loop()
 {
-    sensorValue=analogRead(A4);
+    sensorValue=analogRead(A6);
     Vol=sensorValue*4.95/1023;
     ppm = map(Vol, 0, 4.95, 1, 50); // Concentration Range: 1~50 ppm 
     Serial.print("Sensor Value: ");

@@ -472,7 +472,7 @@ void HCHOAlertDetection (int sensorValue, bool* formaldehydeDetect){
 
 void AffichEcran(LiquidCrystal_I2C lcd, int ecran, float* tab, int tempin, float humidity, float sensorValue){
   
-  if(ecran == 0){
+  if(ecran == 3){
     lcd.clear();
     lcd.setCursor(0,0);
     lcd.print("GPL : ");

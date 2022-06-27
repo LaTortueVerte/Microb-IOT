@@ -1,6 +1,9 @@
 #include "DHT.h"        // librairie du capteur de température DHT
 #include <MQUnifiedsensor.h> //librairie liée au capteur MQ9
 #include "Servo.h"
+#include "LiquidCrystal_I2C.h"
+
+LiquidCrystal_I2C lcd(0x27,16,2);
 
 #define RatioMQ9CleanAir (9.6) //RS / R0 = 60 ppm (formule nécessaire au bon fonctionnement du MQ9)
 #define DHTPIN A4       // detection de la température et de l'humidité
@@ -31,6 +34,9 @@ bool formaldehydeDetect;
 
 Servo monServomoteur;
 
+int ecran = 0;
+
+int changeEcran = 999;
 
 // Variables
 int readLevel;
@@ -52,6 +58,11 @@ boolean alerteUser = false; // une alerte est envoyé à l'utilisateur
 boolean isHumid = false;    // le seuil d'humidité est atteint
 // boolean flashLED = false;
 
+const long interval = 250;
+unsigned long previousMillis = 0;
+int count = 0;
+String gazName = "GPL";
+
 void setup()
 {
   Serial.begin(9600);
@@ -71,6 +82,10 @@ void setup()
   int error = MQ9Setup();
 
   monServomoteur.attach(servmotorPIN);
+
+
+  lcd.init();
+  lcd.backlight();
 }
 
 void loop()
@@ -96,7 +111,7 @@ void loop()
 
   //Activation du système de détection dans le MQ9
   MQ9valeurseuil(tab, alertMQ9);
-  delay(1000);
+ 
 
   //Affichage des mesures réalisées par le MQ9 - vérification interne
   /*Serial.println("Mesures");
@@ -126,7 +141,6 @@ void loop()
 
    //Activation du système de détection dans le HCHO
    HCHOAlertDetection(sensorValue, &formaldehydeDetect);
-   delay(1000);
 
 
   //Si l'un des capteurs détecte une quantité anormale de gaz --> le local est pollué il faut aérer !   
@@ -138,12 +152,51 @@ void loop()
    Serial.print("\npollution: ");
    Serial.println(polluted);
 
+/*
+   Serial.print (tab[0]);
+      Serial.print (tab[1]);
+         Serial.print (tab[2]);
+
   
+
+
+    lcd.print("GPL ");
+    lcd.print(tab[0]);
+
+    lcd.print(" CH4 ");
+    lcd.print(tab[1]);
+
+    lcd.print(" CO ");
+    lcd.print(tab[2]);
+
+    lcd.setCursor(1,1);
+    lcd.print("Temperature: ");
+    lcd.print(tempin);
+
+
+     for (int positionCounter = 0; positionCounter < 20; positionCounter++) {
+
+      lcd.scrollDisplayLeft();
+      // pause courte
+      delay(500);
+    }
+
+
+
+    for (int positionCounter = 0; positionCounter < 20; positionCounter++) {
+
+      lcd.scrollDisplayRight();
+      // courte pause
+      delay(500);
+    }
+
+    */
+
 
   // Module qualité d'air
 
   // si taux monoxide ou propane ou méthane, alerte utilisateur, ventilation + fenètre ouverte
-  while (polluted) // regarder quand l'air est polluer sur le MQ9
+  if (polluted) // regarder quand l'air est polluer sur le MQ9
   {
     if (!windowOpen)
     {
@@ -160,7 +213,7 @@ void loop()
   }
 
   // si la température est trop élevée à l'intérieur
-  while (hotTemp)
+  if (hotTemp)
   {
     // allumer la ventilation si elle ne l'est pas déjà
     if (!ventOn)
@@ -189,7 +242,7 @@ void loop()
   }
 
   // else if température faible à l'intérieur
-  while (coldTemp)
+  if (coldTemp)
   {
     // éteindre la ventilation si elle ne l'est pas déjà
     if (ventOn)
@@ -215,14 +268,14 @@ void loop()
     }
   }
 
-  while (humidity > 80)
+  if (humidity > 80)
   {
     isHumid = true;
     open_window(monServomoteur, &windowOpen);
   }
 
   // else il fait bon et l'air est pur
-  //else
+  else
   {
     if (!ventOn)
     {
@@ -230,21 +283,6 @@ void loop()
       switch_vent_on(tempExtPIN, &ventOn);
     }
   }
-
-  /*
-  // Test la luminosité
-
-  int ldrStatus = analogRead(ldrPin);
-  if (ldrStatus <= 50)
-  {
-    Serial.print("Ils fait sombre, allume la lumière ! luminosité : ");
-    Serial.println(ldrStatus);
-  }
-  else
-  {
-    Serial.print("Ils fait claire, eteint la lumière ! luminosité : ");
-    Serial.println(ldrStatus);
-  }*/
 
   // Partie dégâts des eaux - source : https://www.instructables.com/Water-Level-Alarm-Using-Arduino/
 
@@ -263,6 +301,24 @@ void loop()
   
   Serial.println(ventOn);
 
+
+
+
+  changeEcran ++;
+  Serial.print("changeEcran: ");
+  Serial.print(changeEcran);
+
+  Serial.print("Ecran: ");
+  Serial.print(ecran);
+  if (changeEcran > 100){
+    ecran++;
+    changeEcran = 0;
+    AffichEcran(lcd, ecran, tab, tempin, humidity, sensorValue);
+    if (ecran == 3){
+      ecran = 0;
+    }
+  }
+  
 }
 
 void switch_vent_on(int temperature, boolean *ventOn)
@@ -401,6 +457,7 @@ bool* MQ9valeurseuil(float* tab, bool* reactiontab){
     Serial.print("ALERT ! Excès de monoxyde de carbone (CO) - Risque de suffocation !");
   }
   return reactiontab;
+
 }
 
 void HCHOAlertDetection (int sensorValue, bool* formaldehydeDetect){
@@ -411,4 +468,48 @@ void HCHOAlertDetection (int sensorValue, bool* formaldehydeDetect){
     else {
       *formaldehydeDetect = false;
     }
+}
+
+void AffichEcran(LiquidCrystal_I2C lcd, int ecran, float* tab, int tempin, float humidity, float sensorValue){
+  
+  if(ecran == 0){
+    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("GPL : ");
+    lcd.print(tab[0]);
+    lcd.print(" ppm");
+
+    lcd.setCursor(0,1);
+    lcd.print("CH4 : ");
+    lcd.print(tab[1]);
+    lcd.print(" ppm");
+  }
+
+  else if (ecran == 1){
+    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("CO : ");
+    lcd.print(tab[2]);
+    lcd.print(" ppm");
+
+    lcd.setCursor(0,1);
+    lcd.print("Temp : ");
+    lcd.print(tempin);
+    lcd.print(" C");
+    
+  }
+  else if (ecran == 2){
+    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("humidite : ");
+    lcd.print(humidity);
+    lcd.print(" %");
+
+    lcd.setCursor(0,1);
+    lcd.print("HCHO : ");
+    lcd.print(sensorValue);
+    lcd.print(" ppm");
+  }
+
+  
 }

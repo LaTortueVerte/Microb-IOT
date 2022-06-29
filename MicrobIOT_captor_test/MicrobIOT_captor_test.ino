@@ -298,7 +298,7 @@ void loop()
 
   // UART COMMUNICATION
 
-  communicationData()
+  communicationData();
 }
 
 // -----------------------------------------------------------------------------------
@@ -324,14 +324,23 @@ void readSerialPort(int *var_id, int *var_content) {
 
 void sendData() {
 
-    msg =   String(tab[0]) + "|" + 
+    String msg =   String(tab[0]) + "|" + 
             String(tab[1]) + "|" + 
             String(tab[2]) + "|" + 
             String(polluted) + "|" + 
             String(readLevel) + "|" + 
             String(formaldehydeDetect) + "|" + 
             String(tempin) + "|" + 
-            String(humidity);
+            String(humidity) + "|" +
+
+            String(gas_module_alert) + "|" +
+            String(water_module) + "|" +
+            String(pump_state) + "|" +
+            String(air_quality_module) + "|" +
+            String(ventilation_power) + "|" +
+            String(window_state) + "|" +
+            String(min_temp_ventilation) + "|" +
+            String(max_temp_ventilation);
             
     Serial.print(msg);
 }
@@ -340,7 +349,7 @@ void communicationData(){
 
     // Ecoute UART
 
-    int var_id = -1;
+    int var_id = 0;
     int var_content = 0;
 
     readSerialPort(&var_id, &var_content);
@@ -348,28 +357,28 @@ void communicationData(){
     // Update variables
 
     switch (var_id){
-        case 1: // gas_module_alert
+        case 2: // gas_module_alert
             gas_module_alert = var_content;
         break;
-        case 2: // water_module
+        case 3: // water_module
             water_module = var_content;
         break;
-        case 3: // pump_state
+        case 4: // pump_state
             pump_state = var_content;
         break;
-        case 4: // air_quality
+        case 5: // air_quality
             air_quality_module = var_content;
         break;
-        case 5: // ventilation_power
+        case 6: // ventilation_power
             ventilation_power = var_content;
         break;
-        case 6: // window_state
+        case 7: // window_state
             window_state = var_content;
         break;
-        case 7: // min_temp_ventilation
+        case 8: // min_temp_ventilation
             min_temp_ventilation = var_content;
         break;
-        case 8: // max_temp_ventilation
+        case 9: // max_temp_ventilation
             max_temp_ventilation = var_content;
         break;
         default: break;    
@@ -377,7 +386,7 @@ void communicationData(){
 
     // Send sensor values
 
-    if (var_id != -1)
+    if (var_id != 0)
         sendData();
 }
 

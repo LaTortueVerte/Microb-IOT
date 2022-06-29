@@ -1,9 +1,9 @@
 #include "DHT.h"        // librairie du capteur de température DHT
 #include <MQUnifiedsensor.h> //librairie liée au capteur MQ9
-#include "Servo.h"
-#include "LiquidCrystal_I2C.h"
+#include "Servo.h" //librairie liée au servomoteur
+#include "LiquidCrystal_I2C.h" // librairie de l'afficheur LCD avec une connexion par le protocole I2C
 
-LiquidCrystal_I2C lcd(0x27,16,2);
+LiquidCrystal_I2C lcd(0x27,16,2); //définition du nombre de lignes et de colonnes présents dans l'afficheur LCD ainsi que de l'adresse mémoire de celui-ci
 
 #define RatioMQ9CleanAir (9.6) //RS / R0 = 60 ppm (formule nécessaire au bon fonctionnement du MQ9)
 #define DHTPIN A4       // detection de la température et de l'humidité
@@ -23,8 +23,8 @@ DHT dht(DHTPIN, DHTTYPE);
 
 //Données relatives au capteur MQ9
 MQUnifiedsensor MQ9("Arduino MEGA", 5, 10, A2, "MQ-9"); // Board, Voltage_resolution, ADC_Bit_Resolution, Pin, Type
-float tab[3];
-bool alertMQ9[3] = {0};
+float tab[3]; //récupération des valeurs mesurées par le capteur MQ9 (valeur du GPL, valeur du CH4, valeur du CO)
+bool alertMQ9[3] = {0}; //détection de la dangerosité des différents gaz mesurés par le MQ9
 
 //Données relatives au capteur HCHO
 // Source : http://www.himix.lt/arduino/arduino-and-hcho-benzene-toluene-alcohol-sensor/
@@ -34,9 +34,9 @@ bool formaldehydeDetect;
 
 Servo monServomoteur;
 
-int ecran = 0;
+int ecran = 0; //affichage des données issues des capteurs alternativement, les données à afficher dépendent de la valeur d'ecran 
 
-int changeEcran = 999;
+int changeEcran = 999; // compteur qui permet d'afficher les données successivement pendant un temps donné et de les changer lorsque le temps est écoulé
 
 // Variables
 int readLevel;
@@ -58,15 +58,14 @@ boolean alerteUser = false; // une alerte est envoyé à l'utilisateur
 boolean isHumid = false;    // le seuil d'humidité est atteint
 // boolean flashLED = false;
 
-const long interval = 250;
-unsigned long previousMillis = 0;
-int count = 0;
-String gazName = "GPL";
+
 
 void setup()
 {
   Serial.begin(9600);
   dht.begin();
+  
+  //définition des pins (entrées/sorties)
   pinMode(DHTPIN, INPUT);
   pinMode(ldrPin, INPUT);
   pinMode(motorWaterPin, OUTPUT);
@@ -79,11 +78,13 @@ void setup()
   pinMode(LEDR, OUTPUT);
   pinMode(tempExtPIN, INPUT);
 
+  
   int error = MQ9Setup();
 
+  //instanciation d'un objet Servo pour agir sur le servomoteur
   monServomoteur.attach(servmotorPIN);
 
-
+  //paramétrages nécessaires au bon fonctionnement de l'écran LCD
   lcd.init();
   lcd.backlight();
 }
@@ -94,104 +95,40 @@ void loop()
   // récupère la donnée du capteur de température extérieur
   reading = analogRead(tempExtPIN);
   //tempout = get_temp_out(reading);
-  tempout = 20;
+  tempout = 20; //température ambiante
 
   // recupère les infos du DHT11 pour la température et l'humidité
   humidity = dht.readHumidity();
   tempin = dht.readTemperature();
-  Serial.print("temperature interieure");
-  Serial.println(tempin);
+
 
   difpositive = is_temp_positive(tempin, tempout);
 
+  //prévention des potentiels dangers en fonction des valeurs mesurées par les capteurs
   set_temp_flags(tempin, &hotTemp, &goodTemp, &coldTemp);
 
   //récupère les mesures des gaz détectés par le MQ9 
   MQ9mesure(tab);
 
   //Activation du système de détection dans le MQ9
-  MQ9valeurseuil(tab, alertMQ9);
+  MQ9valeurseuil(tab, alertMQ9, lcd);
  
-
-  //Affichage des mesures réalisées par le MQ9 - vérification interne
-  /*Serial.println("Mesures");
-  for(int i=0; i<3; i++){
-    Serial.print("   |   ");
-    Serial.print(tab[i]);
-  }
-  Serial.println("");
-
-  Serial.println("Alert");
-  for(int i=0; i<3; i++){
-    Serial.print("   |   ");
-    Serial.print(alertMQ9[i]);
-  }
-  Serial.println("");*/
 
   //récupère les mesures des gaz détectés par le HCHO
   sensorValue=analogRead(A6);
   Vol=sensorValue*4.95/1023;
   ppm = map(Vol, 0, 4.95, 1, 50); // Concentration Range: 1~50 ppm 
   
-  //Affichage des mesures réalisées par le HCHO - vérification interne
-  /*Serial.print("Sensor Value: ");
-  Serial.print(sensorValue);
-  Serial.print("   ppm: ");
-  Serial.print(ppm);*/
 
    //Activation du système de détection dans le HCHO
-   HCHOAlertDetection(sensorValue, &formaldehydeDetect);
+   HCHOAlertDetection(sensorValue, &formaldehydeDetect,lcd);
 
 
   //Si l'un des capteurs détecte une quantité anormale de gaz --> le local est pollué il faut aérer !   
-   if (alertMQ9[0] == 1 || alertMQ9[1] == 1 || alertMQ9[2] == 1 || formaldehydeDetect == 1){
+   /*if (alertMQ9[0] == 1 || alertMQ9[1] == 1 || alertMQ9[2] == 1 || formaldehydeDetect == 1){
     polluted = true;
-   }
-
-  //Vérification de la qualité de l'air dans le local - vérification interne
-   Serial.print("\npollution: ");
-   Serial.println(polluted);
-
-/*
-   Serial.print (tab[0]);
-      Serial.print (tab[1]);
-         Serial.print (tab[2]);
-
-  
-
-
-    lcd.print("GPL ");
-    lcd.print(tab[0]);
-
-    lcd.print(" CH4 ");
-    lcd.print(tab[1]);
-
-    lcd.print(" CO ");
-    lcd.print(tab[2]);
-
-    lcd.setCursor(1,1);
-    lcd.print("Temperature: ");
-    lcd.print(tempin);
-
-
-     for (int positionCounter = 0; positionCounter < 20; positionCounter++) {
-
-      lcd.scrollDisplayLeft();
-      // pause courte
-      delay(500);
-    }
-
-
-
-    for (int positionCounter = 0; positionCounter < 20; positionCounter++) {
-
-      lcd.scrollDisplayRight();
-      // courte pause
-      delay(500);
-    }
-
-    */
-
+   }*/
+   polluted = true;
 
   // Module qualité d'air
 
@@ -222,6 +159,7 @@ void loop()
       // ventOn = true;
       // +ventilo à 100%
       switch_vent_on(tempout, &ventOn);
+      digitalWrite(motorDCPin,HIGH);
     }
     if (difpositive)
     { // s'il fait moins chaud dehors
@@ -298,18 +236,9 @@ void loop()
     analogWrite(motorDCPin, 0); // désactivation de la pompe
   }
 
-  
-  Serial.println(ventOn);
 
-
-
-
+  //Affichage alternatif sur l'afficheur LCD
   changeEcran ++;
-  Serial.print("changeEcran: ");
-  Serial.print(changeEcran);
-
-  Serial.print("Ecran: ");
-  Serial.print(ecran);
   if (changeEcran > 100){
     ecran++;
     changeEcran = 0;
@@ -318,45 +247,40 @@ void loop()
       ecran = 0;
     }
   }
+
+
   
 }
 
+//activation de la ventilation --> excès de gaz ou température trop élevée
 void switch_vent_on(int temperature, boolean *ventOn)
 {
   float Ftemp = (temperature - 15) * (255 / 15);
   int Pw = min(255, max(0, Ftemp));
-  analogWrite(motorDCPin, Pw);
   *ventOn = true;
+  analogWrite(motorDCPin, Pw);
 }
+//désactivation de la ventilation 
 void switch_vent_off(boolean *ventOn)
 {
   analogWrite(motorDCPin, 0);
   *ventOn = false;
 }
-
+//ouverture des fenêtres symbolisée par le sevomoteur --> température trop élevée ou excès de gaz
 void open_window(Servo monservomoteur, boolean *windowOpen)
 {
   int angle = 0;
   monServomoteur.write(180);
-      // scan from 0 to 180 degrees
-    /*for(angle = 0; angle < 180; angle++) {
-        monservomoteur.write(angle);
-        delay(15);
-    }
-    
-    // now scan back from 180 to 0 degrees
-    for(angle = 180; angle > 0; angle--) {
-        monservomoteur.write(angle);
-        delay(15);
-    }*/
   *windowOpen = true;
 }
+//fermeture des fenêtres --> pas de mouvement du servomoteur
 void close_window(boolean *windowOpen)
 {
   monServomoteur.write(0);
   *windowOpen = false;
 }
 
+//les deux fonctions suivantes alertent directement l'utilisateur à distance en cas de problème
 void alerte_user(boolean *alerteUser)
 {
   // rajouter un envoie de message à la rasPi jusqu'à l'utilisateur
@@ -381,7 +305,7 @@ float get_temp_out(float reading)
   float tempout = (voltage - 500) / 10;
   return tempout;
 }
-
+//définit les seuils de température et donc les potentiels risques pour le local
 void set_temp_flags(float tempin, boolean *hotTemp, boolean *goodTemp, boolean *coldTemp)
 {
   if (tempin > 24)
@@ -442,27 +366,41 @@ void MQ9mesure(float* tab){
   tab[2] = MQ9.readSensor(); // Sensor will read PPM concentration using the model, a and b values set previously or from the setup
 }
 
-bool* MQ9valeurseuil(float* tab, bool* reactiontab){
-
+//détection et alerte des dangers en fonction de valeurs seuils mesurées par le capteur MQ9
+bool* MQ9valeurseuil(float* tab, bool* reactiontab, LiquidCrystal_I2C lcd){
   if (tab[0] > 500){// Source : http://umpir.ump.edu.my/id/eprint/8365/1/Design_and_Development_of_Gas_Leakage_Monitoring_System.pdf
     reactiontab[0] = 1;
-    Serial.print("ALERT ! Excès de GPL (LPG) - Risque d'incendie !");
+    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("ALERT GPL !");
+    lcd.setCursor(1,1);
+    lcd.print("fuite de gaz");
   }
   if (tab[1] > 9990){// Source : https://www.heatingandprocess.com/methane-gas-detection/ LEL=5% -> 50000 ppm. Comme le module détecte max 10000 alors on met un peu moins -> 9990 ppm
     reactiontab[1] = 1;
-    Serial.print("ALERT ! Excès de Méthane (CH4) - Risque d'incendie !");
+    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("ALERT CH4 !");
+    lcd.setCursor(1,1);
+    lcd.print("incendie");
   }
   if (tab[2] > 35){// Source : https://cdn.shopify.com/s/files/1/0406/7681/files/Carbon-Monoxide-Levels-Chart.jpg?v=1565211200
     reactiontab[2] = 1;
-    Serial.print("ALERT ! Excès de monoxyde de carbone (CO) - Risque de suffocation !");
+    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("ALERT CO !");
+    lcd.setCursor(1,1);
+    lcd.print("suffocation");
   }
   return reactiontab;
 
 }
 
-void HCHOAlertDetection (int sensorValue, bool* formaldehydeDetect){
+//détection et alerte des dangers en fonction de valeurs seuils mesurées par le capteur HCHO
+void HCHOAlertDetection (int sensorValue, bool* formaldehydeDetect, LiquidCrystal_I2C lcd){
   if (sensorValue > 500) {
-      Serial.println("Alert HCHO");
+      lcd.clear();
+      lcd.print("Alert HCHO");
       *formaldehydeDetect = true;
     }
     else {
@@ -470,6 +408,7 @@ void HCHOAlertDetection (int sensorValue, bool* formaldehydeDetect){
     }
 }
 
+//affichage sur l'écran LCD
 void AffichEcran(LiquidCrystal_I2C lcd, int ecran, float* tab, int tempin, float humidity, float sensorValue){
   
   if(ecran == 3){

@@ -70,6 +70,10 @@ boolean isHumid = false;    // le seuil d'humidité est atteint
 // boolean flashLED = false;
 
 
+// -----------------------------------------------------------------------------------
+// SETUP AND LOOP
+// -----------------------------------------------------------------------------------
+
 
 void setup()
 {
@@ -292,9 +296,92 @@ void loop()
     }
   }
 
+  // UART COMMUNICATION
 
-  
+  communicationData()
 }
+
+// -----------------------------------------------------------------------------------
+//  FUNCTIONS
+// -----------------------------------------------------------------------------------
+
+// UART ------------------------------------------------------------------------------
+
+void readSerialPort(int *var_id, int *var_content) {
+    String msg = "";
+    if (Serial.available()) {
+        delay(10);
+        while (Serial.available() > 0) {
+            msg += (char)Serial.read();
+        }
+        Serial.flush();
+    }
+
+    int sep_index = msg.indexOf('=');
+    *var_id = msg.substring(0, sep_index).toInt();
+    *var_content = msg.substring(sep_index, sizeof(msg) - 1).toInt();
+}
+
+void sendData() {
+
+    msg =   String(tab[0]) + "|" + 
+            String(tab[1]) + "|" + 
+            String(tab[2]) + "|" + 
+            String(polluted) + "|" + 
+            String(readLevel) + "|" + 
+            String(formaldehydeDetect) + "|" + 
+            String(tempin) + "|" + 
+            String(humidity);
+            
+    Serial.print(msg);
+}
+
+void communicationData(){
+
+    // Ecoute UART
+
+    int var_id = -1;
+    int var_content = 0;
+
+    readSerialPort(&var_id, &var_content);
+
+    // Update variables
+
+    switch (var_id){
+        case 1: // gas_module_alert
+            gas_module_alert = var_content;
+        break;
+        case 2: // water_module
+            water_module = var_content;
+        break;
+        case 3: // pump_state
+            pump_state = var_content;
+        break;
+        case 4: // air_quality
+            air_quality_module = var_content;
+        break;
+        case 5: // ventilation_power
+            ventilation_power = var_content;
+        break;
+        case 6: // window_state
+            window_state = var_content;
+        break;
+        case 7: // min_temp_ventilation
+            min_temp_ventilation = var_content;
+        break;
+        case 8: // max_temp_ventilation
+            max_temp_ventilation = var_content;
+        break;
+        default: break;    
+    }
+
+    // Send sensor values
+
+    if (var_id != -1)
+        sendData();
+}
+
+// SENSORS AND ACTUATORS -------------------------------------------------------------
 
 //activation de la ventilation --> excès de gaz ou température trop élevée
 void switch_vent_on(float tempin, boolean *ventOn, double max_temp_ventilation, double min_temp_ventilation)

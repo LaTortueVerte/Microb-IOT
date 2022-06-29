@@ -139,6 +139,10 @@ void loop()
   if (alertMQ9[0] == 1 || alertMQ9[1] == 1 || alertMQ9[2] == 1 || formaldehydeDetect == 1){
     polluted = true;
   }
+  else
+  {
+    polluted = false;
+  }
 
   // Module qualité d'air
 
@@ -150,11 +154,12 @@ void loop()
       // window opens
       open_window(monServomoteur, &windowOpen);
     }
-    if (!ventOn)
-    {
+    //if (!ventOn)
+    //{
       // ventilo switch on
-      switch_vent_on(tempout, &ventOn);
-    }
+      Serial.print("test");
+      switch_vent_on(tempout, &ventOn, min_temp_ventilation, max_temp_ventilation);
+    //}
     if (gas_module_alert)
     {
       // alerter l'utilisateur
@@ -163,7 +168,6 @@ void loop()
   }
   else if (!air_quality_module)
   {
-    power = ventilation_power * 2.55; // to set the temperature in percentages
     analogWrite(motorDCPin, ventilation_power * 2.55);
     if (window_state)
     {
@@ -185,7 +189,7 @@ void loop()
         // ventilo switched on
         // ventOn = true;
         // +ventilo à 100%
-        switch_vent_on(tempout, &ventOn);
+        switch_vent_on(tempout, &ventOn, min_temp_ventilation, max_temp_ventilation);
         digitalWrite(motorDCPin,HIGH);
       }
       if (difpositive)
@@ -244,7 +248,7 @@ void loop()
       if (!ventOn)
       {
         // ventilo switch on
-        switch_vent_on(tempin, &ventOn);
+        switch_vent_on(tempin, &ventOn, min_temp_ventilation, max_temp_ventilation);
       }
     }
   }
@@ -301,7 +305,7 @@ void switch_vent_on(float tempin, boolean *ventOn, double max_temp_ventilation, 
   float Ftemp = 255 / temp_gap * (tempin - min_temp_ventilation);
   int Pw = min(255, max(0, Ftemp));
   *ventOn = true;
-  analogWrite(motorDCPin, Pw);
+  analogWrite(motorDCPin, 255);
 }
 //désactivation de la ventilation 
 void switch_vent_off(boolean *ventOn)

@@ -154,12 +154,11 @@ void loop()
       // window opens
       open_window(monServomoteur, &windowOpen);
     }
-    //if (!ventOn)
-    //{
+    if (!ventOn)
+    {
       // ventilo switch on
-      Serial.print("test");
       switch_vent_on(tempout, &ventOn, min_temp_ventilation, max_temp_ventilation);
-    //}
+    }
     if (gas_module_alert)
     {
       // alerter l'utilisateur
@@ -190,7 +189,6 @@ void loop()
         // ventOn = true;
         // +ventilo à 100%
         switch_vent_on(tempout, &ventOn, min_temp_ventilation, max_temp_ventilation);
-        digitalWrite(motorDCPin,HIGH);
       }
       if (difpositive)
       { // s'il fait moins chaud dehors
@@ -261,12 +259,12 @@ void loop()
     if (readLevel == LOW) //Le circuit est fermé
     {
       digitalWrite(LEDY, HIGH);
-      analogWrite(motorDCPin, 255); // activation de la pompe au maximum
+      analogWrite(motorWaterPin, 255); // activation de la pompe au maximum
     }
     else
     {
       digitalWrite(LEDY, LOW);
-      analogWrite(motorDCPin, 0); // désactivation de la pompe
+      analogWrite(motorWaterPin, 0); // désactivation de la pompe
     }
   }
   else
@@ -274,12 +272,12 @@ void loop()
     if (pump_state) //Le circuit est fermé
     {
       digitalWrite(LEDY, HIGH);
-      analogWrite(motorDCPin, 255); // activation de la pompe au maximum
+      analogWrite(motorWaterPin, 255); // activation de la pompe au maximum
     }
     else
     {
       digitalWrite(LEDY, LOW);
-      analogWrite(motorDCPin, 0); // désactivation de la pompe
+      analogWrite(motorWaterPin , 0); // désactivation de la pompe
     }
   }
   
@@ -305,7 +303,7 @@ void switch_vent_on(float tempin, boolean *ventOn, double max_temp_ventilation, 
   float Ftemp = 255 / temp_gap * (tempin - min_temp_ventilation);
   int Pw = min(255, max(0, Ftemp));
   *ventOn = true;
-  analogWrite(motorDCPin, 255);
+  analogWrite(motorDCPin, Pw);
 }
 //désactivation de la ventilation 
 void switch_vent_off(boolean *ventOn)

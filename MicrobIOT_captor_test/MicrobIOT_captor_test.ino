@@ -38,6 +38,17 @@ int ecran = 0; //affichage des données issues des capteurs alternativement, les
 
 int changeEcran = 999; // compteur qui permet d'afficher les données successivement pendant un temps donné et de les changer lorsque le temps est écoulé
 
+// UART variables
+
+boolean window_state = false;
+int ventilation_power = 0;
+double min_temp_ventilation = 18.00;
+double max_temp_ventilation = 24.00;
+boolean pump_state = false;        // la pompe est allumée
+boolean air_quality_module = true; // si le module de qualité d'air existe
+boolean water_module = true;
+boolean gas_module_alert = true;
+
 // Variables
 int readLevel;
 
@@ -52,7 +63,7 @@ boolean goodTemp = true;    // il fait bon
 boolean coldTemp = false;   // il fait froid
 boolean difpositive = true; // il fait plus chaud dehors que dedans
 boolean ventOn = false;     // le ventilateur est allumé
-boolean windowOpen = false; // la fenètre est ouverte
+boolean windowOpen = false; // la fenêtre est ouverte
 boolean doorLocked = false; // la porte est vérouillée
 boolean alerteUser = false; // une alerte est envoyé à l'utilisateur
 boolean isHumid = false;    // le seuil d'humidité est atteint
@@ -125,10 +136,9 @@ void loop()
 
 
   //Si l'un des capteurs détecte une quantité anormale de gaz --> le local est pollué il faut aérer !   
-   /*if (alertMQ9[0] == 1 || alertMQ9[1] == 1 || alertMQ9[2] == 1 || formaldehydeDetect == 1){
+  if (alertMQ9[0] == 1 || alertMQ9[1] == 1 || alertMQ9[2] == 1 || formaldehydeDetect == 1){
     polluted = true;
-   }*/
-   polluted = true;
+  }
 
   // Module qualité d'air
 
@@ -145,98 +155,130 @@ void loop()
       // ventilo switch on
       switch_vent_on(tempout, &ventOn);
     }
-    // alerter l'utilisateur
-    alerte_user(&alerteUser);
-  }
-
-  // si la température est trop élevée à l'intérieur
-  if (hotTemp)
-  {
-    // allumer la ventilation si elle ne l'est pas déjà
-    if (!ventOn)
+    if (gas_module_alert)
     {
-      // ventilo switched on
-      // ventOn = true;
-      // +ventilo à 100%
-      switch_vent_on(tempout, &ventOn);
-      digitalWrite(motorDCPin,HIGH);
-    }
-    if (difpositive)
-    { // s'il fait moins chaud dehors
-      if (!windowOpen)
-      {
-        // window opens
-        open_window(monServomoteur, &windowOpen);
-      }
-    }
-    else if (!difpositive)
-    { // s'il fait plus chaud dehors
-      if (windowOpen)
-      {
-        // window closes
-        close_window(&windowOpen);
-      }
+      // alerter l'utilisateur
+      alerte_user(&alerteUser);
     }
   }
-
-  // else if température faible à l'intérieur
-  if (coldTemp)
+  else if (!air_quality_module)
   {
-    // éteindre la ventilation si elle ne l'est pas déjà
-    if (ventOn)
+    power = ventilation_power * 2.55; // to set the temperature in percentages
+    analogWrite(motorDCPin, ventilation_power * 2.55);
+    if (window_state)
     {
-      // ventilo switched off
-      switch_vent_off(&ventOn);
+      monServomoteur.write(90);
     }
-    if (difpositive)
-    { // s'il fait moins chaud dehors
-      if (windowOpen)
-      {
-        // window closes
-        close_window(&windowOpen);
-      }
-    }
-    else if (!difpositive)
+    else
     {
-      if (!windowOpen)
-      {
-        // window opens
-        open_window(monServomoteur, &windowOpen);
-      }
+      monServomoteur.write(0);
     }
-  }
-
-  if (humidity > 80)
-  {
-    isHumid = true;
-    open_window(monServomoteur, &windowOpen);
-  }
-
-  // else il fait bon et l'air est pur
-  else
-  {
-    if (!ventOn)
-    {
-      // ventilo switch on
-      switch_vent_on(tempExtPIN, &ventOn);
-    }
-  }
-
-  // Partie dégâts des eaux - source : https://www.instructables.com/Water-Level-Alarm-Using-Arduino/
-
-  readLevel = digitalRead(DegEauxInPIN); //DegEauxInPIN et LEDY agissent ensemble comme un interrupteur
-  if (readLevel == LOW) //Le circuit est fermé
-  {
-    digitalWrite(LEDY, HIGH);
-    analogWrite(motorDCPin, 255); // activation de la pompe au maximum
   }
   else
   {
-    digitalWrite(LEDY, LOW);
-    analogWrite(motorDCPin, 0); // désactivation de la pompe
+    // si la température est trop élevée à l'intérieur
+    if (hotTemp)
+    {
+      // allumer la ventilation si elle ne l'est pas déjà
+      if (!ventOn)
+      {
+        // ventilo switched on
+        // ventOn = true;
+        // +ventilo à 100%
+        switch_vent_on(tempout, &ventOn);
+        digitalWrite(motorDCPin,HIGH);
+      }
+      if (difpositive)
+      { // s'il fait moins chaud dehors
+        if (!windowOpen)
+        {
+          // window opens
+          open_window(monServomoteur, &windowOpen);
+        }
+      }
+      else if (!difpositive)
+      { // s'il fait plus chaud dehors
+        if (windowOpen)
+        {
+          // window closes
+          close_window(&windowOpen);
+        }
+      }
+    }
+    // else if température faible à l'intérieur
+    if (coldTemp)
+    {
+      // éteindre la ventilation si elle ne l'est pas déjà
+      if (ventOn)
+      {
+        // ventilo switched off
+        switch_vent_off(&ventOn);
+      }
+      if (difpositive)
+      { // s'il fait moins chaud dehors
+        if (windowOpen)
+        {
+          // window closes
+          close_window(&windowOpen);
+        }
+      }
+      else if (!difpositive)
+      {
+        if (!windowOpen)
+        {
+          // window opens
+          open_window(monServomoteur, &windowOpen);
+        }
+      }
+    }
+  
+    if (humidity > 80)
+    {
+      isHumid = true;
+      open_window(monServomoteur, &windowOpen);
+    }
+  
+    // else il fait bon et l'air est pur
+    else
+    {
+      if (!ventOn)
+      {
+        // ventilo switch on
+        switch_vent_on(tempin, &ventOn);
+      }
+    }
   }
 
-
+  if (water_module)
+  {
+    // Partie dégâts des eaux - source : https://www.instructables.com/Water-Level-Alarm-Using-Arduino/
+  
+    readLevel = digitalRead(DegEauxInPIN); //DegEauxInPIN et LEDY agissent ensemble comme un interrupteur
+    if (readLevel == LOW) //Le circuit est fermé
+    {
+      digitalWrite(LEDY, HIGH);
+      analogWrite(motorDCPin, 255); // activation de la pompe au maximum
+    }
+    else
+    {
+      digitalWrite(LEDY, LOW);
+      analogWrite(motorDCPin, 0); // désactivation de la pompe
+    }
+  }
+  else
+  {
+    if (pump_state) //Le circuit est fermé
+    {
+      digitalWrite(LEDY, HIGH);
+      analogWrite(motorDCPin, 255); // activation de la pompe au maximum
+    }
+    else
+    {
+      digitalWrite(LEDY, LOW);
+      analogWrite(motorDCPin, 0); // désactivation de la pompe
+    }
+  }
+  
   //Affichage alternatif sur l'afficheur LCD
   changeEcran ++;
   if (changeEcran > 100){
@@ -253,9 +295,10 @@ void loop()
 }
 
 //activation de la ventilation --> excès de gaz ou température trop élevée
-void switch_vent_on(int temperature, boolean *ventOn)
+void switch_vent_on(float tempin, boolean *ventOn, double max_temp_ventilation, double min_temp_ventilation)
 {
-  float Ftemp = (temperature - 15) * (255 / 15);
+  double temp_gap = max_temp_ventilation - min_temp_ventilation;
+  float Ftemp = 255 / temp_gap * (tempin - min_temp_ventilation);
   int Pw = min(255, max(0, Ftemp));
   *ventOn = true;
   analogWrite(motorDCPin, Pw);

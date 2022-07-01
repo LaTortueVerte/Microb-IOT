@@ -40,6 +40,27 @@
                 <td>Etat du ventilo depuis php</td>
             </tr>
             <tr>
+                <th scope="row">Puissance de ventilation</th>
+                <td>
+                    <input type="range" id="ventilation" name="ventilation" min="0" max="100">
+                </td>
+                <td>Etat du ventilo depuis php</td>
+            </tr>
+            <tr>
+                <th scope="row">Température Min</th>
+                <td>
+                <input type="number" id="TempMin" name="TempMin" placeholder="18" step ="0.5" min="0" max="50">
+                </td>
+                <td>Etat temp min depuis php</td>
+            </tr>
+            <tr>
+                <th scope="row">Température Max</th>
+                <td>
+                <input type="number" id="TempMax" name="TempMax" placeholder="24" step ="0.5" min="0" max="50">
+                </td>
+                <td>Etat temp max depuis php</td>
+            </tr>
+            <tr>
                 <th scope="row">Pompe à eau</th>
                 <td>
                     <button type="button" class="btn btn-success btn-sm">ON</button>
@@ -62,6 +83,22 @@
                     <button type="button" class="btn btn-danger btn-sm">Fermé</button>
                 </td>
                 <td>Etat de la fenetre depuis php</td>
+            </tr>
+            <tr>
+                <th scope="row">Module intrusion</th>
+                <td>
+                    <button type="button" class="btn btn-success btn-sm">ON</button>
+                    <button type="button" class="btn btn-danger btn-sm">OFF</button>
+                </td>
+                <td>Etat du module intrusion depuis php</td>
+            </tr>
+            <tr>
+                <th scope="row">Buzzer</th>
+                <td>
+                    <button type="button" class="btn btn-success btn-sm">ON</button>
+                    <button type="button" class="btn btn-danger btn-sm">OFF</button>
+                </td>
+                <td>Etat du buzzer depuis php</td>
             </tr>
         </tbody>
     </table>

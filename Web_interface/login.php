@@ -10,7 +10,7 @@
 <body>
     <div class="loginContents">
         <h1>Connexion</h1>
-        <form>
+        <form action="login.php" method="post">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Votre adresse email</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -21,10 +21,11 @@
                 <input type="password" class="form-control" id="exampleInputPassword1">
             </div>
             <button type="submit" class="btn btn-primary">Se connecter</button>
+            <?php
+                echo'<a href="register.php">Pas de compte? Inscrivez-vous!</a>'; 
+            ?>
         </form>
-        <?php
-            echo'"<a href="register.php"Vous ne disposez pas de compte? Inscrivez-vous ici!</a>'; 
-        ?>
+
     </div>
 
     <style>

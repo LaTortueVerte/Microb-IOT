@@ -58,11 +58,7 @@ float humidity;
 float tempin;
 
 boolean polluted = false;   // le local est pollué par des gaz
-boolean hotTemp = false;    // il fait trop chaud dans le loc
-boolean goodTemp = true;    // il fait bon
-boolean coldTemp = false;   // il fait froid
 boolean difpositive = true; // il fait plus chaud dehors que dedans
-boolean ventOn = false;     // le ventilateur est allumé
 boolean windowOpen = false; // la fenêtre est ouverte
 boolean doorLocked = false; // la porte est vérouillée
 boolean alerteUser = false; // une alerte est envoyé à l'utilisateur
@@ -119,9 +115,6 @@ void loop()
 
   difpositive = is_temp_positive(tempin, tempout);
 
-  //prévention des potentiels dangers en fonction des valeurs mesurées par les capteurs
-  set_temp_flags(tempin, &hotTemp, &goodTemp, &coldTemp);
-
   //récupère les mesures des gaz détectés par le MQ9 
   MQ9mesure(tab);
 
@@ -155,14 +148,10 @@ void loop()
   {
     if (!windowOpen)
     {
-      // window opens
-      open_window(monServomoteur, &windowOpen);
+      windowOpen = true;
+      change_window_state(monServomoteur, windowOpen);
     }
-    if (!ventOn)
-    {
-      // ventilo switch on
-      switch_vent_on(tempout, &ventOn, min_temp_ventilation, max_temp_ventilation);
-    }
+    ventilation_update(tempin, max_temp_ventilation, min_temp_ventilation);
     if (gas_module_alert)
     {
       // alerter l'utilisateur
@@ -171,88 +160,56 @@ void loop()
   }
   else if (!air_quality_module)
   {
+    // puissance ventilation pilotée par l'utilisateur
     analogWrite(motorDCPin, ventilation_power * 2.55);
-    if (window_state)
-    {
-      monServomoteur.write(90);
-    }
-    else
-    {
-      monServomoteur.write(0);
-    }
+    // ouverture fenêtre pilotée par l'utilisateur
+    windowOpen = window_state;
+    change_window_state(monServomoteur, windowOpen);
   }
   else
   {
     // si la température est trop élevée à l'intérieur
-    if (hotTemp)
+    if (tempin > max_temp_ventilation)
     {
-      // allumer la ventilation si elle ne l'est pas déjà
-      if (!ventOn)
+      if (difpositive && !windowOpen)
       {
-        // ventilo switched on
-        // ventOn = true;
-        // +ventilo à 100%
-        switch_vent_on(tempout, &ventOn, min_temp_ventilation, max_temp_ventilation);
+          // s'il fait moins chaud dehors
+          windowOpen = true;
       }
-      if (difpositive)
-      { // s'il fait moins chaud dehors
-        if (!windowOpen)
-        {
-          // window opens
-          open_window(monServomoteur, &windowOpen);
-        }
-      }
-      else if (!difpositive)
-      { // s'il fait plus chaud dehors
-        if (windowOpen)
-        {
-          // window closes
-          close_window(&windowOpen);
-        }
+      else if (!difpositive && windowOpen)
+      { 
+          // s'il fait plus chaud dehors
+          windowOpen = false;
       }
     }
     // else if température faible à l'intérieur
-    if (coldTemp)
+    if (tempin < min_temp_ventilation)
     {
-      // éteindre la ventilation si elle ne l'est pas déjà
-      if (ventOn)
-      {
-        // ventilo switched off
-        switch_vent_off(&ventOn);
+      if (difpositive && windowOpen)
+      { 
+          // s'il fait moins chaud dehors
+          windowOpen = false;
       }
-      if (difpositive)
-      { // s'il fait moins chaud dehors
-        if (windowOpen)
-        {
-          // window closes
-          close_window(&windowOpen);
-        }
-      }
-      else if (!difpositive)
+      else if (!difpositive && !windowOpen)
       {
-        if (!windowOpen)
-        {
-          // window opens
-          open_window(monServomoteur, &windowOpen);
-        }
+          // s'il fait plus chaud dehors
+          windowOpen = true;
       }
     }
   
-    if (humidity > 80)
+    if (humidity > 80 && !windowOpen)
     {
       isHumid = true;
-      open_window(monServomoteur, &windowOpen);
+      windowOpen = true;
     }
-  
-    // else il fait bon et l'air est pur
-    else
+    else if (isHumid && windowOpen && humidity < 50)
     {
-      if (!ventOn)
-      {
-        // ventilo switch on
-        switch_vent_on(tempin, &ventOn, min_temp_ventilation, max_temp_ventilation);
-      }
+      windowOpen = false;
     }
+
+    // applique le changement à la fenêtre et à la ventilation
+    change_window_state(monServomoteur, windowOpen);
+    ventilation_update(tempin, max_temp_ventilation, min_temp_ventilation);
   }
 
   if (water_module)
@@ -393,32 +350,26 @@ void communicationData(){
 // SENSORS AND ACTUATORS -------------------------------------------------------------
 
 //activation de la ventilation --> excès de gaz ou température trop élevée
-void switch_vent_on(float tempin, boolean *ventOn, double max_temp_ventilation, double min_temp_ventilation)
+void ventilation_update(float tempin, double max_temp_ventilation, double min_temp_ventilation)
 {
   double temp_gap = max_temp_ventilation - min_temp_ventilation;
   float Ftemp = 255 / temp_gap * (tempin - min_temp_ventilation);
   int Pw = min(255, max(0, Ftemp));
-  *ventOn = true;
   analogWrite(motorDCPin, Pw);
 }
 //désactivation de la ventilation 
-void switch_vent_off(boolean *ventOn)
+void switch_vent_off()
 {
   analogWrite(motorDCPin, 0);
-  *ventOn = false;
 }
-//ouverture des fenêtres symbolisée par le sevomoteur --> température trop élevée ou excès de gaz
-void open_window(Servo monservomoteur, boolean *windowOpen)
+
+// ouverture/fermeture des fenêtres symbolisée par le sevomoteur
+void  change_window_state(Servo monservomoteur, boolean windowOpen)
 {
-  int angle = 0;
-  monServomoteur.write(180);
-  *windowOpen = true;
-}
-//fermeture des fenêtres --> pas de mouvement du servomoteur
-void close_window(boolean *windowOpen)
-{
-  monServomoteur.write(0);
-  *windowOpen = false;
+  if (windowOpen)
+      monServomoteur.write(180);
+  else
+      monServomoteur.write(0);
 }
 
 //les deux fonctions suivantes alertent directement l'utilisateur à distance en cas de problème
@@ -445,28 +396,6 @@ float get_temp_out(float reading)
   float voltage = reading * (5000 / 1024.0);
   float tempout = (voltage - 500) / 10;
   return tempout;
-}
-//définit les seuils de température et donc les potentiels risques pour le local
-void set_temp_flags(float tempin, boolean *hotTemp, boolean *goodTemp, boolean *coldTemp)
-{
-  if (tempin > 24)
-  {
-    *hotTemp = true;
-    *goodTemp = false;
-    *coldTemp = false;
-  }
-  else if (tempin < 18)
-  {
-    *hotTemp = false;
-    *goodTemp = false;
-    *coldTemp = true;
-  }
-  else
-  {
-    *hotTemp = false;
-    *goodTemp = true;
-    *coldTemp = false;
-  }
 }
 
 int MQ9Setup(){

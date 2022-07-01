@@ -12,13 +12,13 @@
         <h1>Connexion</h1>
         <form action="login.php" method="post">
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Votre adresse email</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="mailUser" class="form-label">Votre adresse email</label>
+                <input type="email" class="form-control" id="mailUser" aria-describedby="emailHelp">
                 <div id="emailHelp" class="form-text" >Votre email ne sera pas partagé à des fins commerciales !</div>
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Votre mot de passe</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <label for="passwordUser" class="form-label">Votre mot de passe</label>
+                <input type="password" class="form-control" id="passwordUser">
             </div>
             <button type="submit" class="btn btn-primary">Se connecter</button>
             <?php
@@ -63,7 +63,7 @@
     session_start();
     include "./conn.php";
 
-    $username = mysqli_real_escape_string($conn, $_POST['nameUser']);
+    $username = mysqli_real_escape_string($conn, $_POST['mailUser']);
     $password = mysqli_real_escape_string($conn, $POST['passwordUser']);
 
     $sql = "Select * from users where user_name ='" . $username . "'and user_pwd = '" . md5($password) . "'";

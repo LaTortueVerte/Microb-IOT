@@ -319,7 +319,7 @@ void readSerialPort(int *var_id, int *var_content) {
 
     int sep_index = msg.indexOf('=');
     *var_id = msg.substring(0, sep_index).toInt();
-    *var_content = msg.substring(sep_index, sizeof(msg) - 1).toInt();
+    *var_content = msg.substring(sep_index + 1, sizeof(msg) - 1).toInt();
 }
 
 void sendData() {

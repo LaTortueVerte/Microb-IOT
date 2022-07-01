@@ -1,0 +1,15 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Mon Jun 27 19:43:17 2022
+# Process ID: 22088
+# Current directory: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/project_David-fpga
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent27568 C:\Users\jules\Desktop\Travail\VHDL_Master_Camp\project_David-fpga\project_David-fpga.xpr
+# Log file: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/project_David-fpga/vivado.log
+# Journal file: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/project_David-fpga\vivado.jou
+# Running On: MSI, OS: Windows, CPU Frequency: 2592 MHz, CPU Physical cores: 6, Host memory: 16991 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/project_David-fpga/project_David-fpga.xpr
+update_compile_order -fileset sources_1

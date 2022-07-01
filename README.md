@@ -47,6 +47,8 @@ Un capteur de niveau d'eau qui détectera une inondation, l'actionneur sera ici 
 Enfin le dernière carte sera un Raspberry Pi qui communiquera grâce au protocole UART avec l'Arduino ainsi qu'avec le FPGA. 
 Celui-ci permet d’abord de faire le lien entre le FPGA et l’Arduino mais surtout de pouvoir les faire communiquer avec le cloud via AWS. 
 
+
+
 ## A little pitch
 
 Are you looking for a solution that will allow you to secure your premises against the hazards of its environment and the actors who interact with it?  
@@ -76,6 +78,27 @@ Avec Microb’IoT, contrôlez vos locaux quand et où vous le souhaitez !
 
 Merci de votre attention. 
 L’équipe RoB’IOT espère vous retrouver bientôt. 
+
+
+
+## Find files
+
+Ce repository contient l'ensemble de nos fichiers de développement.
+
+Nous avons d'une part le fichier MicrobIOT_captor_test.ino qui contient le code de nos modules liés à une même arduino (qualité d'air, présence de gaz toxiques ou inflamable et dégât des eaux). Vous y retrouver un orchestre de capteurs qui détectent le monoxide de carbone, le HCHO, le méthane, la vapeurs d'hydrocarbure, l'humidité, la température et la présence d'eau. Ces capteurs sont intelligents et sont liés à des actionneurs tels qu'un ventilateur, une pompe, un moteur qui ouvre une fenêtre. Une signalisation permet une interface locale avec les utilisateurs présents dans l'espace surveillé tels que des LED d'alerte et l'écran LCD qui fait apparaître les mesures des capteurs.
+
+D'autre part, nous avons les fichiers VHDL qui composent le module de surveillance d'intrusion. 
+Il y a le fichier Counter.vhd qui génère un timer qui va permettre l'envoi d'un signal à partir du moment où il est maintenu sur une durée, ce qui permet au FPGA de filtrer une partie du bruit des capteurs.
+Le fichier PIRSensor.vhd permet le traitement du signal d'un capteur PIR. Ce capteur détecte la présence de quelqu'un se trouvant à sa portée et l'état de son signal est binaire.
+Lorsque le capteur PIR détecte une personne, une caméra prend une photo de l'individu.
+Il y a le fichier CameraSensor.vhd qui traite le signal de la caméra pour prendre une photo à chaque détection.
+Evidemment, nous avons décidé de produire les testbenchs de ces composants pour les simuler avant de les implémenter sur le FPGA NEXYS VIDEO de la marque XILINX.
+
+//partie raspberry Pi
+
+//partie web
+  
+ 
 ## Authors
 
 - [@LaTortueVerte](https://www.github.com/LaTortueVerte)

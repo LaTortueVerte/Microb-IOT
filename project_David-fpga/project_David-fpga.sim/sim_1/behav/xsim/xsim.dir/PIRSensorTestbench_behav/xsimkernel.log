@@ -1,7 +1,7 @@
-Running: xsim.dir/PIRSensorTestbench_behav/xsimk.exe -simmode gui -wdb PIRSensorTestbench_behav.wdb -simrunnum 0 -socket 53310
+Running: xsim.dir/PIRSensorTestbench_behav/xsimk.exe -simmode gui -wdb PIRSensorTestbench_behav.wdb -simrunnum 0 -socket 60186
 Design successfully loaded
-Design Loading Memory Usage: 8500 KB (Peak: 8500 KB)
-Design Loading CPU Usage: 62 ms
+Design Loading Memory Usage: 8808 KB (Peak: 8808 KB)
+Design Loading CPU Usage: 15 ms
 Simulation completed
-Simulation Memory Usage: 9096 KB (Peak: 9096 KB)
-Simulation CPU Usage: 62 ms
+Simulation Memory Usage: 9368 KB (Peak: 9368 KB)
+Simulation CPU Usage: 15 ms

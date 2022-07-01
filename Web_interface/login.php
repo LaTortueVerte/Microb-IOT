@@ -22,6 +22,9 @@
             </div>
             <button type="submit" class="btn btn-primary">Se connecter</button>
         </form>
+        <?php
+            echo'"<a href="register.php"Vous ne disposez pas de compte? Inscrivez-vous ici!</a>'; 
+        ?>
     </div>
 
     <style>

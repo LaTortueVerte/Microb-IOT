@@ -92,12 +92,15 @@ Il y a le fichier Counter.vhd qui génère un timer qui va permettre l'envoi d'u
 Le fichier PIRSensor.vhd permet le traitement du signal d'un capteur PIR. Ce capteur détecte la présence de quelqu'un se trouvant à sa portée et l'état de son signal est binaire.
 Lorsque le capteur PIR détecte une personne, une caméra prend une photo de l'individu.
 Il y a le fichier CameraSensor.vhd qui traite le signal de la caméra pour prendre une photo à chaque détection.
-Evidemment, nous avons décidé de produire les testbenchs de ces composants pour les simuler avant de les implémenter sur le FPGA NEXYS VIDEO de la marque XILINX.
+Evidemment, nous avons décidé de produire un toplevel et les testbenchs de ces composants pour les simuler avant de les implémenter sur le FPGA NEXYS VIDEO de la marque XILINX.
 
-//partie raspberry Pi
+Les fichiers implémentés à ce jour sur la Raspberry Pi sont les fichiers Main.py et Module_Thread.py
+Le fichier main reçoit les données de l'arduino (pour l'instant) et génère un thread par module grâce au fichier module_thread. Il va remplir l'instance de module avec les données des capteurs.
 
-//partie web
-  
+L'interface web n'étant pas terminée, nous avons pour l'instant la page d'accueil qui est dans le fichier main_page.php, la page de connexion login.php, la page d'inscription register.php, le fichier de déconnexion logout.php, le fichier de connexion à la database conn.php, ainsi que tous les fichiers de mise à jour des tables de la base de donnée.
+
+Nous n'avons pas encore implémenté notre système sur le serveur AWS et nous avons reporté cette tâche au 5 Juillet, comme nous pouvons le vor sur le Trello.
+   
  
 ## Authors
 

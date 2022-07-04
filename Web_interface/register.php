@@ -1,3 +1,36 @@
+<?php 
+    include "./conn.php"; // connection
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $username = mysqli_real_escape_string($conn,$_POST['user']); 
+        $password = mysqli_real_escape_string($conn,$_POST['pass']); 
+        $confirmpassword = mysqli_real_escape_string($conn, $_POST['confirmpass']);
+        $email = mysqli_real_escape_string($conn,$_POST['email']);
+
+        if($password !== $confirmpassword)
+        {
+            echo "<script>alert('Le mot de passe et sa confirmation ne sont pas les mêmes\nMerci de recommencer');"; 
+            die("window.history.go(-1);</script>");
+        }
+
+        $sql = "Insert into users (user_name, user_pwd, user_email, user_role) VALUES ('$username','".md5($password)."','$email','1');";
+        mysqli_query($conn, $sql);
+
+        
+        if(mysqli_affected_rows($conn) <= 0) {
+            echo "<script>alert('Unable to register ! \\nPlease Try Again!');";
+            die("window.history.go(-1);</script>"); 
+        }
+        else
+        {
+            header("Location: login.php");
+        }
+        /*echo "<script>alert('Register Successfully!Please login now!');"; 
+        echo "window.location.href='login.php';</script>";*/
+    }
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,6 +58,33 @@
       integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
       crossorigin="anonymous"
     ></script>
+    <style>
+        .signinContents{
+            margin-left: auto;
+            margin-right: auto;
+            width: 700px;
+            padding-top: 100px;
+            padding-left: 30px;
+            padding-right: 30px;
+            background-color: white;
+            margin-top: 25vh;
+            border-radius: 10%;
+        }
+        h1{
+            transform: translateY(-50%);
+        }
+        form{
+            margin-top: 30vh;
+            transform: translateY(-50%); 
+        }
+
+        .form-text{
+            color:red;
+        }
+        body{
+            background-image:url("images/illustrationInscription.jpg")
+        }
+    </style>
   </head>
   <body>
     <div class = "signinContents">
@@ -91,61 +151,7 @@
             ?>
     </form>
     </div>
-    <style>
-        .signinContents{
-            margin-left: auto;
-            margin-right: auto;
-            width: 700px;
-            padding-top: 100px;
-            padding-left: 30px;
-            padding-right: 30px;
-            background-color: white;
-            margin-top: 25vh;
-            border-radius: 10%;
-        }
-        h1{
-            transform: translateY(-50%);
-        }
-        form{
-            margin-top: 30vh;
-            transform: translateY(-50%); 
-        }
 
-        .form-text{
-            color:red;
-        }
-        body{
-            background-image:url("images/illustrationInscription.jpg")
-        }
-    </style>
   </body>
 </html>
 
-<?php 
-    include "./conn.php"; // connection
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $username = mysqli_real_escape_string($conn,$_POST['user']); 
-        $password = mysqli_real_escape_string($conn,$_POST['pass']); 
-        $confirmpassword = mysqli_real_escape_string($conn, $_POST['confirmpass']);
-        $email = mysqli_real_escape_string($conn,$_POST['email']);
-
-        if($password !== $confirmpassword)
-        {
-            echo "<script>alert('Le mot de passe et sa confirmation ne sont pas les mêmes\nMerci de recommencer');"; 
-            die("window.history.go(-1);</script>");
-        }
-
-        $sql = "Insert into users (user_name, user_pwd, user_email, user_role) VALUES ('$username','".md5($password)."','$email','1');";
-        mysqli_query($conn, $sql);
-
-        
-        if(mysqli_affected_rows($conn) <= 0) {
-            echo "<script>alert('Unable to register ! \\nPlease Try Again!');";
-            die("window.history.go(-1);</script>"); 
-        }
-        /*echo "<script>alert('Register Successfully!Please login now!');"; 
-        echo "window.location.href='login.php';</script>";*/
-    }
-    
-?>

@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    if(!isset($_SESSION["nameUser"]))
+    {
+        header("Location: login.php");
+        exit(); 
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +23,7 @@
     <nav>
         <h1>Microb'IoT</h1>
         <img src="./image/LOGOMASTERCAMP.png" alt="Logo Rob'IoT" height="80px" width="140px">
-        <button type="button" class="btn btn-outline-primary">LogIn</button>
+        <button id='logout_button' type="button" class="btn btn-outline-primary">LogOut</button>
     </nav>
     <div class="second-nav-bar">
         <button type="button" class="btn btn-outline-primary">Graphiques</button>
@@ -160,5 +169,11 @@
             echo '<a class="btn btn-sm btn-outline-secondary" href="logout.php">Sign out</a>';
         }*/
     ?>
+
+    <script type="text/javascript">
+        document.getElementById("logout_button").onclick = function () {
+            location.href = "logout.php";
+        };
+    </script>   
 </body>
 </html>

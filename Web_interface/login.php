@@ -63,12 +63,12 @@
     session_start();
     include "./conn.php";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $username = mysqli_real_escape_string($conn, $_POST['mailUser']);
+        $mail = mysqli_real_escape_string($conn, $_POST['mailUser']);
         $password = mysqli_real_escape_string($conn, $_POST['passwordUser']);
 
 
 
-        $sql = "Select * from users where user_name ='" . $username . "'and user_pwd = '" . md5($password) . "'";
+        $sql = "Select * from users where user_email ='" . $mail . "'and user_pwd = '" . md5($password) . "'";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) <= 0) {
@@ -84,9 +84,9 @@
         if ($row = mysqli_fetch_array($result)) {
             $_SESSION['nameUser'] = $row['user_name']; //use session 
             $_SESSION['passwordUser'] = $row['user_pwd'];
-            $_SESSION['role'] = $row['role'];
-        }
-    }
-    
+            $_SESSION['role'] = $row['user_role'];
 
+            header("Location: main_page.php");
+        }
+    } 
 ?>

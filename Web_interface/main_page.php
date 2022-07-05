@@ -225,7 +225,7 @@
         document.getElementById("ventilation_on_button").onclick = function () {
             update_bool_val('w', 'ventilation_on_button', 'ventilation_module_state');
         };
-²
+
         // Ventilation Off button
         document.getElementById("ventilation_off_button").onclick = function () {
             update_bool_val('w', 'ventilation_off_button', 'ventilation_module_state');

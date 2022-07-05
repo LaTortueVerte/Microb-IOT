@@ -178,6 +178,7 @@
                 success: function(response){
                     if (cmd == 'type_cmd'){
                         $("#" + cmd).text() = response;
+                        console.log()
                     }
                 }
             });

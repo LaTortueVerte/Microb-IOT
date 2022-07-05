@@ -13,12 +13,12 @@
         <form action="login.php" method="post">
             <div class="mb-3">
                 <label for="mailUser" class="form-label">Votre adresse email</label>
-                <input type="email" class="form-control" id="mailUser" aria-describedby="emailHelp">
+                <input type="email" class="form-control" name="mailUser" id="mailUser" aria-describedby="emailHelp">
                 <div id="emailHelp" class="form-text" >Votre email ne sera pas partagé à des fins commerciales !</div>
             </div>
             <div class="mb-3">
                 <label for="passwordUser" class="form-label">Votre mot de passe</label>
-                <input type="password" class="form-control" id="passwordUser">
+                <input type="password" class="form-control" name="passwordUser" id="passwordUser">
             </div>
             <button type="submit" class="btn btn-primary">Se connecter</button>
             <?php
@@ -62,27 +62,31 @@
 <?php
     session_start();
     include "./conn.php";
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $mail = mysqli_real_escape_string($conn, $_POST['mailUser']);
+        $password = mysqli_real_escape_string($conn, $_POST['passwordUser']);
 
-    $username = mysqli_real_escape_string($conn, $_POST['mailUser']);
-    $password = mysqli_real_escape_string($conn, $POST['passwordUser']);
 
-    $sql = "Select * from users where user_name ='" . $username . "'and user_pwd = '" . md5($password) . "'";
-    $result = mysqli_query($conn, $sql);
 
-    if (mysqli_num_rows($result) <= 0) {
-        //sql checking for the user
-        $sql = "Select * from users where user_name ='" . $username . "'and user_pwd = '" . $password . "'";
+        $sql = "Select * from users where user_email ='" . $mail . "'and user_pwd = '" . md5($password) . "'";
         $result = mysqli_query($conn, $sql);
+
         if (mysqli_num_rows($result) <= 0) {
-            echo "<script>alert('Wrong username or password !Please Try Again!');";
-            die("window.history.go(-1);</script>");
+            //sql checking for the user
+            $sql = "Select * from users where user_name ='" . $username . "'and user_pwd = '" . $password . "'";
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) <= 0) {
+                echo "<script>alert('Wrong username or password !Please Try Again!');";
+                die("window.history.go(-1);</script>");
+            }
         }
-    }
 
-    if ($row = mysqli_fetch_array($result)) {
-        $_SESSION['nameUser'] = $row['user_name']; //use session 
-        $_SESSION['passwordUser'] = $row['user_pwd'];
-        $_SESSION['role'] = $row['role'];
-    }
+        if ($row = mysqli_fetch_array($result)) {
+            $_SESSION['nameUser'] = $row['user_name']; //use session 
+            $_SESSION['passwordUser'] = $row['user_pwd'];
+            $_SESSION['role'] = $row['user_role'];
 
+            header("Location: main_page.php");
+        }
+    } 
 ?>

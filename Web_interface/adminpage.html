@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page administrateur</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript">
+      addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+    </script>
+    <!-- Custom Theme files -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- //Custom Theme files -->
+    <!-- web font -->
+    <link href="sign-up-page.css" rel="stylesheet" />
+    <!-- //web font -->
+  </head>
+  <body>
+    <center>
+      <div class="main-w3layouts-wrapper">
+        <h1>Bienvenue dans l'espace administrateur !!</h1>
+        <div class="main-agileinfo">
+          <div class="agileits-top">
+            <form method="post">
+              <table>
+                <tr>
+                  <td colspan="2">
+                    <br />
+                    <input
+                      class="text"
+                      type="submit"
+                      value="Gérer les utilisateurs"
+                      formaction="viewuser.php"
+                      id="manageUser"
+                    />&nbsp;&nbsp;
+                    <input
+                      class="text"
+                      type="submit"
+                      value="Manage courses"
+                      formaction="viewcourse.php"
+                      id="manageOther1"
+                    />&nbsp;&nbsp;
+                    <input
+                      class="text"
+                      type="submit"
+                      value="Back home"
+                      formaction="HomePageFirst.php"
+                      id="manageOther2"
+                    />
+                  </td>
+                </tr>
+              </table>
+            </form>
+          </div>
+        </div>
+      </div>
+    </center>
+
+    <style>
+      .main-w3layouts-wrapper {
+          margin-left: auto;
+          margin-right: auto;
+          width: 800px;
+          padding-top: 50px;
+          padding-left: 30px;
+          padding-right: 30px;
+          background-color: blueviolet;
+          margin-top: 25vh;
+          border-radius: 10%;
+      }
+      h1{
+          
+      }
+      form{
+          transform: translateY(-50%); 
+      }
+
+      #manageUser{
+          color:white;
+          font-size:20px;
+          background-color:red;
+          padding: 10px;
+      }
+      #manageOther1{
+          color:white;
+          font-size:20px;
+          background-color:blue;
+          padding: 10px;
+      }
+      #manageOther2{
+          color:white;
+          font-size:20px;
+          background-color:green;
+          padding: 10px;
+      }
+      /*body{
+          background-image:url("images/fond login.webp")
+      }*/
+  </style>
+  </body>
+</html>

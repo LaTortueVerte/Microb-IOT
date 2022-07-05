@@ -11,10 +11,21 @@
     
 </head>
 <body>
+    session_start();
+    if(!isset($_SESSION["username"]))
+    {
+        header("Location: login.php");
+        exit(); 
+    }
+    else
+    {
+        header("Location: main_page.php");
+        exit(); 
+    }
     <nav>
         <h1>Microb'IoT</h1>
         <img src="./image/LOGOMASTERCAMP.png" alt="Logo Rob'IoT" height="80px" width="140px">
-        <button type="button" class="btn btn-outline-primary">LogIn</button>
+        <button type="button" class="btn btn-outline-primary">LogOut</button>
     </nav>
     <div class="second-nav-bar">
         <button type="button" class="btn btn-outline-primary">Graphiques</button>
@@ -149,16 +160,5 @@
 
     </table>
 
-        
-    
-
-    <?php
-        /*
-        if(!isset($_SESSION["user"])){
-            echo '<a class="btn btn-sm btn-outline-secondary" href="register.html">Sign up</a>';
-        }else{
-            echo '<a class="btn btn-sm btn-outline-secondary" href="logout.php">Sign out</a>';
-        }*/
-    ?>
 </body>
 </html>

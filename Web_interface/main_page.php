@@ -21,10 +21,39 @@
 </head>
 <body>
     <?php
-    /*
+    
         require('conn.php');
     
-        $queries = ["", "", ""]; // get value of ventilation power ; minTemp ; maxTemp
+        $queries = ["select dc.data_valeur from data_component dc 
+                    inner join component c
+                        on dc.component_ID = c.component_ID 
+                    inner join modules m
+                        on c.module_ID = m.module_ID
+                    inner join belongs b
+                        on m.module_ID = b.module_ID
+                    inner join users u
+                        on b.user_ID = u.user_ID
+                    where data_variable = 'Puissance_ventilateur';",
+                    "select dc.data_valeur from data_component dc 
+                    inner join component c
+                        on dc.component_ID = c.component_ID 
+                    inner join modules m
+                        on c.module_ID = m.module_ID
+                    inner join belongs b
+                        on m.module_ID = b.module_ID
+                    inner join users u
+                        on b.user_ID = u.user_ID
+                    where data_variable = 'temperature_min';",
+                    "select dc.data_valeur from data_component dc 
+                    inner join component c
+                        on dc.component_ID = c.component_ID 
+                    inner join modules m
+                        on c.module_ID = m.module_ID
+                    inner join belongs b
+                        on m.module_ID = b.module_ID
+                    inner join users u
+                        on b.user_ID = u.user_ID
+                    where data_variable = 'temperature_max';"]; // get value of ventilation power ; minTemp ; maxTemp
         $value = [];
 
         foreach ($queries as $query) {
@@ -34,7 +63,7 @@
                 array_push($value, $row["data_valeur"]);
             }
         }
-    */
+    
     ?>
 
     <nav>
@@ -69,21 +98,21 @@
             <tr>
                 <th scope="row">Puissance de ventilation</th>
                 <td>
-                    <input type="range" id="ventilation_power_input_range" name="ventilation" value="<?php echo /*$value[0]*/0; ?>" min="0" max="100" onchange="change_ventilation_power()">
+                    <input type="range" id="ventilation_power_input_range" name="ventilation" value="<?php echo $value[0]; ?>" min="0" max="100" onchange="change_ventilation_power()">
                 </td>
                 <td id="ventilation_power">Etat du ventilo depuis php</td>
             </tr>
             <tr>
                 <th scope="row">Température Min</th>
                 <td>
-                <input type="number" id="TempMin_input" name="TempMin" value="<?php echo /*$value[1]*/18; ?>" step ="0.5" min="0" max="50" onchange="change_min_temp()">
+                <input type="number" id="TempMin_input" name="TempMin" value="<?php echo $value[1]; ?>" step ="0.5" min="0" max="50" onchange="change_min_temp()">
                 </td>
                 <td id="TempMin">Etat temp min depuis php</td>
             </tr>
             <tr>
                 <th scope="row">Température Max</th>
                 <td>
-                <input type="number" id="TempMax_input" name="TempMax" value="<?php echo /*$value[2]*/24; ?>" step ="0.5" min="0" max="50" onchange="change_max_temp()">
+                <input type="number" id="TempMax_input" name="TempMax" value="<?php echo $value[2]; ?>" step ="0.5" min="0" max="50" onchange="change_max_temp()">
                 </td>
                 <td id="TempMax">Etat temp max depuis php</td>
             </tr>

@@ -108,6 +108,7 @@ inner join users u
 	on b.user_ID = u.user_ID
 where data_variable = 'Etat_pompe';
 
+<<<<<<< HEAD
 -- etat de la porte
 select dc.data_valeur from data_component dc 
 inner join component c
@@ -259,6 +260,10 @@ where data_variable = 'Presence_humain';
 -- -------------------- update --------------------
 
 -- --------non boutons--------
+=======
+----------------------- update --------------------
+
+>>>>>>> d312abe11d78cf76b2d3b058342ccf29a2156706
 UPDATE data_component dc
 inner join component c
 	on dc.component_ID = c.component_ID 

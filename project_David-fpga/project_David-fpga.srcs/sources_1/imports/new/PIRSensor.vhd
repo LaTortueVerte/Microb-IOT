@@ -52,16 +52,18 @@ begin
     MyPIRContol : process (clk, reset, PIROut)
 	begin
 	
-	   if (reset = '1' and rising_edge(clk)) then 
-	       PIRes <= '0';
-       end if;
-       
+	   
        if (PIROut ='1' and rising_edge(clk)) then
            PiRes <='0';
            
        elsif ( PIROut = '0' and rising_edge(clk)) then 
            PiRes <='0';
         end if;
+        
+        if (reset = '1' and rising_edge(clk)) then 
+	       PIRes <= '0';
+       end if;
+       
         
 	end process;
 	

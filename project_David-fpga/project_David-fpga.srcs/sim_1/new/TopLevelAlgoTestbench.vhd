@@ -91,6 +91,14 @@ begin
         TOPresetPir  <= '0'; 
     end if;
     
+    if ( now = 400 ps ) then
+        TOPresetPir  <= '1'; 
+    end if;
+    
+    if ( now = 460 ps ) then
+        TOPresetPir  <= '0'; 
+    end if;
+    
     if ( now = 100 ps ) then
         TOPPIRSensorState  <= '1'; 
     end if;
@@ -103,6 +111,13 @@ begin
         TOPPIRSensorState  <= '1'; 
     end if;
     if ( now = 1200 ps ) then
+        TOPPIRSensorState  <= '0'; 
+    end if;
+    
+    if ( now = 1300 ps ) then
+        TOPPIRSensorState  <= '1'; 
+    end if;
+    if ( now = 1320 ps ) then
         TOPPIRSensorState  <= '0'; 
     end if;
     

@@ -4,4 +4,26 @@ Running: D:/Vivado/2022.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical
 Using 2 slave threads.
 Starting static elaboration
 Completed static elaboration
-INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.numeric_std
+Compiling architecture behavioral of entity xil_defaultlib.TestLedCpnt [testledcpnt_default]
+Compiling architecture behavioral of entity xil_defaultlib.counter [counter_default]
+Compiling architecture behavioral of entity xil_defaultlib.PIRSensor [pirsensor_default]
+Compiling architecture behavioral of entity xil_defaultlib.Buzzer [buzzer_default]
+Compiling architecture behavior of entity xil_defaultlib.freq_div [freq_div_default]
+Compiling architecture behavior of entity xil_defaultlib.byte_gen [byte_gen_default]
+Compiling architecture rtl of entity xil_defaultlib.UART_TX [uart_tx_default]
+Compiling architecture rtl of entity xil_defaultlib.UART_RX [uart_rx_default]
+Compiling architecture behavior of entity xil_defaultlib.id_code_gen [id_code_gen_default]
+Compiling architecture struct of entity xil_defaultlib.UART_SCOM [uart_scom_default]
+Compiling architecture behavioral of entity xil_defaultlib.ControlAlgo [controlalgo_default]
+Compiling architecture behavioral of entity xil_defaultlib.TopLevelControlAlgo [toplevelcontrolalgo_default]
+Compiling architecture behavioral of entity xil_defaultlib.toplevelalgotestbench
+Built simulation snapshot TopLevelAlgoTestbench_behav

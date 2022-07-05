@@ -89,16 +89,18 @@ begin
             AlgBuzzer_in <= '1'; -- Start of buzzer 
             AlgbOnCpt <= '1';
             AlgbenableCpt <= '1'; -- Start of counter buzzer 
-            if(AlgboutCpt = '1') then -- if buzzer counter end 
-                 AlgbOnCpt <= '0';
-                 AlgbenableCpt <= '0';
-                 AlgBuzzer_in <= '0'; -- Stop of buzzer
-                 buzCptMem <= '1'; -- variable wich tell if we already launch the buzzer 
-                 AlgSw_pin <= "00000000";
-                 
-            end if;
+            buzCptMem <= '1';
         end if;
-        if(AlgboutCpt = '1' and PIRSensorState = '0') then 
+        if(AlgboutCpt = '1' and rising_edge(clk)) then -- if buzzer counter end 
+             AlgbOnCpt <= '0';
+             AlgbenableCpt <= '0';
+             AlgBuzzer_in <= '0'; -- Stop of buzzer
+              -- variable wich tell if we already launch the buzzer 
+             AlgSw_pin <= "00000000";
+             
+        end if;
+        
+        if(buzCptMem = '1' and PIRSensorState = '0') then 
             buzCptMem <= '0';
         end if;
         

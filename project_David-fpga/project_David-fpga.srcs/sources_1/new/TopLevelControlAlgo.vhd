@@ -181,12 +181,12 @@ RESPIRSensor: PIRSensor PORT MAP(
         clk => clk,
         reset => TOPresetPir,
         PIROut => TOPPIRSensorState,
-        PIRes => TOPAlgPIRes
+        PIRes => AlgPIRes
     );
     
 BuzActor : Buzzer PORT MAP(
         BuzEnable_in => TransAlgBuzzer_in,
-        BuzEnable_out => AlgBuzzer_out ,
+        BuzEnable_out => TOPAlgBuzzer_out ,
         clk => clk
         );
         
@@ -208,7 +208,7 @@ ControlALgoComp : ControlAlgo Port MAP (
     AlgPIRes => TOPAlgPIRes ,
     
     AlgBuzzer_in => TransAlgBuzzer_in ,
-    AlgBuzzer_out => TOPAlgBuzzer_out,
+    AlgBuzzer_out => AlgBuzzer_out ,
     
     AlgresetCpt => AlgresetCpt,
     AlgOnCpt => AlgOnCpt,

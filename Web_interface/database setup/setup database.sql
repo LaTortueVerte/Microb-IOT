@@ -64,7 +64,6 @@ CREATE TABLE data_component(
    data_ID INT NOT NULL AUTO_INCREMENT,
    data_variable INT,
    data_valeur DOUBLE,
-   name_component VARCHAR(50),
    component_ID INT NOT NULL,
    PRIMARY KEY(data_ID),
    FOREIGN KEY(component_ID) REFERENCES component(component_ID)

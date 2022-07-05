@@ -47,28 +47,28 @@
                     <button type="button" id="ventilation_on_button" class="btn btn-success btn-sm">ON</button>
                     <button type="button" id="ventilation_off_button" class="btn btn-danger btn-sm">OFF</button>
                 </td>
-                <td>Etat du ventilo depuis php</td>
+                <td id="ventilation_module_state">Etat du ventilo depuis php</td>
             </tr>
             <tr>
                 <th scope="row">Puissance de ventilation</th>
                 <td>
                     <input type="range" id="ventilation_power_input_range" name="ventilation" min="0" max="100" onchange="change_ventilation_power()">
                 </td>
-                <td>Etat du ventilo depuis php</td>
+                <td id="ventilation_power">Etat du ventilo depuis php</td>
             </tr>
             <tr>
                 <th scope="row">Température Min</th>
                 <td>
                 <input type="number" id="TempMin_input" name="TempMin" value="18" step ="0.5" min="0" max="50" onchange="change_min_temp()">
                 </td>
-                <td>Etat temp min depuis php</td>
+                <td id="TempMin">Etat temp min depuis php</td>
             </tr>
             <tr>
                 <th scope="row">Température Max</th>
                 <td>
                 <input type="number" id="TempMax_input" name="TempMax" value="24" step ="0.5" min="0" max="50" onchange="change_max_temp()">
                 </td>
-                <td>Etat temp max depuis php</td>
+                <td id="TempMax">Etat temp max depuis php</td>
             </tr>
             <tr>
                 <th scope="row">Pompe à eau</th>
@@ -76,7 +76,7 @@
                     <button type="button" id="water_pump_on_button" class="btn btn-success btn-sm">ON</button>
                     <button type="button" id="water_pump_off_button" class="btn btn-danger btn-sm">OFF</button>
                 </td>
-                <td>Etat de la pompe depuis php</td>
+                <td id="water_pump_state">Etat de la pompe depuis php</td>
             </tr>
             <tr>
                 <th scope="row">Porte</th>
@@ -84,7 +84,7 @@
                     <button type="button" id="door_opened_button" class="btn btn-success btn-sm">Ouvert</button>
                     <button type="button" id="door_closed_button" class="btn btn-danger btn-sm">Fermé</button>
                 </td>
-                <td>Etat de la porte depuis php</td>
+                <td id="door_state">Etat de la porte depuis php</td>
             </tr>
             <tr>
                 <th scope="row">Fenetre</th>
@@ -92,7 +92,7 @@
                     <button type="button" id="window_opened_button" class="btn btn-success btn-sm">Ouvert</button>
                     <button type="button" id="window_closed_button" class="btn btn-danger btn-sm">Fermé</button>
                 </td>
-                <td>Etat de la fenetre depuis php</td>
+                <td id="window_state">Etat de la fenetre depuis php</td>
             </tr>
             <tr>
                 <th scope="row">Module intrusion</th>
@@ -100,7 +100,7 @@
                     <button type="button" id="security_on_button" class="btn btn-success btn-sm">ON</button>
                     <button type="button" id="security_off_button" class="btn btn-danger btn-sm">OFF</button>
                 </td>
-                <td>Etat du module intrusion depuis php</td>
+                <td id="security_module_state">Etat du module intrusion depuis php</td>
             </tr>
             <tr>
                 <th scope="row">Buzzer</th>
@@ -108,7 +108,7 @@
                     <button type="button" id="buzzer_on_button" class="btn btn-success btn-sm">ON</button>
                     <button type="button" id="buzzer_off_button" class="btn btn-danger btn-sm">OFF</button>
                 </td>
-                <td>Etat du buzzer depuis php</td>
+                <td id="buzzer_state">Etat du buzzer depuis php</td>
             </tr>
         </tbody>
     </table>
@@ -124,35 +124,35 @@
         <tbody>
             <tr>
                 <th scope="row">Humidité</th>
-                <td>Valeure</td>
+                <td id="humidity">Valeure</td>
             </tr>
             <tr>
                 <th scope="row">Température</th>
-                <td>Valeure</td>
+                <td id="temperature">Valeure</td>
             </tr>
             <tr>
                 <th scope="row">Présence d'eau</th>
-                <td>Valeure</td>
+                <td id="water">Valeure</td>
             </tr>
             <tr>
                 <th scope="row">LGP (Gaz de pétrole liquéfié)</th>
-                <td>Valeure</td>
+                <td id="lpg">Valeure</td>
             </tr>
             <tr>
                 <th scope="row">CH4 (méthane)</th>
-                <td>Valeure</td>
+                <td id="ch4">Valeure</td>
             </tr>
             <tr>
                 <th scope="row">CO (monoxyde de carbone))</th>
-                <td>Valeure</td>
+                <td id="co">Valeure</td>
             </tr>
             <tr>
                 <th scope="row">HCHO (formaldéhyde)</th>
-                <td>Valeure</td>
+                <td id="hcho">Valeure</td>
             </tr>
             <tr>
                 <th scope="row">Présence humaine</th>
-                <td>Valeure</td>
+                <td id="human">Valeure</td>
             </tr>
         </tbody>
 
@@ -176,7 +176,9 @@
                     'val' : val
                 },
                 success: function(response){
-                    console.log(response);
+                    if (cmd == 'type_cmd'){
+                        $("#" + cmd).text() = response;
+                    }
                 }
             });
         }
@@ -190,7 +192,9 @@
                     'cmd' : cmd
                 },
                 success: function(response){
-                    console.log(response);
+                    if (cmd == 'type_cmd'){
+                        $("#" + cmd).text() = response;
+                    }
                 }
             });
         }
@@ -277,6 +281,39 @@
         document.getElementById("buzzer_off_button").onclick = function () {
             update_bool_val('w', 'buzzer_off_button');
         };
+
+        // -----------------------------------------------------------------------
+        // Automatic fetching
+        // -----------------------------------------------------------------------
+
+        function check_sensors_and_actuators(){
+
+            // Actuators
+
+            update_bool_val('r', 'ventilation_module_state');
+            update_bool_val('r', 'ventilation_power');
+            update_bool_val('r', 'TempMin');
+            update_bool_val('r', 'TempMax');
+            update_bool_val('r', 'water_pump_state');
+            update_bool_val('r', 'door_state');
+            update_bool_val('r', 'window_state');
+            update_bool_val('r', 'security_module_state');
+            update_bool_val('r', 'buzzer_state');
+
+            // Sensors
+
+            update_bool_val('r', 'humidity');
+            update_bool_val('r', 'temperature');
+            update_bool_val('r', 'water');
+            update_bool_val('r', 'lpg');
+            update_bool_val('r', 'ch4');
+            update_bool_val('r', 'co');
+            update_bool_val('r', 'hcho');
+            update_bool_val('r', 'human');
+
+            setTimeout("check_sensors_and_actuators()", 5000);
+        }
+        check_sensors_and_actuators();
 
     </script>   
 </body>

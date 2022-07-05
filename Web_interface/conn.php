@@ -1,7 +1,7 @@
 <?php
     $servername = "127.0.0.1";
-    $username = "robin";
-    $password = "robin";
+    $username = "root";
+    $password = "";
     $database = "microbiot_web_interface";
 
     $conn = mysqli_connect($servername, $username, $password, $database);

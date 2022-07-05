@@ -27,8 +27,7 @@
 
     </nav>
     <div class="second-nav-bar">
-        <button type="button" class="btn btn-outline-primary">Graphiques</button>
-        <button type="button" class="btn btn-outline-primary">Modules</button>
+        <button type="button" class="btn btn-outline-primary" id="graphiques">Graphiques</button>
     </div>
 
 
@@ -276,6 +275,10 @@
         // Buzzer OFF Buzzer
         document.getElementById("buzzer_off_button").onclick = function () {
             update_bool_val('w', 'buzzer_off_button');
+        };
+
+        document.getElementById("graphiques").onclick = function () {
+            location.href = "graphique.html";
         };
 
     </script>   

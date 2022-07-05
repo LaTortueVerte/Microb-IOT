@@ -183,7 +183,7 @@
         // Button & Input Events 
         // -----------------------------------------------------------------------
 
-        function update_float_val(type_cmd, cmd, val){
+        function update_float_val(type_cmd, cmd, display, val){
             $.ajax({
                 url:'database_link.php',
                 type: 'post',
@@ -195,13 +195,13 @@
                 success: function(response){
                     if (cmd == 'type_cmd'){
                         console.log(" > " + $("#" + cmd).text());
-                        $("#" + cmd).text(response);
+                        $("#" + display).text(response);
                     }
                 }
             });
         }
 
-        function update_bool_val(type_cmd, cmd){
+        function update_bool_val(type_cmd, cmd, display){
             $.ajax({
                 url:'database_link.php',
                 type: 'post',
@@ -211,7 +211,7 @@
                 },
                 success: function(response){
                     console.log(" > " + $("#" + cmd).text());
-                    $("#" + cmd).text(response);
+                    $("#" + display).text(response);
                 }
             });
         }
@@ -223,80 +223,80 @@
 
         // Ventilation On button
         document.getElementById("ventilation_on_button").onclick = function () {
-            update_bool_val('w', 'ventilation_on_button');
+            update_bool_val('w', 'ventilation_on_button', 'ventilation_module_state');
         };
-
+²
         // Ventilation Off button
         document.getElementById("ventilation_off_button").onclick = function () {
-            update_bool_val('w', 'ventilation_off_button');
+            update_bool_val('w', 'ventilation_off_button', 'ventilation_module_state');
         };
         
         // Ventilation power input range
         function change_ventilation_power() {
             var input_range = document.getElementById("ventilation_power_input_range");
-            update_float_val('w', 'ventilation_power_input_range', input_range.value);
+            update_float_val('w', 'ventilation_power_input_range', 'ventilation_power', input_range.value);
         }
 
         // Minimum temperature
         function change_min_temp() {
             var text_input = document.getElementById("TempMin_input");
-            update_float_val('w', 'TempMin_input', text_input.value);
+            update_float_val('w', 'TempMin_input', 'TempMin', text_input.value);
         }
 
         // Maximum temperature
         function change_max_temp() {
             var text_input = document.getElementById("TempMax_input");
-            update_float_val('w', 'TempMax_input', text_input.value);
+            update_float_val('w', 'TempMax_input', 'TempMax', text_input.value);
         }
 
         // Water pump ON button
         document.getElementById("water_pump_on_button").onclick = function () {
-            update_bool_val('w', 'water_pump_on_button');
+            update_bool_val('w', 'water_pump_on_button', 'water_pump_state');
         };
 
         // Water pump OFF button
         document.getElementById("water_pump_off_button").onclick = function () {
-            update_bool_val('w', 'water_pump_off_button');
+            update_bool_val('w', 'water_pump_off_button', 'water_pump_state');
         };
 
         // Door opened button
         document.getElementById("door_opened_button").onclick = function () {
-            update_bool_val('w', 'door_opened_button');
+            update_bool_val('w', 'door_opened_button', 'door_state');
         };
 
         // Door closed button
         document.getElementById("door_closed_button").onclick = function () {
-            update_bool_val('w', 'door_closed_button');
+            update_bool_val('w', 'door_closed_button', 'door_state');
         };
 
         // Window opened button
         document.getElementById("window_opened_button").onclick = function () {
-            update_bool_val('w', 'window_opened_button');
+            update_bool_val('w', 'window_opened_button', 'window_state');
         };
 
         // Window closed button
         document.getElementById("window_closed_button").onclick = function () {
-            update_bool_val('w', 'window_closed_button');
+            update_bool_val('w', 'window_closed_button', 'window_state');
         };
 
         // Security ON button
         document.getElementById("security_on_button").onclick = function () {
-            update_bool_val('w', 'security_on_button');
+            update_bool_val('w', 'security_on_button', 'security_module_state');
         };
 
         // Security OFF button
         document.getElementById("security_off_button").onclick = function () {
-            update_bool_val('w', 'security_off_button');
+            update_bool_val('w', 'security_off_button', 'security_module_state');
         };
 
         // Buzzer ON Buzzer
         document.getElementById("buzzer_on_button").onclick = function () {
-            update_bool_val('w', 'buzzer_on_button');
+            update_bool_val('w', 'buzzer_on_button', 'buzzer_state');
         };
         
         // Buzzer OFF Buzzer
         document.getElementById("buzzer_off_button").onclick = function () {
-            update_bool_val('w', 'buzzer_off_button');
+            update_bool_val('w', 'buzzer_off_button', 'buzzer_state');
         };
 
         // -----------------------------------------------------------------------

@@ -20,6 +20,22 @@
     
 </head>
 <body>
+    <?php
+        require('conn.php');
+    
+        $queries = ["", "", ""]; // get value of ventilation power ; minTemp ; maxTemp
+        $value = [];
+
+        foreach ($queries as $query) {
+            $result = mysqli_query($conn, $query);
+            if (mysqli_num_rows($result) == 1) {
+                $row = mysqli_fetch_array($result);
+                array_push($value, $row["data_valeur"]);
+            }
+        }
+
+    ?>
+
     <nav>
         <h1>Microb'IoT</h1>
         <img src="./image/LOGOMASTERCAMP.png" alt="Logo Rob'IoT" height="80px" width="140px">
@@ -28,6 +44,7 @@
     </nav>
     <div class="second-nav-bar">
         <button type="button" class="btn btn-outline-primary">Graphiques</button>
+        <button type="button" class="btn btn-outline-primary">Modules</button>
     </div>
 
 
@@ -51,21 +68,21 @@
             <tr>
                 <th scope="row">Puissance de ventilation</th>
                 <td>
-                    <input type="range" id="ventilation_power_input_range" name="ventilation" min="0" max="100" onchange="change_ventilation_power()">
+                    <input type="range" id="ventilation_power_input_range" name="ventilation" value="<?php echo $value[0]; ?>" min="0" max="100" onchange="change_ventilation_power()">
                 </td>
                 <td id="ventilation_power">Etat du ventilo depuis php</td>
             </tr>
             <tr>
                 <th scope="row">Température Min</th>
                 <td>
-                <input type="number" id="TempMin_input" name="TempMin" value="18" step ="0.5" min="0" max="50" onchange="change_min_temp()">
+                <input type="number" id="TempMin_input" name="TempMin" value="<?php echo $value[1]; ?>" step ="0.5" min="0" max="50" onchange="change_min_temp()">
                 </td>
                 <td id="TempMin">Etat temp min depuis php</td>
             </tr>
             <tr>
                 <th scope="row">Température Max</th>
                 <td>
-                <input type="number" id="TempMax_input" name="TempMax" value="24" step ="0.5" min="0" max="50" onchange="change_max_temp()">
+                <input type="number" id="TempMax_input" name="TempMax" value="<?php echo $value[2]; ?>" step ="0.5" min="0" max="50" onchange="change_max_temp()">
                 </td>
                 <td id="TempMax">Etat temp max depuis php</td>
             </tr>
@@ -176,8 +193,8 @@
                 },
                 success: function(response){
                     if (cmd == 'type_cmd'){
-                        $("#" + cmd).text() = response;
-                        console.log()
+                        console.log(" > " + $("#" + cmd).text());
+                        $("#" + cmd).text(response);
                     }
                 }
             });
@@ -192,9 +209,8 @@
                     'cmd' : cmd
                 },
                 success: function(response){
-                    if (cmd == 'type_cmd'){
-                        $("#" + cmd).text() = response;
-                    }
+                    console.log(" > " + $("#" + cmd).text());
+                    $("#" + cmd).text(response);
                 }
             });
         }

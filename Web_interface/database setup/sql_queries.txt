@@ -2,18 +2,51 @@ INSERT INTO `users` (`user_ID`, `user_email`, `user_name`, `user_pwd`, `user_rol
 INSERT INTO `component_catalogue` (`component_catalogue_ID`, `component_catalogue_name`, `component_catalogue_role`) VALUES ('1', 'Ventilateur3000', '1'); -- composant ventilateur
 INSERT INTO `component_catalogue` (`component_catalogue_ID`, `component_catalogue_name`, `component_catalogue_role`) VALUES (NULL, 'TemperatureSeter3000', '0'); -- composant thermometre
 INSERT INTO `component_catalogue` (`component_catalogue_ID`, `component_catalogue_name`, `component_catalogue_role`) VALUES (NULL, 'Pompe3000', '1'); -- composant pompe
+INSERT INTO `component_catalogue` (`component_catalogue_ID`, `component_catalogue_name`, `component_catalogue_role`) VALUES (NULL, 'Porte3000', '1'); -- composant porte
+INSERT INTO `component_catalogue` (`component_catalogue_ID`, `component_catalogue_name`, `component_catalogue_role`) VALUES (NULL, 'Fenetre3000', '1'); composant fenetre
+INSERT INTO `component_catalogue` (`component_catalogue_ID`, `component_catalogue_name`, `component_catalogue_role`) VALUES (NULL, 'Intrusion3000', '1'); -- composant intrusion
+INSERT INTO `component_catalogue` (`component_catalogue_ID`, `component_catalogue_name`, `component_catalogue_role`) VALUES (NULL, 'Buzzer3000', '1'); -- composant buzzer
+INSERT INTO `component_catalogue` (`component_catalogue_ID`, `component_catalogue_name`, `component_catalogue_role`) VALUES (NULL, 'Humidite3000', '0'), (NULL, 'Temperature3000', '0'), (NULL, 'Eau3000', '0'), (NULL, 'LGP3000', '0'), (NULL, 'CH43000', '0'), (NULL, 'CO3000', '0'), (NULL, 'HCHO3000', '0'), (NULL, 'Humain3000', '0'); -- composant capteurs
 INSERT INTO `modules` (`module_ID`, `module_role`, `module_name`) VALUES ('1', '0', 'qualité d\'aire'), (NULL, '0', 'dégât des eaux'), (NULL, '0', 'incendie');
-INSERT INTO `belongs` (`belong_ID`, `user_ID`, `module_ID`) VALUES ('1', '1', '1'), (NULL, '1', '2'), (NULL, '1', '3');
+INSERT INTO `modules` (`module_ID`, `module_role`, `module_name`) VALUES (NULL, '1', 'intrusion');
+INSERT INTO `belongs` (`belong_ID`, `user_ID`, `module_ID`) VALUES ('1', '1', '1'), (NULL, '1', '2'), (NULL, '1', '3'), (NULL, '1', '4');
+
+-- données concernant le ventilateur
+INSERT INTO `component` (`component_ID`, `module_ID`, `component_catalogue_ID`) VALUES ('1', 1, 1);
+INSERT INTO `data_component` (`data_ID`, `data_valeur`, `component_ID`, `data_variable`) VALUES ('1', '90', '1', 'Puissance_ventilateur');
+INSERT INTO `data_component` (`data_ID`, `data_valeur`, `component_ID`, `data_variable`) VALUES (NULL, '1', '1', 'Etat_ventilateur');
+
+-- données concernant le thermomètre
+INSERT INTO `component` (`component_ID`, `module_ID`, `component_catalogue_ID`) VALUES (NULL, '1', '2');
+INSERT INTO `data_component` (`data_ID`, `data_valeur`, `component_ID`, `data_variable`) VALUES (NULL, '18', '2', 'temperature_min'), (NULL, '24', '2', 'temperature_max');
+
+-- données concernant la pompe à eau
+INSERT INTO `component` (`component_ID`, `module_ID`, `component_catalogue_ID`) VALUES (NULL, '2', '3');
+INSERT INTO `data_component` (`data_ID`, `data_valeur`, `component_ID`, `data_variable`) VALUES (NULL, '1', '3', 'Etat_pompe');
+
+-- données concernant la porte
+INSERT INTO `component` (`component_ID`, `module_ID`, `component_catalogue_ID`) VALUES (NULL, '4', '4');
+INSERT INTO `data_component` (`data_ID`, `data_valeur`, `component_ID`, `data_variable`) VALUES (NULL, '1', '4', 'Etat_porte');
+
+-- données concernant la porte
+INSERT INTO `component` (`component_ID`, `module_ID`, `component_catalogue_ID`) VALUES (NULL, '1', '15');
+INSERT INTO `data_component` (`data_ID`, `data_valeur`, `component_ID`, `data_variable`) VALUES (NULL, '1', '5', 'Etat_fenetre');
+
+-- données concernant le module intrusion
+INSERT INTO `component` (`component_ID`, `module_ID`, `component_catalogue_ID`) VALUES (NULL, '4', '5');
+INSERT INTO `data_component` (`data_ID`, `data_valeur`, `component_ID`, `data_variable`) VALUES (NULL, '1', '6', 'Etat_intrusion');
+
+-- données concernant le buzzer
+INSERT INTO `component` (`component_ID`, `module_ID`, `component_catalogue_ID`) VALUES (NULL, '4', '6');
+INSERT INTO `data_component` (`data_ID`, `data_valeur`, `component_ID`, `data_variable`) VALUES (NULL, '1', '7', 'Etat_buzzer');
+
+-- données concernant les capteurs
+INSERT INTO `component` (`component_ID`, `module_ID`, `component_catalogue_ID`) VALUES (NULL, '1', '7'), (NULL, '1', '8'), (NULL, '2', '9'), (NULL, '3', '10'), (NULL, '3', '11'), (NULL, '3', '12'), (NULL, '3', '13'), (NULL, '4', '14');
+INSERT INTO `data_component` (`data_ID`, `data_valeur`, `component_ID`, `data_variable`) VALUES (NULL, '0', '8', 'Humidite'), (NULL, '0', '9', 'Temperature'), (NULL, '0', '10', 'Presence_eau'), (NULL, '0', '11', 'LGP'), (NULL, '0', '12', 'CH4'), (NULL, '0', '13', 'CO'), (NULL, '0', '14', 'HCHO'), (NULL, '0', '15', 'Presence_humain');
+
 
 
 -- -------------------- read --------------------
-
-
--- données concernant le ventilateur
-
-INSERT INTO `component` (`component_ID`, `module_ID`, `component_catalogue_ID`) VALUES ('1', 1, 1);
-INSERT INTO `data_component` (`data_ID`, `data_valeur`, `component_ID`, `data_variable`) VALUES ('1', '90', '1', 'Puissance');
-INSERT INTO `data_component` (`data_ID`, `data_valeur`, `component_ID`, `data_variable`) VALUES (NULL, '1', '1', 'Etat');
 
 -- puissance du ventilateur
 select dc.data_valeur from data_component dc 
@@ -39,13 +72,6 @@ inner join users u
 	on b.user_ID = u.user_ID
 where data_variable = 'Etat_ventilateur';
 
-
-
--- données concernant le thermomètre
-
-INSERT INTO `component` (`component_ID`, `module_ID`, `component_catalogue_ID`) VALUES (NULL, '1', '2');
-INSERT INTO `data_component` (`data_ID`, `data_valeur`, `component_ID`, `data_variable`) VALUES (NULL, '18', '2', 'temperature_min'), (NULL, '24', '2', 'temperature_max');
-
 -- temperature min
 select dc.data_valeur from data_component dc 
 inner join component c
@@ -70,12 +96,6 @@ inner join users u
 	on b.user_ID = u.user_ID
 where data_variable = 'temperature_max';
 
-
--- données concernant la pompe à eau
-
-INSERT INTO `component` (`component_ID`, `module_ID`, `component_catalogue_ID`) VALUES (NULL, '2', '3');
-INSERT INTO `data_component` (`data_ID`, `data_valeur`, `component_ID`, `data_variable`) VALUES (NULL, '1', '3', 'Etat_pompe');
-
 -- etat de la pompe
 select dc.data_valeur from data_component dc 
 inner join component c
@@ -88,7 +108,173 @@ inner join users u
 	on b.user_ID = u.user_ID
 where data_variable = 'Etat_pompe';
 
+<<<<<<< HEAD
+-- etat de la porte
+select dc.data_valeur from data_component dc 
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID
+where data_variable = 'Etat_porte';
+
+-- etat de la fenetre
+select dc.data_valeur from data_component dc 
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID
+where data_variable = 'Etat_fenetre';
+
+-- etat de la intrusion
+select dc.data_valeur from data_component dc 
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID
+where data_variable = 'Etat_intrusion';
+
+-- etat de la intrusion
+select dc.data_valeur from data_component dc 
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID
+where data_variable = 'Etat_buzzer';
+
+
+-- --------capteurs--------
+
+-- taux d'humidité
+select dc.data_valeur from data_component dc 
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID
+where data_variable = 'Humidity';
+
+-- temperature
+select dc.data_valeur from data_component dc 
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID
+where data_variable = 'Temperature';
+
+-- niveau d'eau
+select dc.data_valeur from data_component dc 
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID
+where data_variable = 'Presence_eau';
+
+-- taux de LGP
+select dc.data_valeur from data_component dc 
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID
+where data_variable = 'LGP';
+
+-- taux de CH4
+select dc.data_valeur from data_component dc 
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID
+where data_variable = 'CH4';
+
+-- taux de CO
+select dc.data_valeur from data_component dc 
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID
+where data_variable = 'CO';
+
+-- taux de HCHO
+select dc.data_valeur from data_component dc 
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID
+where data_variable = 'HCHO';
+
+-- Presence d'humain
+select dc.data_valeur from data_component dc 
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID
+where data_variable = 'Presence_humain';
+
+
+-- -------------------- update --------------------
+
+-- --------non boutons--------
+=======
 ----------------------- update --------------------
+
+>>>>>>> d312abe11d78cf76b2d3b058342ccf29a2156706
+UPDATE data_component dc
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID     
+set  data_valeur = $_POST["val"]
+WHERE data_variable = 'Puissance_ventilation';
 
 UPDATE data_component dc
 inner join component c
@@ -99,5 +285,168 @@ inner join belongs b
 	on m.module_ID = b.module_ID
 inner join users u
 	on b.user_ID = u.user_ID     
-set  data_valeur = NOT data_valeur
+set  data_valeur = $_POST["val"]
+WHERE data_variable = 'temperature_min';
+
+UPDATE data_component dc
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID     
+set  data_valeur = $_POST["val"]
+WHERE data_variable = 'temperature_max';
+
+
+
+-- --------switch on--------
+UPDATE data_component dc
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID     
+set  data_valeur = 1
 WHERE data_variable = 'Etat_ventilateur';
+
+UPDATE data_component dc
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID     
+set  data_valeur = 1
+WHERE data_variable = 'Etat_Pompe';
+
+UPDATE data_component dc
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID     
+set  data_valeur = 1
+WHERE data_variable = 'Etat_Porte';
+
+UPDATE data_component dc
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID     
+set  data_valeur = 1
+WHERE data_variable = 'Etat_fenetre';
+
+UPDATE data_component dc
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID     
+set  data_valeur = 1
+WHERE data_variable = 'Etat_intrusion';
+
+UPDATE data_component dc
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID     
+set  data_valeur = 1
+WHERE data_variable = 'Etat_buzzer';
+
+
+
+
+-- --------switch off--------
+UPDATE data_component dc
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID     
+set  data_valeur = 0
+WHERE data_variable = 'Etat_ventilateur';
+
+UPDATE data_component dc
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID     
+set  data_valeur = 0
+WHERE data_variable = 'Etat_Pompe';
+
+UPDATE data_component dc
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID     
+set  data_valeur = 0
+WHERE data_variable = 'Etat_Porte';
+
+UPDATE data_component dc
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID     
+set  data_valeur = 0
+WHERE data_variable = 'Etat_fenetre';
+
+UPDATE data_component dc
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID     
+set  data_valeur = 0
+WHERE data_variable = 'Etat_intrusion';
+
+UPDATE data_component dc
+inner join component c
+	on dc.component_ID = c.component_ID 
+inner join modules m
+	on c.module_ID = m.module_ID
+inner join belongs b
+	on m.module_ID = b.module_ID
+inner join users u
+	on b.user_ID = u.user_ID     
+set  data_valeur = 0
+WHERE data_variable = 'Etat_buzzer';

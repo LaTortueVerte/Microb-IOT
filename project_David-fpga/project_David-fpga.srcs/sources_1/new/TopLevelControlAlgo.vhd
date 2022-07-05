@@ -34,18 +34,22 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity TopLevelControlAlgo is
     port( 
         clk : in std_logic;
-        TOPPIRSensorState : in std_logic;
-        TOPAlgBuzzer_out : out std_logic;
+        
+        TOPPIRSensorState : in std_logic;--
+        TOPresetPir : in std_logic ;--
+        TOPAlgPIRes : out std_logic ;--
+        
+        TOPAlgBuzzer_out : out std_logic;--
         --TOPAlgBuzzer_in : in std_logic;
-        TOPresetPir : in std_logic ;
-        TOPAlgPIRes : out std_logic ;
+        
         TOPAlgTX_pin : out std_logic ;
         TOPAlgid_pin : out std_logic_vector(3 downto 0) ;
         TOPAlgCode_pin : out std_logic_vector(3 downto 0);
         --AlgSw_pin : in std_logic_vector(7 downto 0);
-        TestBtn : in std_logic ;
-        TestLed : out std_logic;
-        TestLedClk : out std_logic 
+        
+        TestBtn : in std_logic ; --
+        TestLed : out std_logic;--
+        TestLedClk : out std_logic --
         
         );
         

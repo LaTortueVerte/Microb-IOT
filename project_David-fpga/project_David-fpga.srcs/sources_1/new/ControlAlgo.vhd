@@ -36,19 +36,19 @@ entity ControlAlgo is
         clk : in std_logic;
         
         PIRSensorState : in std_logic;
-        resetPir : out std_logic ;
+        resetPir : in std_logic ;
         AlgPIRes : out std_logic ;
         
-        AlgBuzzer_in : out std_logic ;
+        AlgBuzzer_in : in std_logic ;
         AlgBuzzer_out : out std_logic;
         
         AlgresetCpt : out std_logic ;
-        AlgenableCpt : out std_logic;
-        AlgoutCpt : out std_logic;
+        AlgOnCpt : out std_logic;
+        AlgoutCpt : in std_logic;
         
         AlgbresetCpt : out std_logic ;
-        AlgbenableCpt : out std_logic;
-        AlgboutCpt : out std_logic;
+        AlgbOnCpt : out std_logic;
+        AlgboutCpt : in std_logic;
         
         
         AlgTX_pin : out std_logic ;
@@ -61,32 +61,45 @@ end entity ControlAlgo;
 
 architecture Behavioral of ControlAlgo is
 
-	
+signal AlgenableCpt, AlgbenableCpt, buzCptMem : std_logic := '0';
+
 begin
 
 
-    MyAlgoBehavior : process( clk) 
+    MyAlgoBehavior : process(AlgoutCpt,PIRSensorState, clk, buzCptMem,AlgbenableCpt) 
         begin
-        if( PIRSensorState  = '1' and rising_edge(clk) and AlgboutCpt = '0' and AlgbenableCpt = '0') then -- If PIRSensor UP and the buzzer counter is not working or has been already activated
-            AlgenableCpt <= '1'; -- lancement du compteur
+        if( PIRSensorState  = '1' and rising_edge(clk) and buzCptMem = '0' and AlgbenableCpt = '0') then -- If PIRSensor UP and the buzzer counter is not working or has been already activated
+            AlgresetCpt <= '0';
+            AlgOnCpt <= '1'; -- lancement du compteur
+            AlgenableCpt <= '1';
             if( AlgoutCpt = '1') then 
+                AlgOnCpt <= '0';
                 Algenablecpt <= '0';
+                -- lancement d'un message pour l'uart
+                AlgSw_pin <= "11111111";
             end if;
-        elsif( PIRSensorState  = '0' and rising_edge(clk)) then
+        elsif( PIRSensorState  = '0' and rising_edge(clk) and buzCptMem = '0' and AlgbenableCpt = '0') then
+            AlgOnCpt <= '0';
+            AlgSw_pin <= "00000000";
             Algenablecpt <= '0';
-            AlgresetCpt <='0';
-            -- AlgbenableCpt <= '0';
+            AlgresetCpt <= '1';
+            --AlgbenableCpt <= '0';
         end if;
-        if(AlgoutCpt = '1' and rising_edge(clk)) then -- if first counter up // launch of all actions
-            AlgbenableCpt <= '1'; -- Start of buzzer 
+        if(AlgoutCpt = '1' and rising_edge(clk) and buzCptMem = '0') then -- if first counter up // launch of all actions
+            AlgBuzzer_out <= '1'; -- Start of buzzer 
+            AlgbOnCpt <= '1';
             AlgbenableCpt <= '1'; -- Start of counter buzzer 
             if(AlgboutCpt = '1') then -- if buzzer counter end 
-                 AlgbenableCpt <= '0'; -- Stop of buzzer
+                 AlgbOnCpt <= '0';
                  AlgbenableCpt <= '0';
+                 AlgBuzzer_out <= '0'; -- Stop of buzzer
+                 buzCptMem <= '1'; -- variable wich tell if we already launch the buzzer 
+                 AlgSw_pin <= "00000000";
+                 
             end if;
         end if;
         if(AlgboutCpt = '1' and PIRSensorState = '0') then 
-            AlgboutCpt <= '0';
+            buzCptMem <= '0';
         end if;
         
         end process; 

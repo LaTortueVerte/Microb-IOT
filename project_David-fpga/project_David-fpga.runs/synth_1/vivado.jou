@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Tue Jul  5 10:10:31 2022
+# Process ID: 26372
+# Current directory: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/project_David-fpga/project_David-fpga.runs/synth_1
+# Command line: vivado.exe -log top_level.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_level.tcl
+# Log file: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/project_David-fpga/project_David-fpga.runs/synth_1/top_level.vds
+# Journal file: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/project_David-fpga/project_David-fpga.runs/synth_1\vivado.jou
+# Running On: MSI, OS: Windows, CPU Frequency: 2592 MHz, CPU Physical cores: 6, Host memory: 16991 MB
+#-----------------------------------------------------------
+source top_level.tcl -notrace

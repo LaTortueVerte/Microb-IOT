@@ -22,7 +22,6 @@ CREATE TABLE modules(
    module_ID INT NOT NULL AUTO_INCREMENT,
    module_role INT,
    module_name VARCHAR(50),
-   module_numb_attribute INT,
    PRIMARY KEY(module_ID)
 );
 

@@ -145,7 +145,7 @@ inner join users u
 	on b.user_ID = u.user_ID
 where data_variable = 'Etat_intrusion';
 
--- etat de la intrusion
+-- etat du buzzer
 select dc.data_valeur from data_component dc 
 inner join component c
 	on dc.component_ID = c.component_ID 
@@ -273,7 +273,7 @@ inner join belongs b
 	on m.module_ID = b.module_ID
 inner join users u
 	on b.user_ID = u.user_ID     
-set  data_valeur = $_POST["val"]
+set  data_valeur = ".$_POST["val"]."
 WHERE data_variable = 'Puissance_ventilation';
 
 UPDATE data_component dc
@@ -285,7 +285,7 @@ inner join belongs b
 	on m.module_ID = b.module_ID
 inner join users u
 	on b.user_ID = u.user_ID     
-set  data_valeur = $_POST["val"]
+set  data_valeur = ".$_POST["val"]."
 WHERE data_variable = 'temperature_min';
 
 UPDATE data_component dc
@@ -297,7 +297,7 @@ inner join belongs b
 	on m.module_ID = b.module_ID
 inner join users u
 	on b.user_ID = u.user_ID     
-set  data_valeur = $_POST["val"]
+set  data_valeur = ".$_POST["val"]."
 WHERE data_variable = 'temperature_max';
 
 

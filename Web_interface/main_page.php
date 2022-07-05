@@ -28,7 +28,6 @@
     </nav>
     <div class="second-nav-bar">
         <button type="button" class="btn btn-outline-primary">Graphiques</button>
-        <button type="button" class="btn btn-outline-primary">Modules</button>
     </div>
 
 

@@ -8,7 +8,7 @@ to the users preferences.
 
 ---
 
-Une solution IoT pour protéger et surveiller vos bien quand et où vous le souhaitez.
+Une solution IoT pour protéger et surveiller vos biens quand et où vous le souhaitez.
 
 Celle-ci vient avec des modules plug & play.
 
@@ -33,7 +33,7 @@ This one allows first to make the link between the FPGA and the Arduino but espe
 ---
 
 
-les B'IoT sont des modules plug & play qui s'ajoute aux module principal pour y ajouter un capteur avec son actionneur.
+les B'IoT sont des modules plug & play qui s'ajoute aux module principaux pour y ajouter un capteur avec son actionneur.
 
 
 Afin de pouvoir réaliser cette solution, nous allons utiliser un ensemble de cartes programmables. 

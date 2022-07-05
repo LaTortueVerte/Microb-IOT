@@ -307,26 +307,26 @@
 
             // Actuators
 
-            update_bool_val('r', 'ventilation_module_state');
-            update_bool_val('r', 'ventilation_power');
-            update_bool_val('r', 'TempMin');
-            update_bool_val('r', 'TempMax');
-            update_bool_val('r', 'water_pump_state');
-            update_bool_val('r', 'door_state');
-            update_bool_val('r', 'window_state');
-            update_bool_val('r', 'security_module_state');
-            update_bool_val('r', 'buzzer_state');
+            update_bool_val('r', 'ventilation_module_state', 'ventilation_module_state');
+            update_bool_val('r', 'ventilation_power', 'ventilation_power');
+            update_bool_val('r', 'TempMin', 'TempMin');
+            update_bool_val('r', 'TempMax', 'TempMax');
+            update_bool_val('r', 'water_pump_state', 'water_pump_state');
+            update_bool_val('r', 'door_state', 'door_state');
+            update_bool_val('r', 'window_state', 'window_state');
+            update_bool_val('r', 'security_module_state', 'security_module_state');
+            update_bool_val('r', 'buzzer_state', 'buzzer_state');
 
             // Sensors
 
-            update_bool_val('r', 'humidity');
-            update_bool_val('r', 'temperature');
-            update_bool_val('r', 'water');
-            update_bool_val('r', 'lpg');
-            update_bool_val('r', 'ch4');
-            update_bool_val('r', 'co');
-            update_bool_val('r', 'hcho');
-            update_bool_val('r', 'human');
+            update_bool_val('r', 'humidity', 'humidity');
+            update_bool_val('r', 'temperature', 'temperature');
+            update_bool_val('r', 'water', 'water');
+            update_bool_val('r', 'lpg', 'lpg');
+            update_bool_val('r', 'ch4', 'ch4');
+            update_bool_val('r', 'co', 'co');
+            update_bool_val('r', 'hcho', 'hcho');
+            update_bool_val('r', 'human', 'human');
 
             setTimeout("check_sensors_and_actuators()", 5000);
         }

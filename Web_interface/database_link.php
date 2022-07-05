@@ -15,8 +15,9 @@
         if ($_POST["type_cmd"] == "w"){
             switch ($_POST["cmd"]) {
                 case "ventilation_on_button":
-                    // sql
-                    echo "ventilation_on_button";
+                    $query = ;
+                    $result = mysqli_query($conn, $query);
+                    echo $result;
                     break;
                 case "ventilation_off_button":
                     // sql

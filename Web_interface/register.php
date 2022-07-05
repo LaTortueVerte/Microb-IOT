@@ -82,7 +82,8 @@
             color:red;
         }
         body{
-            background-image:url("images/illustrationInscription.jpg")
+            background-image:url("images/illustrationInscription.jpg");
+            width: 100%;
         }
     </style>
   </head>

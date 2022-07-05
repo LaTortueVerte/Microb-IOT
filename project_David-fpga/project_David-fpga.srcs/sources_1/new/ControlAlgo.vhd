@@ -35,24 +35,24 @@ entity ControlAlgo is
     port( 
         clk : in std_logic;
         
-        PIRSensorState : in std_logic;
-        resetPir : in std_logic ;
-        AlgPIRes : out std_logic ;
+        PIRSensorState : in std_logic := '0';
+        resetPir : in std_logic := '0';
+        AlgPIRes : out std_logic := '0';
         
-        AlgBuzzer_in : in std_logic ;
-        AlgBuzzer_out : out std_logic;
+        AlgBuzzer_in : out std_logic:= '0' ;
+        AlgBuzzer_out : out std_logic:= '0';
         
-        AlgresetCpt : out std_logic ;
-        AlgOnCpt : out std_logic;
-        AlgoutCpt : in std_logic;
+        AlgresetCpt : out std_logic := '0';
+        AlgOnCpt : out std_logic:= '0';
+        AlgoutCpt : in std_logic:= '0';
         
-        AlgbresetCpt : out std_logic ;
-        AlgbOnCpt : out std_logic;
-        AlgboutCpt : in std_logic;
+        AlgbresetCpt : out std_logic := '0';
+        AlgbOnCpt : out std_logic:= '0';
+        AlgboutCpt : in std_logic:= '0';
         
         
-        AlgTX_pin : out std_logic ;
-        AlgRX_pin : out std_logic;  
+        AlgTX_pin : out std_logic := '0';
+        AlgRX_pin : out std_logic:= '0';  
         Algid_pin : out std_logic_vector(3 downto 0) ;
         AlgCode_pin : out std_logic_vector(3 downto 0) ;
         AlgSw_pin : out std_logic_vector(7 downto 0)
@@ -78,7 +78,7 @@ begin
                 -- lancement d'un message pour l'uart
                 AlgSw_pin <= "11111111";
             end if;
-        elsif( PIRSensorState  = '0' and rising_edge(clk) and buzCptMem = '0' and AlgbenableCpt = '0') then
+        elsif( PIRSensorState  = '0' and rising_edge(clk) and buzCptMem = '0') then
             AlgOnCpt <= '0';
             AlgSw_pin <= "00000000";
             Algenablecpt <= '0';
@@ -86,13 +86,13 @@ begin
             --AlgbenableCpt <= '0';
         end if;
         if(AlgoutCpt = '1' and rising_edge(clk) and buzCptMem = '0') then -- if first counter up // launch of all actions
-            AlgBuzzer_out <= '1'; -- Start of buzzer 
+            AlgBuzzer_in <= '1'; -- Start of buzzer 
             AlgbOnCpt <= '1';
             AlgbenableCpt <= '1'; -- Start of counter buzzer 
             if(AlgboutCpt = '1') then -- if buzzer counter end 
                  AlgbOnCpt <= '0';
                  AlgbenableCpt <= '0';
-                 AlgBuzzer_out <= '0'; -- Stop of buzzer
+                 AlgBuzzer_in <= '0'; -- Stop of buzzer
                  buzCptMem <= '1'; -- variable wich tell if we already launch the buzzer 
                  AlgSw_pin <= "00000000";
                  

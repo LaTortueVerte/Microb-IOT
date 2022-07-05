@@ -42,7 +42,7 @@ Port (
     clk : in std_logic;
     TOPPIRSensorState : in std_logic;
     TOPAlgBuzzer_out : out std_logic;
-    TOPAlgBuzzer_in : in std_logic;
+    --TOPAlgBuzzer_in : in std_logic;
     TOPresetPir : in std_logic ;
     TOPAlgPIRes : out std_logic ;
     TOPAlgTX_pin : out std_logic ;
@@ -55,7 +55,7 @@ Port (
     );
 end component ;
      
-signal clk, TOPPIRSensorState, TOPAlgBuzzer_out, TOPresetPir, TOPAlgPIRes, TOPAlgTX_pin, TOPAlgBuzzOut, TestLed, TestBtn, TestLedClk : std_logic := '0';
+signal clk, TOPAlgBuzzer_in, TOPPIRSensorState, TOPAlgBuzzer_out, TOPresetPir, TOPAlgPIRes, TOPAlgTX_pin, TOPAlgBuzzOut, TestLed, TestBtn, TestLedClk : std_logic := '0';
 signal TOPAlgid_pin, TOPAlgCode_pin : std_logic_vector(3 downto 0) := (others => '0');
 
 begin
@@ -70,7 +70,7 @@ port map (
     TOPAlgTX_pin => TOPAlgTX_pin, 
     TOPAlgid_pin => TOPAlgid_pin,
     TOPAlgCode_pin => TOPAlgCode_pin, 
-    TOPAlgBuzzer_in => TOPAlgBuzzOut,
+    --TOPAlgBuzzer_in => TOPAlgBuzzer_in,
     TestBtn => TestBtn,
     TestLed => TestLed,
     TestLedClk => TestLedClk
@@ -93,6 +93,17 @@ begin
     
     if ( now = 100 ps ) then
         TOPPIRSensorState  <= '1'; 
+    end if;
+    
+    if ( now = 1000 ps ) then
+        TOPPIRSensorState  <= '0'; 
+    end if;
+    
+    if ( now = 1100 ps ) then
+        TOPPIRSensorState  <= '1'; 
+    end if;
+    if ( now = 1200 ps ) then
+        TOPPIRSensorState  <= '0'; 
     end if;
     
     if ( now = 106 ps ) then

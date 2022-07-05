@@ -54,7 +54,7 @@
 #endif
 typedef void (*funcp)(char *, char *);
 extern int main(int, char**);
-IKI_DLLESPEC extern void execute_63(char*, char *);
+IKI_DLLESPEC extern void execute_64(char*, char *);
 IKI_DLLESPEC extern void execute_29(char*, char *);
 IKI_DLLESPEC extern void execute_31(char*, char *);
 IKI_DLLESPEC extern void execute_35(char*, char *);
@@ -72,15 +72,15 @@ IKI_DLLESPEC extern void execute_54(char*, char *);
 IKI_DLLESPEC extern void execute_56(char*, char *);
 IKI_DLLESPEC extern void transaction_0(char*, char*, unsigned, unsigned, unsigned);
 IKI_DLLESPEC extern void vhdl_transfunc_eventcallback(char*, char*, unsigned, unsigned, unsigned, char *);
-IKI_DLLESPEC extern void transaction_35(char*, char*, unsigned, unsigned, unsigned);
-funcp funcTab[19] = {(funcp)execute_63, (funcp)execute_29, (funcp)execute_31, (funcp)execute_35, (funcp)execute_37, (funcp)execute_41, (funcp)execute_42, (funcp)execute_44, (funcp)execute_46, (funcp)execute_47, (funcp)execute_49, (funcp)execute_50, (funcp)execute_51, (funcp)execute_52, (funcp)execute_54, (funcp)execute_56, (funcp)transaction_0, (funcp)vhdl_transfunc_eventcallback, (funcp)transaction_35};
+IKI_DLLESPEC extern void transaction_36(char*, char*, unsigned, unsigned, unsigned);
+funcp funcTab[19] = {(funcp)execute_64, (funcp)execute_29, (funcp)execute_31, (funcp)execute_35, (funcp)execute_37, (funcp)execute_41, (funcp)execute_42, (funcp)execute_44, (funcp)execute_46, (funcp)execute_47, (funcp)execute_49, (funcp)execute_50, (funcp)execute_51, (funcp)execute_52, (funcp)execute_54, (funcp)execute_56, (funcp)transaction_0, (funcp)vhdl_transfunc_eventcallback, (funcp)transaction_36};
 const int NumRelocateId= 19;
 
 void relocate(char *dp)
 {
 	iki_relocate(dp, "xsim.dir/TopLevelAlgoTestbench_behav/xsim.reloc",  (void **)funcTab, 19);
-	iki_vhdl_file_variable_register(dp + 14976);
-	iki_vhdl_file_variable_register(dp + 15032);
+	iki_vhdl_file_variable_register(dp + 15144);
+	iki_vhdl_file_variable_register(dp + 15200);
 
 
 	/*Populate the transaction function pointer field in the whole net structure */

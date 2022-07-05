@@ -47,9 +47,12 @@ begin
     
     MyBuzBehavior: process( clk, BuzEnable_in) 
         begin
+        
           if (BuzEnable_in ='1' and rising_edge(clk)) then
             BuzEnable_out <= '1'; 
+            
            end if;
+           
            if (BuzEnable_in = '0' and rising_edge(clk)) then
              BuzEnable_out <= '0';
             

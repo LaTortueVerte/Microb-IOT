@@ -36,7 +36,7 @@ entity TopLevelControlAlgo is
         clk : in std_logic;
         TOPPIRSensorState : in std_logic;
         TOPAlgBuzzer_out : out std_logic;
-        TOPAlgBuzzer_in : in std_logic;
+        --TOPAlgBuzzer_in : in std_logic;
         TOPresetPir : in std_logic ;
         TOPAlgPIRes : out std_logic ;
         TOPAlgTX_pin : out std_logic ;
@@ -71,7 +71,7 @@ component ControlALgo
         resetPir : in std_logic ;
         AlgPIRes : out std_logic ;
         
-        AlgBuzzer_in : in std_logic ;
+        AlgBuzzer_in : out std_logic ;
         AlgBuzzer_out : out std_logic;
         
         AlgresetCpt : out std_logic ;
@@ -136,7 +136,7 @@ end component ;
     signal resetPir : std_logic := '0';
     signal AlgPIRes : std_logic := '0';
     
-    signal AlgBuzzer_in : std_logic := '0';
+    signal TransAlgBuzzer_in : std_logic := '0';
     signal AlgBuzzer_out : std_logic := '0';
     
     signal AlgresetCpt : std_logic := '0';
@@ -185,8 +185,8 @@ RESPIRSensor: PIRSensor PORT MAP(
     );
     
 BuzActor : Buzzer PORT MAP(
-        BuzEnable_in => TOPAlgBuzzer_in,
-        BuzEnable_out => TOPAlgBuzzer_out ,
+        BuzEnable_in => TransAlgBuzzer_in,
+        BuzEnable_out => AlgBuzzer_out ,
         clk => clk
         );
         
@@ -207,11 +207,11 @@ ControlALgoComp : ControlAlgo Port MAP (
     resetPir => TOPresetPir ,
     AlgPIRes => TOPAlgPIRes ,
     
-    AlgBuzzer_in => AlgBuzzer_in ,
+    AlgBuzzer_in => TransAlgBuzzer_in ,
     AlgBuzzer_out => TOPAlgBuzzer_out,
     
     AlgresetCpt => AlgresetCpt,
-    AlgOnCpt => AlgbOnCpt,
+    AlgOnCpt => AlgOnCpt,
     AlgoutCpt => AlgoutCpt,
     
     AlgbresetCpt => AlgbresetCpt,

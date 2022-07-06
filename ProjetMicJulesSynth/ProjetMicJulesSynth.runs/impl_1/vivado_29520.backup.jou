@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Wed Jul  6 12:01:34 2022
+# Process ID: 29520
+# Current directory: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.runs/impl_1
+# Command line: vivado.exe -log TopLevelControlAlgo.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source TopLevelControlAlgo.tcl -notrace
+# Log file: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.runs/impl_1/TopLevelControlAlgo.vdi
+# Journal file: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.runs/impl_1\vivado.jou
+# Running On: MSI, OS: Windows, CPU Frequency: 2592 MHz, CPU Physical cores: 6, Host memory: 16991 MB
+#-----------------------------------------------------------
+source TopLevelControlAlgo.tcl -notrace

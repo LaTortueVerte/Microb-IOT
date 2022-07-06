@@ -1,0 +1,1087 @@
+/*
+
+Xilinx Vivado v2022.1 (64-bit) [Major: 2022, Minor: 1]
+SW Build: 3526262 on Mon Apr 18 15:48:16 MDT 2022
+IP Build: 3524634 on Mon Apr 18 20:55:01 MDT 2022
+
+Process ID (PID): 10452
+License: Customer
+Mode: GUI Mode
+
+Current time: 	Wed Jul 06 11:20:53 CEST 2022
+Time zone: 	Central European Standard Time (Europe/Paris)
+
+OS: Windows 10
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 12
+
+Screen size: 1920x1080
+Screen resolution (DPI): 100
+Available screens: 1
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+Scale size: 12
+
+Java version: 	11.0.11 64-bit
+Java home: 	D:/Vivado/2022.1/tps/win64/jre11.0.11_9
+Java executable: 	D:/Vivado/2022.1/tps/win64/jre11.0.11_9/bin/java.exe
+Java arguments: 	[-Dsun.java2d.pmoffscreen=false, -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2, -Dsun.java2d.xrender=false, -Dsun.java2d.d3d=false, -Dsun.awt.nopixfmt=true, -Dsun.java2d.dpiaware=true, -Dsun.java2d.uiScale.enabled=false, -Xverify:none, -Dswing.aatext=true, -XX:-UsePerfData, -Djdk.map.althashing.threshold=512, -XX:StringTableSize=4072, --add-opens=java.desktop/com.sun.awt=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.base/java.nio=ALL-UNNAMED, --add-opens=java.desktop/sun.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/java.awt.event=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.base/java.nio=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.table=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.desktop/sun.awt.shell=ALL-UNNAMED, --add-exports=java.base/sun.security.action=ALL-UNNAMED, --add-exports=java.desktop/sun.font=ALL-UNNAMED, -XX:NewSize=60m, -XX:MaxNewSize=60m, -Xms256m, -Xmx3072m, -Xss5m]
+Java initial memory (-Xms): 	256 MB
+Java maximum memory (-Xmx):	 3 GB
+
+
+User name: 	jules
+User home directory: C:/Users/jules
+User working directory: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth
+User country: 	RE
+User language: 	fr
+User locale: 	fr_RE
+
+RDI_BASEROOT: D:/Vivado
+HDI_APPROOT: D:/Vivado/2022.1
+RDI_DATADIR: D:/Vivado/2022.1/data
+RDI_BINDIR: D:/Vivado/2022.1/bin
+
+Vivado preferences file: C:/Users/jules/AppData/Roaming/Xilinx/Vivado/2022.1/vivado.xml
+Vivado preferences directory: C:/Users/jules/AppData/Roaming/Xilinx/Vivado/2022.1/
+Vivado layouts directory: C:/Users/jules/AppData/Roaming/Xilinx/Vivado/2022.1/data/layouts
+PlanAhead jar file: 	D:/Vivado/2022.1/lib/classes/planAhead.jar
+Vivado log file: 	C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/vivado.log
+Vivado journal file: 	C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/vivado.jou
+Engine tmp dir: 	C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/.Xil/Vivado-10452-MSI
+
+Xilinx Environment Variables
+----------------------------
+XILINX: D:/Vivado/2022.1/ids_lite/ISE
+XILINX_DSP: D:/Vivado/2022.1/ids_lite/ISE
+XILINX_HLS: D:/Vitis_HLS/2022.1
+XILINX_PLANAHEAD: D:/Vivado/2022.1
+XILINX_VIVADO: D:/Vivado/2022.1
+XILINX_VIVADO_HLS: D:/Vivado/2022.1
+
+
+GUI allocated memory:	256 MB
+GUI max memory:		3,072 MB
+Engine allocated memory: 1,480 MB
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// TclEventType: PROJECT_OPEN_DIALOG
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// [GUI Memory]: 83 MB (+84755kb) [00:00:08]
+// [Engine Memory]: 1,480 MB (+1400125kb) [00:00:08]
+// Opening Vivado Project: C:\Users\jules\Desktop\Travail\VHDL_Master_Camp\ProjetMicJulesSynth\ProjetMicJulesSynth.xpr. Version: Vivado v2022.1 
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: FLOW_ADDED
+// Tcl Message: open_project C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.xpr 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,480 MB. GUI used memory: 59 MB. Current time: 7/6/22, 11:20:54 AM CEST
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 96 MB (+9112kb) [00:00:13]
+// WARNING: HEventQueue.dispatchEvent() is taking  2133 ms.
+// Tcl Message: open_project C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.xpr 
+// Tcl Message: INFO: [Project 1-313] Project file moved from 'C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/project_David-fpga' since last save. INFO: [filemgmt 56-2] Default IP Output Path : Could not find the directory 'C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.gen/sources_1', nor could it be found using path 'C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/project_David-fpga/project_David-fpga.gen/sources_1'. 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Vivado/2022.1/data/ip'. 
+// [GUI Memory]: 111 MB (+10499kb) [00:00:15]
+// Tcl Message: open_project: Time (s): cpu = 00:00:18 ; elapsed = 00:00:08 . Memory (MB): peak = 1656.082 ; gain = 0.000 
+// Project name: ProjetMicJulesSynth; location: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth; part: xc7vx485tffg1157-1
+dismissDialog("Open Project"); // bA
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+// Elapsed time: 117 seconds
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top_level(Behavioral) (top_level.vhd)]", 2); // D
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top_level(Behavioral) (top_level.vhd), Inst_frame_buffer : frame_buffer (frame_buffer.xci)]", 7); // D
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// TclEventType: DG_GRAPH_STALE
+dismissDialog("Show IP Hierarchy"); // A
+// [GUI Memory]: 125 MB (+9450kb) [00:02:18]
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top_level(Behavioral) (top_level.vhd), Inst_ov7670_controller : ov7670_controller(Behavioral) (ov7670_controller.vhd)]", 6); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, TopLevelControlAlgo(Behavioral) (TopLevelControlAlgo.vhd)]", 1, true); // D - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top_level(Behavioral) (top_level.vhd)]", 2, true); // D - Node
+// WARNING: HSwingWorker (Refresh Filesets Swing Worker) is taking 1625 ms. Increasing delay to 4875 ms.
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top_level(Behavioral) (top_level.vhd)]", 2, true); // D - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top_level(Behavioral) (top_level.vhd)]", 2, true, false, false, false, false, true); // D - Double Click - Node
+// WARNING: HEventQueue.dispatchEvent() is taking  1423 ms.
+// [GUI Memory]: 132 MB (+297kb) [00:02:28]
+dismissDialog("Opening Editor"); // bA
+selectCodeEditor("top_level.vhd", 189, 226); // be
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top_level(Behavioral) (top_level.vhd)]", 2); // D
+selectCodeEditor("top_level.vhd", 420, 207); // be
+setText(RDIResource.HCodeEditor_SEARCH_TEXT_COMBO_BOX, "fr"); // k
+selectCodeEditor("top_level.vhd", 102, 278); // be
+selectCodeEditor("top_level.vhd", 124, 174); // be
+selectCodeEditor("top_level.vhd", 159, 195); // be
+selectCodeEditor("top_level.vhd", 354, 111); // be
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed time: 61 seconds
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, frame_buffer (frame_buffer.xci)]", 12); // D
+// [GUI Memory]: 139 MB (+634kb) [00:04:01]
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top_level(Behavioral) (top_level.vhd)]", 2); // D
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top_level(Behavioral) (top_level.vhd)]", 2); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, i3c2(Behavioral) (i3c2.vhd)]", 15, false, true, false, false, false, false); // D - Shift Key
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top_level(Behavioral) (top_level.vhd)]", 2, true); // D - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, i3c2(Behavioral) (i3c2.vhd)]", 15, false); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top_level(Behavioral) (top_level.vhd)]", 2, true); // D - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, i3c2(Behavioral) (i3c2.vhd)]", 15, false, true, false, false, false, false); // D - Shift Key
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, i3c2(Behavioral) (i3c2.vhd)]", 15, false, false, false, false, true, false); // D - Popup Trigger
+selectMenu(PAResourceQtoS.SrcMenu_IP_DOCUMENTATION, "IP Documentation"); // ao
+selectMenuItem(RDIResourceCommand.RDICommands_DELETE, "Remove File from Project..."); // ar
+// Run Command: RDIResourceCommand.RDICommands_DELETE
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// 'c' command handler elapsed time: 3 seconds
+dismissDialog("Remove Sources"); // aE
+// Tcl Message: export_ip_user_files -of_objects  [get_files C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/project_David-fpga/project_David-fpga.srcs/sources_1/imports/new/top_level.vhd] -no_script -reset -force -quiet 
+// Tcl Message: export_ip_user_files -of_objects  [get_files C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/project_David-fpga/project_David-fpga.srcs/sources_1/imports/new/clocking.vhd] -no_script -reset -force -quiet 
+// Tcl Message: export_ip_user_files -of_objects  [get_files C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/project_David-fpga/project_David-fpga.srcs/sources_1/imports/new/vga.vhd] -no_script -reset -force -quiet 
+// Tcl Message: export_ip_user_files -of_objects  [get_files C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/project_David-fpga/project_David-fpga.srcs/sources_1/imports/new/debounce.vhd] -no_script -reset -force -quiet 
+// Tcl Message: export_ip_user_files -of_objects  [get_files C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/project_David-fpga/project_David-fpga.srcs/sources_1/imports/new/ov7670_controller.vhd] -no_script -reset -force -quiet 
+// Tcl Message: export_ip_user_files -of_objects  [get_files C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/project_David-fpga/project_David-fpga.srcs/sources_1/imports/new/i2c_sender.vhd] -no_script -reset -force -quiet 
+// Tcl Message: export_ip_user_files -of_objects  [get_files C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/project_David-fpga/project_David-fpga.srcs/sources_1/imports/new/ov7670_registers.vhd] -no_script -reset -force -quiet 
+// Tcl Message: export_ip_user_files -of_objects  [get_files C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/project_David-fpga/project_David-fpga.srcs/sources_1/imports/new/ov7670_capture.vhd] -no_script -reset -force -quiet 
+// Tcl Message: export_ip_user_files -of_objects  [get_files C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/project_David-fpga/project_David-fpga.srcs/sources_1/imports/new/RGB.vhd] -no_script -reset -force -quiet 
+// Tcl Message: export_ip_user_files -of_objects  [get_files C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/project_David-fpga/project_David-fpga.srcs/sources_1/imports/new/address_Generator.vhd] -no_script -reset -force -quiet 
+// Tcl Message: export_ip_user_files -of_objects  [get_files C:/Users/jules/Downloads/basys3_ov7670_v1/basys3_ov7670_v1/basys3_ov7670_v1.srcs/sources_1/ip/frame_buffer/frame_buffer.xci] -no_script -reset -force -quiet 
+// Tcl Message: export_ip_user_files -of_objects  [get_files C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/project_David-fpga/project_David-fpga.srcs/sources_1/imports/new/i3c2.vhd] -no_script -reset -force -quiet 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: PROJ_DESIGN_MODE_SET
+dismissDialog("Remove Sources"); // bA
+// WARNING: HTimer (StateMonitor Timer) is taking 799ms to process. Increasing delay to 4000 ms.
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Run Synthesis]", 14, false); // n
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// Tcl Message: INFO: [Project 1-1160] Copying file C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.runs/synth_1/TopLevelControlAlgo.dcp to C:/Users/jules/Desktop/project_David-fpga/project_David-fpga.srcs/utils_1/imports/synth_1 and adding it to utils fileset 
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Launch Runs"); // f
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs synth_1 -jobs 6 
+// Tcl Message: [Wed Jul  6 11:25:26 2022] Launched synth_1... Run output will be captured here: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.runs/synth_1/runme.log 
+dismissDialog("Starting Design Runs"); // bA
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// Elapsed time: 132 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// Run Command: PAResourceCommand.PACommandNames_RUN_IMPLEMENTATION
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Launch Runs"); // f
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -jobs 6 
+// Tcl Message: [Wed Jul  6 11:27:46 2022] Launched impl_1... Run output will be captured here: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.runs/impl_1/runme.log 
+// 'c' command handler elapsed time: 6 seconds
+dismissDialog("Starting Design Runs"); // bA
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// Elapsed time: 178 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// Run Command: PAResourceCommand.PACommandNames_MESSAGE_WINDOW
+dismissDialog("Implementation Failed"); // ag
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, TopLevelControlAlgo(Behavioral) (TopLevelControlAlgo.vhd)]", 1); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, TopLevelControlAlgo(Behavioral) (TopLevelControlAlgo.vhd)]", 1, true); // D - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, TopLevelControlAlgo(Behavioral) (TopLevelControlAlgo.vhd)]", 1, true, false, false, false, false, true); // D - Double Click - Node
+// WARNING: HEventQueue.dispatchEvent() is taking  1517 ms.
+dismissDialog("Opening Editor"); // bA
+selectCodeEditor("TopLevelControlAlgo.vhd", 70, 338); // be
+selectCodeEditor("TopLevelControlAlgo.vhd", 70, 338, false, false, false, false, true); // be - Double Click
+selectCodeEditor("TopLevelControlAlgo.vhd", 84, 334); // be
+selectCodeEditor("TopLevelControlAlgo.vhd", 84, 334, false, false, false, false, true); // be - Double Click
+typeControlKey((HResource) null, "TopLevelControlAlgo.vhd", 'c'); // be
+// [GUI Memory]: 147 MB (+1027kb) [00:10:27]
+// Elapsed time: 15 seconds
+selectCodeEditor("TopLevelControlAlgo.vhd", 109, 265); // be
+selectCodeEditor("TopLevelControlAlgo.vhd", 109, 265, false, false, false, false, true); // be - Double Click
+typeControlKey((HResource) null, "TopLevelControlAlgo.vhd", 'v'); // be
+selectCodeEditor("TopLevelControlAlgo.vhd", 116, 380); // be
+selectCodeEditor("TopLevelControlAlgo.vhd", 116, 380, false, false, false, false, true); // be - Double Click
+typeControlKey((HResource) null, "TopLevelControlAlgo.vhd", 'v'); // be
+selectCodeEditor("TopLevelControlAlgo.vhd", 115, 495); // be
+selectCodeEditor("TopLevelControlAlgo.vhd", 115, 495, false, false, false, false, true); // be - Double Click
+typeControlKey((HResource) null, "TopLevelControlAlgo.vhd", 'v'); // be
+selectCodeEditor("TopLevelControlAlgo.vhd", 111, 351); // be
+selectCodeEditor("TopLevelControlAlgo.vhd", 111, 351, false, false, false, false, true); // be - Double Click
+typeControlKey((HResource) null, "TopLevelControlAlgo.vhd", 'v'); // be
+selectCodeEditor("TopLevelControlAlgo.vhd", 113, 303); // be
+selectCodeEditor("TopLevelControlAlgo.vhd", 113, 303, false, false, false, false, true); // be - Double Click
+typeControlKey((HResource) null, "TopLevelControlAlgo.vhd", 'v'); // be
+selectCodeEditor("TopLevelControlAlgo.vhd", 136, 369); // be
+selectCodeEditor("TopLevelControlAlgo.vhd", 136, 369, false, false, false, false, true); // be - Double Click
+typeControlKey((HResource) null, "TopLevelControlAlgo.vhd", 'v'); // be
+selectCodeEditor("TopLevelControlAlgo.vhd", 80, 333); // be
+selectCodeEditor("TopLevelControlAlgo.vhd", 80, 333, false, false, false, false, true); // be - Double Click
+typeControlKey((HResource) null, "TopLevelControlAlgo.vhd", 'v'); // be
+typeControlKey(null, null, 'z');
+selectCodeEditor("TopLevelControlAlgo.vhd", 84, 333); // be
+selectCodeEditor("TopLevelControlAlgo.vhd", 84, 333, false, false, false, false, true); // be - Double Click
+typeControlKey((HResource) null, "TopLevelControlAlgo.vhd", 'v'); // be
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed time: 12 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Run Synthesis]", 14, false); // n
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// Tcl Message: INFO: [Project 1-1161] Replacing file C:/Users/jules/Desktop/project_David-fpga/project_David-fpga.srcs/utils_1/imports/synth_1/TopLevelControlAlgo.dcp with file C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.runs/synth_1/TopLevelControlAlgo.dcp 
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Launch Runs"); // f
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs synth_1 -jobs 6 
+// Tcl Message: [Wed Jul  6 11:31:53 2022] Launched synth_1... Run output will be captured here: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.runs/synth_1/runme.log 
+dismissDialog("Starting Design Runs"); // bA
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// Elapsed time: 104 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// Run Command: PAResourceCommand.PACommandNames_RUN_IMPLEMENTATION
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a
+// 'c' command handler elapsed time: 3 seconds
+dismissDialog("Synthesis is Out-of-date"); // A
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// Tcl Message: INFO: [Project 1-1161] Replacing file C:/Users/jules/Desktop/project_David-fpga/project_David-fpga.srcs/utils_1/imports/synth_1/TopLevelControlAlgo.dcp with file C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.runs/synth_1/TopLevelControlAlgo.dcp 
+// TclEventType: FILE_SET_CHANGE
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Launch Runs"); // f
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -jobs 6 
+// Tcl Message: [Wed Jul  6 11:33:44 2022] Launched synth_1... Run output will be captured here: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.runs/synth_1/runme.log [Wed Jul  6 11:33:45 2022] Launched impl_1... Run output will be captured here: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.runs/impl_1/runme.log 
+dismissDialog("Starting Design Runs"); // bA
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// Elapsed time: 195 seconds
+selectRadioButton(PAResourceCommand.PACommandNames_RUN_BITGEN, "Generate Bitstream"); // a
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Launch Runs"); // cZ
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 6 
+// Tcl Message: [Wed Jul  6 11:37:03 2022] Launched impl_1... Run output will be captured here: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.runs/impl_1/runme.log 
+// TclEventType: RUN_STATUS_CHANGE
+// [GUI Memory]: 155 MB (+578kb) [00:16:30]
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// Elapsed time: 58 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// Run Command: PAResourceCommand.PACommandNames_LOG_WINDOW
+dismissDialog("Bitstream Generation Failed"); // ag
+collapseTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Open Synthesized Design]", 15); // n
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Open Synthesized Design]", 15); // n
+// Elapsed time: 69 seconds
+selectCodeEditor(PAResourceItoN.LogMonitor_MONITOR, 276, 379); // T
+selectCodeEditor(PAResourceItoN.LogMonitor_MONITOR, 276, 379, false, false, false, false, true); // T - Double Click
+// Elapsed time: 218 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 31, false); // n
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Launch Runs"); // cZ
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run impl_1 -prev_step  
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 6 
+// Tcl Message: [Wed Jul  6 11:42:58 2022] Launched impl_1... Run output will be captured here: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bA
+// TclEventType: RUN_STATUS_CHANGE
+collapseTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager]", 32); // n
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager]", 32); // n
+selectMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // aj
+dismissMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_FLOW, "Flow"); // aj
+dismissMenu(PAResourceItoN.MainMenuMgr_FLOW, "Flow"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // aj
+dismissMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aj
+dismissMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_WINDOW, "Window"); // aj
+dismissMenu(PAResourceItoN.MainMenuMgr_WINDOW, "Window"); // aj
+selectMenu(RDIResource.MainWinMenuMgr_LAYOUT, "Layout"); // aj
+dismissMenu(RDIResource.MainWinMenuMgr_LAYOUT, "Layout"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_VIEW, "View"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_UNSELECT_TYPE, "Unselect Type"); // ao
+dismissMenu(PAResourceItoN.MainMenuMgr_VIEW, "View"); // aj
+selectCodeEditor(PAResourceItoN.LogMonitor_MONITOR, 616, 150); // T
+selectMenu(PAResourceItoN.MainMenuMgr_HELP, "Help"); // aj
+dismissMenu(PAResourceItoN.MainMenuMgr_HELP, "Help"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_VIEW, "View"); // aj
+dismissMenu(PAResourceItoN.MainMenuMgr_VIEW, "View"); // aj
+selectMenu(RDIResource.MainWinMenuMgr_LAYOUT, "Layout"); // aj
+dismissMenu(RDIResource.MainWinMenuMgr_LAYOUT, "Layout"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_WINDOW, "Window"); // aj
+dismissMenu(PAResourceItoN.MainMenuMgr_WINDOW, "Window"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aj
+dismissMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // aj
+dismissMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_FLOW, "Flow"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_SETTINGS, "Settings"); // ao
+selectMenu(PAResourceCommand.PACommandNames_SIMULATION_RUN, "Run Simulation"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_OPEN, "Open Implemented Design"); // ao
+selectMenu(PAResourceItoN.MainMenuMgr_OPEN, "Open Implemented Design"); // ao
+selectMenu(PAResourceCommand.PACommandNames_SIMULATION_RUN, "Run Simulation"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_SETTINGS, "Settings"); // ao
+dismissMenu(PAResourceItoN.MainMenuMgr_FLOW, "Flow"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_EDIT, "Edit"); // aj
+dismissMenu(PAResourceItoN.MainMenuMgr_EDIT, "Edit"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aj
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_EDIT, "Edit"); // aj
+dismissMenu(PAResourceItoN.MainMenuMgr_EDIT, "Edit"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aj
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_EDIT, "Edit"); // aj
+dismissMenu(PAResourceItoN.MainMenuMgr_EDIT, "Edit"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_FLOW, "Flow"); // aj
+dismissMenu(PAResourceItoN.MainMenuMgr_FLOW, "Flow"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // aj
+dismissMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // aj
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// Elapsed time: 33 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// Run Command: PAResourceCommand.PACommandNames_LOG_WINDOW
+dismissDialog("Bitstream Generation Failed"); // ag
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Open Target]", 33, false); // n
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HW_TARGET
+selectMenuItem(PAResourceCommand.PACommandNames_AUTO_CONNECT_TARGET, "Auto Connect"); // ar
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl Command: 'rdi::info_commands get_hw_probes'
+// Tcl Command: 'load_features labtools'
+// TclEventType: LOAD_FEATURE
+// TclEventType: HW_SESSION_OPEN
+// Tcl Message: open_hw_manager 
+closeView(PAResourceOtoP.PAViews_PROJECT_SUMMARY, "Project Summary"); // v
+// Run Command: PAResourceCommand.PACommandNames_AUTO_CONNECT_TARGET
+dismissDialog("Open Hardware Manager"); // bA
+// Tcl Message: connect_hw_server -allow_non_jtag 
+// Tcl Message: INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121 
+// Tcl Message: INFO: [Labtools 27-2222] Launching hw_server... 
+// TclEventType: HW_SERVER_UPDATE
+// Tcl Message: INFO: [Labtools 27-2221] Launch Output:  ****** Xilinx hw_server v2022.1   **** Build date : Apr 18 2022 at 16:02:36     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.   INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:3042 
+// Tcl Message: INFO: [Labtools 27-3417] Launching cs_server... 
+// Tcl Message: INFO: [Labtools 27-2221] Launch Output:   ******** Xilinx cs_server v2022.1.0   ****** Build date   : Apr 12 2022-21:12:08     **** Build number : 2022.1.1649790728       ** Copyright 2017-2022 Xilinx, Inc. All Rights Reserved.    
+// Tcl Message: connect_hw_server: Time (s): cpu = 00:00:01 ; elapsed = 00:00:11 . Memory (MB): peak = 1656.082 ; gain = 0.000 
+// Elapsed time: 11 seconds
+dismissDialog("Auto Connect"); // bA
+selectButton(PAResourceOtoP.ProgramDebugTab_OPEN_TARGET, "Open target"); // g
+selectMenuItem(PAResourceCommand.PACommandNames_OPEN_TARGET_WIZARD, "Open New Target..."); // ar
+// Run Command: PAResourceCommand.PACommandNames_OPEN_TARGET_WIZARD
+selectButton("NEXT", "Next >"); // JButton
+// HOptionPane Error: 'A server which has the same host name is already connected. Enter a different valid remote host name or select 'Local Server' before proceeding. (Duplicate Host Name)'
+// Elapsed time: 12 seconds
+selectButton("NEXT", "Next >"); // JButton
+selectButton("OptionPane.button", "OK"); // JButton
+selectComboBox(PAResourceOtoP.OpenTargetWizard_CONNECT_TO, "Remote server (target is on remote machine)", 1); // e
+// 'H' command handler elapsed time: 21 seconds
+dismissDialog("Open New Hardware Target"); // aN
+// Elapsed time: 51 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Implementation, Run Implementation]", 28, false); // n
+// Run Command: PAResourceCommand.PACommandNames_RUN_IMPLEMENTATION
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a
+// 'c' command handler elapsed time: 7 seconds
+dismissDialog("Reset and Re-run"); // i
+collapseTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Implementation, Open Implemented Design]", 29); // n
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Implementation, Open Implemented Design]", 29); // n
+// Elapsed time: 13 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Run Synthesis]", 14, false); // n
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+selectButton("OptionPane.button", "OK"); // JButton
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// Tcl Message: INFO: [Project 1-1161] Replacing file C:/Users/jules/Desktop/project_David-fpga/project_David-fpga.srcs/utils_1/imports/synth_1/TopLevelControlAlgo.dcp with file C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.runs/synth_1/TopLevelControlAlgo.dcp 
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Launch Runs"); // f
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs synth_1 -jobs 6 
+// Tcl Message: [Wed Jul  6 11:46:28 2022] Launched synth_1... Run output will be captured here: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.runs/synth_1/runme.log 
+// 'k' command handler elapsed time: 5 seconds
+dismissDialog("Starting Design Runs"); // bA
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// Elapsed time: 54 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// Run Command: PAResourceCommand.PACommandNames_RUN_IMPLEMENTATION
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Launch Runs"); // f
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -jobs 6 
+// Tcl Message: [Wed Jul  6 11:47:27 2022] Launched impl_1... Run output will be captured here: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.runs/impl_1/runme.log 
+// 'c' command handler elapsed time: 3 seconds
+dismissDialog("Starting Design Runs"); // bA
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// Elapsed time: 179 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// Run Command: PAResourceCommand.PACommandNames_GOTO_IMPLEMENTED_DESIGN
+// Tcl Message: open_run impl_1 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,654 MB. GUI used memory: 88 MB. Current time: 7/6/22, 11:50:30 AM CEST
+// [Engine Memory]: 2,136 MB (+610431kb) [00:29:57]
+// HMemoryUtils.trashcanNow. Engine heap size: 2,199 MB. GUI used memory: 88 MB. Current time: 7/6/22, 11:50:45 AM CEST
+// TclEventType: FLOORPLAN_MODIFY
+// TclEventType: DESIGN_NEW
+// HMemoryUtils.trashcanNow. Engine heap size: 2,728 MB. GUI used memory: 88 MB. Current time: 7/6/22, 11:50:49 AM CEST
+// [Engine Memory]: 2,757 MB (+538952kb) [00:30:08]
+// TclEventType: DESIGN_NEW
+// TclEventType: HFED_INIT_ROUTE_STORAGE_COMPLETED
+// [Engine Memory]: 2,897 MB (+2477kb) [00:30:10]
+// [GUI Memory]: 170 MB (+7839kb) [00:30:11]
+// DeviceView Instantiated
+// WARNING: HEventQueue.dispatchEvent() is taking  2417 ms.
+// TclEventType: CURR_DESIGN_SET
+// Tcl Message: INFO: [Device 21-403] Loading part xc7vx485tffg1157-1 
+// Tcl Message: Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2044.371 ; gain = 0.000 
+// Tcl Message: INFO: [Project 1-479] Netlist was created with Vivado 2022.1 INFO: [Project 1-570] Preparing netlist for logic optimization INFO: [Timing 38-478] Restoring timing data from binary archive. INFO: [Timing 38-479] Binary timing data restore complete. INFO: [Project 1-856] Restoring constraints from binary archive. INFO: [Project 1-853] Binary constraint restore complete. 
+// Tcl Message: Reading XDEF placement. Reading placer database... Reading XDEF routing. 
+// Tcl Message: Read XDEF Files: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.063 . Memory (MB): peak = 2840.492 ; gain = 0.000 
+// Tcl Message: Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB | 
+// Tcl Message: Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.063 . Memory (MB): peak = 2840.492 ; gain = 0.000 Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2840.492 ; gain = 0.000 
+// Tcl Message: INFO: [Project 1-111] Unisim Transformation Summary: No Unisim elements were transformed.  
+// Device view-level: 0,0
+// TclEventType: DRC_ADDED
+// RouteApi: Init Delay Mediator Swing Worker Finished
+// Tcl Message: open_run: Time (s): cpu = 00:00:29 ; elapsed = 00:00:27 . Memory (MB): peak = 3026.184 ; gain = 1370.102 
+// TclEventType: DRC_ADDED
+// TclEventType: METHODOLOGY_ADDED
+// Device view-level: 0,0
+// TclEventType: METHODOLOGY_ADDED
+// TclEventType: POWER_UPDATED
+// TclEventType: TIMING_SUMMARY_UPDATED
+// 'eq' command handler elapsed time: 29 seconds
+// Elapsed time: 29 seconds
+dismissDialog("Open Implemented Design"); // bA
+// Elapsed time: 124 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Methodology Violations"); // aV
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 335429, 718769); // E
+// Device view-level: 1,2
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 418591, 867606); // E
+// Device view-level: 1,9
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 431249, 881807); // E
+// Device view-level: 2,5
+// HMemoryUtils.trashcanNow. Engine heap size: 2,946 MB. GUI used memory: 134 MB. Current time: 7/6/22, 11:53:09 AM CEST
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 441208, 888879); // E
+// Device view-level: 3,1
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 447263, 891640); // E
+// Device view-level: 3,4
+// Device view-level: 3,1
+// Device view-level: 2,9
+// Device view-level: 2,6
+// Device view-level: 2,3
+// HMemoryUtils.trashcanNow. Engine heap size: 2,953 MB. GUI used memory: 135 MB. Current time: 7/6/22, 11:53:13 AM CEST
+// Device view-level: 2,0
+// Device view-level: 1,7
+// Device view-level: 1,4
+// Device view-level: 1,1
+// HMemoryUtils.trashcanNow. Engine heap size: 2,957 MB. GUI used memory: 136 MB. Current time: 7/6/22, 11:53:14 AM CEST
+// Device view-level: 0,8
+// Device view-level: 0,5
+// Device view-level: 0,2
+// Device view-level: 0,0
+// Device view-level: 0,0
+// HMemoryUtils.trashcanNow. Engine heap size: 2,957 MB. GUI used memory: 136 MB. Current time: 7/6/22, 11:53:15 AM CEST
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 253422, 699473); // E
+// Device view-level: 1,7
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 418199, 751758); // E
+// Device view-level: 2,2
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 430202, 763932); // E
+// Device view-level: 2,7
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 439803, 773227); // E
+// Device view-level: 3,3
+// Device view-level: 3,0
+// HMemoryUtils.trashcanNow. Engine heap size: 2,957 MB. GUI used memory: 135 MB. Current time: 7/6/22, 11:53:22 AM CEST
+// Device view-level: 2,7
+// Device view-level: 2,1
+// Device view-level: 1,8
+// Device view-level: 1,5
+// Device view-level: 1,2
+// HMemoryUtils.trashcanNow. Engine heap size: 2,957 MB. GUI used memory: 136 MB. Current time: 7/6/22, 11:53:24 AM CEST
+// Device view-level: 0,9
+// Device view-level: 0,6
+// Device view-level: 0,3
+// Device view-level: 0,0
+// Device view-level: 0,0
+// Device view-level: 0,0
+// HMemoryUtils.trashcanNow. Engine heap size: 2,958 MB. GUI used memory: 136 MB. Current time: 7/6/22, 11:53:26 AM CEST
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 50816, 291849); // E
+// Device view-level: 2,0
+// Device view-level: 1,7
+// Device view-level: 1,4
+// Device view-level: 1,1
+// HMemoryUtils.trashcanNow. Engine heap size: 2,960 MB. GUI used memory: 136 MB. Current time: 7/6/22, 11:53:31 AM CEST
+// Device view-level: 0,8
+// Device view-level: 0,5
+// Device view-level: 0,2
+// Device view-level: 0,0
+// Device view-level: 0,0
+// HMemoryUtils.trashcanNow. Engine heap size: 2,960 MB. GUI used memory: 158 MB. Current time: 7/6/22, 11:53:32 AM CEST
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, -118022, 721181); // E
+// Device view-level: 0,6
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 184672, 911550); // E
+// Device view-level: 1,4
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 178870, 942289); // E
+// Device view-level: 1,8
+// [GUI Memory]: 184 MB (+5215kb) [00:32:56]
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 227966, 988247); // E
+// Device view-level: 2,8
+// HMemoryUtils.trashcanNow. Engine heap size: 2,960 MB. GUI used memory: 137 MB. Current time: 7/6/22, 11:53:38 AM CEST
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 246719, 999401); // E
+// Device view-level: 3,5
+selectButton(PAResourceCommand.PACommandNames_FED_TOGGLE_ROUTING_RESOURCES, (String) null); // w: TRUE
+// Run Command: PAResourceCommand.PACommandNames_FED_TOGGLE_ROUTING_RESOURCES
+// Device view-level: 3,8
+// Device view-level: 2,7
+// Device view-level: 2,5
+// Device view-level: 2,3
+// HMemoryUtils.trashcanNow. Engine heap size: 2,971 MB. GUI used memory: 152 MB. Current time: 7/6/22, 11:53:47 AM CEST
+// Device view-level: 2,0
+// Device view-level: 1,8
+// Device view-level: 1,6
+// Device view-level: 1,2
+// [GUI Memory]: 203 MB (+10386kb) [00:33:06]
+// Device view-level: 0,9
+// HMemoryUtils.trashcanNow. Engine heap size: 2,978 MB. GUI used memory: 153 MB. Current time: 7/6/22, 11:53:49 AM CEST
+// Device view-level: 0,7
+// Device view-level: 0,5
+// Device view-level: 0,3
+// Device view-level: 0,1
+// Device view-level: 0,0
+// Device view-level: 0,0
+// HMemoryUtils.trashcanNow. Engine heap size: 2,982 MB. GUI used memory: 185 MB. Current time: 7/6/22, 11:53:50 AM CEST
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 1780429, 7419467); // E
+// Device view-level: 1,0
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2199709, 7739718); // E
+// Device view-level: 1,5
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2308335, 7816306); // E
+// Device view-level: 1,8
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2369179, 7878156); // E
+// Device view-level: 2,3
+// HMemoryUtils.trashcanNow. Engine heap size: 2,984 MB. GUI used memory: 154 MB. Current time: 7/6/22, 11:53:57 AM CEST
+selectButton(PAResourceCommand.PACommandNames_DRAW_PBLOCK_MODE, "Device_pblock_mode"); // w: TRUE
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2374748, 7888804); // E
+// Device view-level: 2,6
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2382459, 7901772); // E
+// Device view-level: 3,0
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2401809, 7911746); // E
+// Device view-level: 3,3
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2419293, 7916614); // E
+// Device view-level: 3,5
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2418171, 7918039); // E
+// Device view-level: 4,0
+// HMemoryUtils.trashcanNow. Engine heap size: 2,986 MB. GUI used memory: 165 MB. Current time: 7/6/22, 11:54:04 AM CEST
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2418621, 7919285); // E
+// Device view-level: 4,4
+// Device view-level: 4,2
+// Device view-level: 4,0
+// Device view-level: 3,8
+// Device view-level: 3,6
+// HMemoryUtils.trashcanNow. Engine heap size: 2,986 MB. GUI used memory: 155 MB. Current time: 7/6/22, 11:54:14 AM CEST
+// Elapsed time: 10 seconds
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2424844, 7917950); // E
+// Device view-level: 3,6
+// Device view-level: 3,1
+// HMemoryUtils.trashcanNow. Engine heap size: 2,986 MB. GUI used memory: 163 MB. Current time: 7/6/22, 11:54:17 AM CEST
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2425728, 7921205); // E
+// Device view-level: 3,7
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2424740, 7921564); // E
+// Device view-level: 3,8
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2430877, 7924100); // E
+// Device view-level: 4,2
+// [GUI Memory]: 213 MB (+114kb) [00:33:42]
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2433743, 7925155); // E
+// Device select: 'Cell - count[5]_i_1'
+selectView(PAResourceOtoP.PAViews_DEVICE, "Device", 264841, 862419, 1265, 555); // U
+// PAPropertyPanels.initPanels (count[5]_i_1 (LUT6)) elapsed time: 0.3s
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2433338, 7925302); // E
+// Device select: 'Site Wire - DI'
+selectView(PAResourceOtoP.PAViews_DEVICE, "Device", 264797, 862435, 1265, 555); // U
+// HMemoryUtils.trashcanNow. Engine heap size: 2,986 MB. GUI used memory: 161 MB. Current time: 7/6/22, 11:54:26 AM CEST
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2433329, 7925421); // E
+// Device select: 'Net - count_reg[5]'
+selectView(PAResourceOtoP.PAViews_DEVICE, "Device", 264796, 862448, 1265, 555); // U
+// Device view-level: 4,0
+// Device view-level: 3,7
+// Device view-level: 3,5
+// Device view-level: 3,3
+// HMemoryUtils.trashcanNow. Engine heap size: 2,986 MB. GUI used memory: 161 MB. Current time: 7/6/22, 11:54:29 AM CEST
+// Device view-level: 3,1
+// Device view-level: 2,9
+// Device view-level: 2,6
+// Device view-level: 2,4
+// Device view-level: 2,2
+// HMemoryUtils.trashcanNow. Engine heap size: 2,986 MB. GUI used memory: 161 MB. Current time: 7/6/22, 11:54:31 AM CEST
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2460194, 7891416); // E
+// Device select: 'Tile - VBRK_X80Y65'
+selectView(PAResourceOtoP.PAViews_DEVICE, "Device", 6964, 22338, 1265, 555); // U
+// Device view-level: 2,0
+// Device view-level: 1,8
+// Device view-level: 1,5
+// Device view-level: 1,3
+// HMemoryUtils.trashcanNow. Engine heap size: 2,986 MB. GUI used memory: 163 MB. Current time: 7/6/22, 11:54:34 AM CEST
+// Device view-level: 1,1
+// Device view-level: 0,9
+// Device view-level: 0,6
+// Device view-level: 0,4
+// Device view-level: 0,2
+// HMemoryUtils.trashcanNow. Engine heap size: 2,986 MB. GUI used memory: 165 MB. Current time: 7/6/22, 11:54:35 AM CEST
+// Device view-level: 0,0
+// Device view-level: 0,0
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 3410027, 5674838); // E
+// Device view-level: 0,7
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 4159975, 6634897); // E
+// Device view-level: 1,3
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 4251176, 7033251); // E
+// Device view-level: 2,2
+// HMemoryUtils.trashcanNow. Engine heap size: 2,986 MB. GUI used memory: 164 MB. Current time: 7/6/22, 11:54:39 AM CEST
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 4391507, 7077247); // E
+// Device view-level: 2,9
+// Device view-level: 2,7
+// Device view-level: 2,3
+// Device view-level: 2,0
+// Device view-level: 1,6
+// HMemoryUtils.trashcanNow. Engine heap size: 2,986 MB. GUI used memory: 165 MB. Current time: 7/6/22, 11:54:42 AM CEST
+// Device view-level: 1,4
+// Device view-level: 1,2
+// Device view-level: 0,9
+// Device view-level: 0,7
+// Device view-level: 0,5
+// HMemoryUtils.trashcanNow. Engine heap size: 2,986 MB. GUI used memory: 166 MB. Current time: 7/6/22, 11:54:43 AM CEST
+// Device view-level: 0,3
+// Device view-level: 0,1
+// Device view-level: 0,0
+// Device view-level: 0,0
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 1761257, 6767627); // E
+// Device view-level: 0,9
+// HMemoryUtils.trashcanNow. Engine heap size: 2,986 MB. GUI used memory: 165 MB. Current time: 7/6/22, 11:54:47 AM CEST
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2089720, 7404267); // E
+// Device view-level: 1,3
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2312175, 7710335); // E
+// Device view-level: 1,6
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2393890, 7882944); // E
+// Device view-level: 2,1
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 2412205, 7914725); // E
+// Device view-level: 3,3
+// Device view-level: 3,1
+// HMemoryUtils.trashcanNow. Engine heap size: 2,994 MB. GUI used memory: 165 MB. Current time: 7/6/22, 11:54:55 AM CEST
+// Device view-level: 2,9
+// Device view-level: 2,7
+// Device view-level: 2,4
+// Device view-level: 2,2
+// Device view-level: 2,0
+// HMemoryUtils.trashcanNow. Engine heap size: 2,994 MB. GUI used memory: 166 MB. Current time: 7/6/22, 11:54:57 AM CEST
+// Device view-level: 1,8
+// Device view-level: 1,6
+// Device view-level: 1,3
+// Device view-level: 1,1
+// Device view-level: 0,9
+// HMemoryUtils.trashcanNow. Engine heap size: 2,995 MB. GUI used memory: 167 MB. Current time: 7/6/22, 11:54:59 AM CEST
+// Device view-level: 0,7
+// Device view-level: 0,5
+// Device view-level: 0,2
+// Device view-level: 0,0
+// Device view-level: 0,2
+// HMemoryUtils.trashcanNow. Engine heap size: 2,997 MB. GUI used memory: 166 MB. Current time: 7/6/22, 11:55:03 AM CEST
+// Device view-level: 0,5
+// Device view-level: 0,7
+// Device view-level: 0,9
+// Device view-level: 1,1
+// HMemoryUtils.trashcanNow. Engine heap size: 2,997 MB. GUI used memory: 167 MB. Current time: 7/6/22, 11:55:04 AM CEST
+// Device view-level: 1,3
+// Device view-level: 1,1
+// Elapsed time: 15 seconds
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 5146544, 6541661); // E
+// Device view-level: 2,0
+// HMemoryUtils.trashcanNow. Engine heap size: 2,998 MB. GUI used memory: 167 MB. Current time: 7/6/22, 11:55:09 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,006 MB. GUI used memory: 167 MB. Current time: 7/6/22, 11:55:10 AM CEST
+// [GUI Memory]: 234 MB (+10317kb) [00:34:28]
+// HMemoryUtils.trashcanNow. Engine heap size: 3,017 MB. GUI used memory: 167 MB. Current time: 7/6/22, 11:55:10 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,020 MB. GUI used memory: 167 MB. Current time: 7/6/22, 11:55:11 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,020 MB. GUI used memory: 167 MB. Current time: 7/6/22, 11:55:11 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,020 MB. GUI used memory: 183 MB. Current time: 7/6/22, 11:55:11 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,020 MB. GUI used memory: 167 MB. Current time: 7/6/22, 11:55:11 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,020 MB. GUI used memory: 210 MB. Current time: 7/6/22, 11:55:12 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,021 MB. GUI used memory: 167 MB. Current time: 7/6/22, 11:55:13 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,048 MB. GUI used memory: 166 MB. Current time: 7/6/22, 11:55:13 AM CEST
+// [Engine Memory]: 3,048 MB (+6398kb) [00:34:32]
+// HMemoryUtils.trashcanNow. Engine heap size: 3,089 MB. GUI used memory: 167 MB. Current time: 7/6/22, 11:55:15 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,089 MB. GUI used memory: 167 MB. Current time: 7/6/22, 11:55:15 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,089 MB. GUI used memory: 167 MB. Current time: 7/6/22, 11:55:16 AM CEST
+// Device view-level: 1,8
+// Device view-level: 1,3
+// Device view-level: 1,1
+// Device view-level: 0,9
+// HMemoryUtils.trashcanNow. Engine heap size: 3,089 MB. GUI used memory: 167 MB. Current time: 7/6/22, 11:55:17 AM CEST
+// Device view-level: 0,7
+// Device view-level: 0,4
+// Device view-level: 0,2
+// Device view-level: 0,0
+// Device view-level: 0,0
+// HMemoryUtils.trashcanNow. Engine heap size: 3,089 MB. GUI used memory: 167 MB. Current time: 7/6/22, 11:55:18 AM CEST
+// Elapsed time: 12 seconds
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 1607883, 6901829); // E
+// Device view-level: 1,0
+// HMemoryUtils.trashcanNow. Engine heap size: 3,089 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:21 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,089 MB. GUI used memory: 167 MB. Current time: 7/6/22, 11:55:23 AM CEST
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 5273517, 7506785); // E
+// Device view-level: 2,5
+// Device view-level: 2,3
+// Device view-level: 2,1
+// Device view-level: 1,8
+// Device view-level: 1,6
+// HMemoryUtils.trashcanNow. Engine heap size: 3,091 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:28 AM CEST
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 5278933, 7405697); // E
+// Device view-level: 3,0
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:31 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:31 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:31 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:32 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 193 MB. Current time: 7/6/22, 11:55:32 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:32 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:32 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 171 MB. Current time: 7/6/22, 11:55:32 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:32 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 171 MB. Current time: 7/6/22, 11:55:32 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:33 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:33 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:33 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:34 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:34 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 171 MB. Current time: 7/6/22, 11:55:34 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:34 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:36 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:36 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:38 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 186 MB. Current time: 7/6/22, 11:55:38 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,092 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:39 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,096 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:40 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,096 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:41 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,096 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:41 AM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 3,096 MB. GUI used memory: 168 MB. Current time: 7/6/22, 11:55:41 AM CEST
+// Elapsed time: 14 seconds
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 5294722, 4443147); // E
+// Device view-level: 4,2
+selectGraphicalView(PAResourceOtoP.PAViews_DEVICE, 5299079, 4445274); // E
+// Device select: 'Cell - CLOCK_IBUF_BUFG_inst'
+selectView(PAResourceOtoP.PAViews_DEVICE, "Device", 572965, 480647, 1265, 555); // U
+// Device view-level: 4,0
+// Device view-level: 3,7
+// Device view-level: 3,3
+// Device view-level: 2,9
+// HMemoryUtils.trashcanNow. Engine heap size: 3,096 MB. GUI used memory: 170 MB. Current time: 7/6/22, 11:55:49 AM CEST
+// Device view-level: 2,6
+// Device view-level: 2,4
+// Device view-level: 2,0
+// Device view-level: 1,7
+// HMemoryUtils.trashcanNow. Engine heap size: 3,096 MB. GUI used memory: 170 MB. Current time: 7/6/22, 11:55:50 AM CEST
+// Device view-level: 1,5
+// Device view-level: 1,3
+// Device view-level: 1,1
+// Elapsed time: 15 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 43, false); // n
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// 'cW' command handler elapsed time: 8 seconds
+dismissDialog("Launch Runs"); // cZ
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 6 
+// Tcl Message: [Wed Jul  6 11:56:11 2022] Launched impl_1... Run output will be captured here: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.runs/impl_1/runme.log 
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// Elapsed time: 64 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// Run Command: PAResourceCommand.PACommandNames_LOG_WINDOW
+dismissDialog("Bitstream Generation Failed"); // ag
+// Elapsed time: 172 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Open Target]", 45, false); // n
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HW_TARGET
+selectMenuItem(PAResourceCommand.PACommandNames_AUTO_CONNECT_TARGET, "Auto Connect"); // ar
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl Command: 'rdi::info_commands get_hw_probes'
+closeView(PAResourceOtoP.PAViews_PROJECT_SUMMARY, "Project Summary"); // v
+// Run Command: PAResourceCommand.PACommandNames_AUTO_CONNECT_TARGET
+// TclEventType: HW_OBJECT_DELETE
+// TclEventType: HW_SERVER_CLOSE
+// Tcl Message: disconnect_hw_server localhost:3121 
+// TclEventType: HW_SERVER_UPDATE
+// Tcl Message: connect_hw_server -allow_non_jtag 
+// Tcl Message: INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121 INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:3042 INFO: [Labtools 27-3414] Connected to existing cs_server. 
+// TclEventType: HW_TARGET_NEEDS_CLOSE
+// TclEventType: HW_SERVER_UPDATE
+// Elapsed time: 46 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Open Target]", 43, false); // n
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HW_TARGET
+selectMenuItem(PAResourceCommand.PACommandNames_AUTO_CONNECT_TARGET, "Auto Connect"); // ar
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_AUTO_CONNECT_TARGET
+// TclEventType: HW_OBJECT_DELETE
+// TclEventType: HW_SERVER_CLOSE
+// Tcl Message: disconnect_hw_server localhost:3121 
+// Tcl Message: connect_hw_server -allow_non_jtag 
+// Tcl Message: INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121 
+// TclEventType: HW_SERVER_UPDATE
+// Tcl Message: INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:3042 INFO: [Labtools 27-3414] Connected to existing cs_server. 
+// TclEventType: HW_TARGET_CHANGE
+// TclEventType: HW_TARGET_CLOSE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_ADD
+// TclEventType: HW_TARGET_UPDATE
+// WARNING: HEventQueue.dispatchEvent() is taking  6388 ms.
+// Tcl Message: open_hw_target 
+// Tcl Message: INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210276A79557B 
+// HMemoryUtils.trashcanNow. Engine heap size: 4,691 MB. GUI used memory: 229 MB. Current time: 7/6/22, 12:01:05 PM CEST
+// Tcl Message: open_hw_target: Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 5454.387 ; gain = 1937.375 
+// Tcl Message: current_hw_device [get_hw_devices xc7a200t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a200t_0] 0] 
+// Tcl Message: INFO: [Labtools 27-1435] Device xc7a200t (JTAG device index = 0) is not programmed (DONE status = 0). 
+dismissDialog("Auto Connect"); // bA
+// [Engine Memory]: 4,701 MB (+1573689kb) [00:40:24]
+// Elapsed time: 10 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 41, false); // n
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Launch Runs"); // cZ
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run impl_1 -prev_step  
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 6 
+// Tcl Message: [Wed Jul  6 12:01:19 2022] Launched impl_1... Run output will be captured here: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.runs/impl_1/runme.log 
+// TclEventType: RUN_STATUS_CHANGE
+// HMemoryUtils.trashcanNow. Engine heap size: 4,713 MB. GUI used memory: 171 MB. Current time: 7/6/22, 12:01:25 PM CEST
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// Elapsed time: 99 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// Run Command: PAResourceCommand.PACommandNames_LOG_WINDOW
+dismissDialog("Bitstream Generation Failed"); // ag
+selectTab(PAResourceItoN.LogView_TABBED_PANE, (HResource) null, "Implementation", 1); // i
+selectTab(PAResourceItoN.LogView_TABBED_PANE, (HResource) null, "Simulation", 2); // i
+selectTab(PAResourceItoN.LogView_TABBED_PANE, (HResource) null, "Implementation", 1); // i
+selectCodeEditor(PAResourceItoN.LogMonitor_MONITOR, 333, 477); // T
+selectCodeEditor(PAResourceItoN.LogMonitor_MONITOR, 333, 477, false, false, false, false, true); // T - Double Click
+selectTab(PAResourceItoN.LogView_TABBED_PANE, (HResource) null, "Synthesis", 0); // i
+// Elapsed time: 84 seconds
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, (String) null, 14, false); // ah
+// Elapsed time: 181 seconds
+selectButton(PAResourceCommand.PACommandNames_READ_SIO_SCAN, "Serial I/O Scans_read_sio_scan"); // D
+// Run Command: PAResourceCommand.PACommandNames_READ_SIO_SCAN
+dismissFileChooser();
+// 's' command handler elapsed time: 3 seconds
+selectButton(PAResourceEtoH.HardwareSioLinksView_CREATE, "Serial I/O Links_Create"); // z
+// Elapsed time: 15 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Open Target]", 43, false); // n
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HW_TARGET
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 44, false); // n
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 44, false); // n
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7a200t_0"); // ar
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a
+// 'I' command handler elapsed time: 3 seconds
+dismissDialog("Program Device"); // bC
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Add Configuration Memory Device]", 45, false); // n
+// Run Command: PAResourceCommand.PACommandNames_ADD_CONFIG_MEMORY
+selectMenuItem((HResource) null, "xc7a200t_0"); // ar
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_ADD_CONFIG_MEMORY
+selectTable(PAResourceAtoD.CfgMemPartChooser_TABLE, "28f00ap33e-bpi-x16 ; 28f00ap33e ; Micron ;  ; p33 ; bpi ; 1024 ; x16", 6, "28f00ap33e", 1); // f
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// 'a' command handler elapsed time: 12 seconds
+dismissDialog("Add Configuration Memory Device"); // aQ
+// TclEventType: HW_CFGMEM_CREATE
+// TclEventType: HW_CFGMEM_PART_CHANGE
+// Tcl Message: create_hw_cfgmem -hw_device [lindex [get_hw_devices xc7a200t_0] 0] [lindex [get_cfgmem_parts {28f00ap33e-bpi-x16}] 0] 
+// Tcl Message: set_property PROGRAM.BLANK_CHECK  0 [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7a200t_0] 0]] 
+// Tcl Message: set_property PROGRAM.ERASE  1 [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7a200t_0] 0]] 
+// Tcl Message: set_property PROGRAM.CFG_PROGRAM  1 [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7a200t_0] 0]] 
+// Tcl Message: set_property PROGRAM.VERIFY  1 [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7a200t_0] 0]] 
+// Tcl Message: set_property PROGRAM.CHECKSUM  0 [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7a200t_0] 0]] 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7a200t_0] 0] 
+// Tcl Message: INFO: [Labtools 27-1435] Device xc7a200t (JTAG device index = 0) is not programmed (DONE status = 0). 
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a
+dismissDialog("Add Configuration Memory Device Completed"); // A
+// Elapsed time: 58 seconds
+selectButton(PAResourceTtoZ.TaskBanner_CLOSE, (String) null); // j
+closeTask("Program and Debug", "Hardware Manager", "DesignTask.PROGRAM_DEBUG");
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Confirm Close"); // A
+// TclEventType: HW_OBJECT_DELETE
+// TclEventType: HW_SERVER_CLOSE
+// TclEventType: HW_SYSMON_DELETE
+// TclEventType: HW_TARGET_CLOSE
+// TclEventType: HW_TARGET_UPDATE
+// TclEventType: DEBUG_PROBE_DELETE
+// TclEventType: HW_SESSION_CLOSE
+// HMemoryUtils.trashcanNow. Engine heap size: 4,714 MB. GUI used memory: 166 MB. Current time: 7/6/22, 12:09:29 PM CEST
+// Tcl Message: close_hw_manager 
+dismissDialog("Close Hardware Manager"); // bA
+// Elapsed time: 10 seconds
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, TopLevelControlAlgo(Behavioral) (TopLevelControlAlgo.vhd)]", 1); // D
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints]", 9); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1, Nexys-Video-Master.xdc]", 11, false); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1, Nexys-Video-Master.xdc]", 11, false, false, false, false, false, true); // D - Double Click
+// WARNING: HEventQueue.dispatchEvent() is taking  2148 ms.
+dismissDialog("Opening Editor"); // bA
+// Elapsed time: 30 seconds
+selectTab(PAResourceItoN.LogView_TABBED_PANE, (HResource) null, "Simulation", 2); // i
+selectTab(PAResourceItoN.LogView_TABBED_PANE, (HResource) null, "Implementation", 1); // i
+// Elapsed time: 10 seconds
+expandTree(PAResourceItoN.NavigableTimingReportTab_TIMING_REPORT_NAVIGATION_TREE, "[Root, Check Timing]", 4); // a
+// Elapsed time: 1464 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 43, false); // n
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Launch Runs"); // cZ
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run impl_1 -prev_step  
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 6 
+// Tcl Message: [Wed Jul  6 12:34:55 2022] Launched impl_1... Run output will be captured here: C:/Users/jules/Desktop/Travail/VHDL_Master_Camp/ProjetMicJulesSynth/ProjetMicJulesSynth.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bA
+// TclEventType: RUN_STATUS_CHANGE
+// Elapsed time: 34 seconds
+selectTab("PAResourceOtoP.PAViews_METHODOLOGY", (HResource) null, "impl_1 (7 violations) (saved)", 0); // d
+// getNetLoadDelay takes 1020 ms for   net CptLed/CLOCK pin CptLed/TestLedClk_reg/C
+// PAPropertyPanels.initPanels (C) elapsed time: 1.2s
+// WARNING: HEventQueue.dispatchEvent() is taking  1419 ms.
+// Elapsed time: 16 seconds
+selectLabel((HResource) null, "CptLed/CLOCK"); // l
+selectLabel((HResource) null, "CptLed/TestLedClk_reg"); // l
+selectLabel((HResource) null, "CptLed/CLOCK"); // l
+selectLabel((HResource) null, "CptLed/TestLedClk_reg"); // l
+selectLabel((HResource) null, "CK"); // l
+selectLabel((HResource) null, "AFF"); // l
+selectLabel((HResource) null, "SLICE_X47Y61"); // l
+selectButton(PAResourceTtoZ.VioResultsTab_GROUP_BY_RULE, "DRC_groupbytype"); // w: FALSE
+selectButton(PAResourceTtoZ.VioResultsTab_GROUP_BY_RULE, "DRC_groupbytype"); // w: TRUE
+selectButton(PAResourceTtoZ.VioResultsTab_GROUP_BY_RULE, "DRC_groupbytype"); // w: FALSE
+selectButton(PAResourceTtoZ.VioResultsTab_GROUP_BY_RULE, "DRC_groupbytype"); // w: TRUE
+// Elapsed time: 20 seconds
+closeFrame(PAResourceOtoP.PAViews_MESSAGES, "Messages"); // aA
+selectMenu(RDIResource.MainWinMenuMgr_LAYOUT, "Layout"); // aj
+selectMenuItem(RDIResource.MainWinMenuMgr_LOAD, "Default Layout"); // ar
+dismissMenu(RDIResource.MainWinMenuMgr_LAYOUT, "Layout"); // aj
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// Run Command: PAResourceCommand.PACommandNames_LOG_WINDOW
+dismissDialog("Bitstream Generation Failed"); // ag
+selectTreeTable(PAResourceEtoH.ExpRunTreePanel_EXP_RUN_TREE_TABLE, "impl_1 ; constrs_1 ; write_bitstream ERROR ; NA ; NA ; NA ; NA ;  ; NA ; 0.6907090544700623 ; 0 ; 7 CW ;  ;  ; 5 ; 7 ; 0.0 ; 0 ; 0 ; Wed Jul 06 11:47:40 CEST 2022 ; 00:02:23 ; Vivado Implementation Defaults (Vivado Implementation 2022) ; Vivado Implementation Default Reports (Vivado Implementation 2022) ; xc7vx485tffg1157-1 ; Default settings for Implementation.", 1, "0.6907090544700623", 11, false); // az
+// PAPropertyPanels.initPanels (impl_1) elapsed time: 0.4s
+selectTreeTable(PAResourceEtoH.ExpRunTreePanel_EXP_RUN_TREE_TABLE, "impl_1 ; constrs_1 ; write_bitstream ERROR ; NA ; NA ; NA ; NA ;  ; NA ; 0.6907090544700623 ; 0 ; 7 CW ;  ;  ; 5 ; 7 ; 0.0 ; 0 ; 0 ; Wed Jul 06 11:47:40 CEST 2022 ; 00:02:23 ; Vivado Implementation Defaults (Vivado Implementation 2022) ; Vivado Implementation Default Reports (Vivado Implementation 2022) ; xc7vx485tffg1157-1 ; Default settings for Implementation.", 1, "0.6907090544700623", 11, false, false, false, false, false, true); // az - Double Click
+selectTreeTable(PAResourceEtoH.ExpRunTreePanel_EXP_RUN_TREE_TABLE, "impl_1 ; constrs_1 ; write_bitstream ERROR ; NA ; NA ; NA ; NA ;  ; NA ; 0.6907090544700623 ; 0 ; 7 CW ;  ;  ; 5 ; 7 ; 0.0 ; 0 ; 0 ; Wed Jul 06 11:47:40 CEST 2022 ; 00:02:23 ; Vivado Implementation Defaults (Vivado Implementation 2022) ; Vivado Implementation Default Reports (Vivado Implementation 2022) ; xc7vx485tffg1157-1 ; Default settings for Implementation.", 1, "0.6907090544700623", 11, false); // az
+// Elapsed time: 14 seconds
+selectTreeTable(PAResourceEtoH.ExpRunTreePanel_EXP_RUN_TREE_TABLE, "impl_1 ; constrs_1 ; write_bitstream ERROR ; NA ; NA ; NA ; NA ;  ; NA ; 0.6907090544700623 ; 0 ; 7 CW ;  ;  ; 5 ; 7 ; 0.0 ; 0 ; 0 ; Wed Jul 06 11:47:40 CEST 2022 ; 00:02:23 ; Vivado Implementation Defaults (Vivado Implementation 2022) ; Vivado Implementation Default Reports (Vivado Implementation 2022) ; xc7vx485tffg1157-1 ; Default settings for Implementation.", 1, "impl_1", 0, false); // az
+selectTreeTable(PAResourceEtoH.ExpRunTreePanel_EXP_RUN_TREE_TABLE, "impl_1 ; constrs_1 ; write_bitstream ERROR ; NA ; NA ; NA ; NA ;  ; NA ; 0.6907090544700623 ; 0 ; 7 CW ;  ;  ; 5 ; 7 ; 0.0 ; 0 ; 0 ; Wed Jul 06 11:47:40 CEST 2022 ; 00:02:23 ; Vivado Implementation Defaults (Vivado Implementation 2022) ; Vivado Implementation Default Reports (Vivado Implementation 2022) ; xc7vx485tffg1157-1 ; Default settings for Implementation.", 1, "impl_1", 0, false); // az
+selectTreeTable(PAResourceEtoH.ExpRunTreePanel_EXP_RUN_TREE_TABLE, "impl_1 ; constrs_1 ; write_bitstream ERROR ; NA ; NA ; NA ; NA ;  ; NA ; 0.6907090544700623 ; 0 ; 7 CW ;  ;  ; 5 ; 7 ; 0.0 ; 0 ; 0 ; Wed Jul 06 11:47:40 CEST 2022 ; 00:02:23 ; Vivado Implementation Defaults (Vivado Implementation 2022) ; Vivado Implementation Default Reports (Vivado Implementation 2022) ; xc7vx485tffg1157-1 ; Default settings for Implementation.", 1, "impl_1", 0, false, false, false, false, false, true); // az - Double Click
+selectTreeTable(PAResourceEtoH.ExpRunTreePanel_EXP_RUN_TREE_TABLE, "impl_1 ; constrs_1 ; write_bitstream ERROR ; NA ; NA ; NA ; NA ;  ; NA ; 0.6907090544700623 ; 0 ; 7 CW ;  ;  ; 5 ; 7 ; 0.0 ; 0 ; 0 ; Wed Jul 06 11:47:40 CEST 2022 ; 00:02:23 ; Vivado Implementation Defaults (Vivado Implementation 2022) ; Vivado Implementation Default Reports (Vivado Implementation 2022) ; xc7vx485tffg1157-1 ; Default settings for Implementation.", 1, "impl_1", 0, false); // az
+// HMemoryUtils.trashcanNow. Engine heap size: 4,714 MB. GUI used memory: 170 MB. Current time: 7/6/22, 12:39:32 PM CEST
+// WARNING: HEventQueue.dispatchEvent() is taking  898320 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 4,714 MB. GUI used memory: 169 MB. Current time: 7/6/22, 2:09:32 PM CEST

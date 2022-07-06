@@ -40,9 +40,9 @@
             
             var list =[];
 
-            var ladate=new Date();
-            var dateDuJour = (ladate.getDate()+"-"+(ladate.getMonth()+1)+"-"+ladate.getFullYear());
-            var moisActuel = ladate.getFullYear() + "-" + (ladate.getMonth() + 1);
+            var ladate=new Date();            
+            var dateDuJour = ladate.getFullYear() + '-' + ('0' + (ladate.getMonth()+1)).slice(-2) + '-' + ('0' + ladate.getDate()).slice(-2);
+            var moisActuel = ladate.getFullYear() + '-' + ('0' + (ladate.getMonth()+1)).slice(-2);
             var anneeActuel = (ladate.getFullYear());
 
             var xaxis = [];
@@ -80,7 +80,7 @@
                     }
                     
                     else if(new_display == "day"){
-                        if(dateDuJour == list[element][1]){
+                        if(list[element][1].startsWith(dateDuJour)){
                             yaxis.push(list[element][0]);
                             xaxis.push(list[element][1]);
                         }
@@ -95,7 +95,7 @@
                     }
 
                     else if(new_display == "year"){
-                        if(list[element][1].endsWith(anneeActuel)){
+                        if(list[element][1].startsWith(anneeActuel)){
                             yaxis.push(list[element][0]);
                             xaxis.push(list[element][1]);
                         }
@@ -129,7 +129,7 @@
                             xAxes: [{
                                 scaleLabel: {
                                     display: true,
-                                    labelString: 'Temps en jours'
+                                    labelString: 'Date'
                                 }
                             }]
                         }

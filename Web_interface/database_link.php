@@ -23,6 +23,13 @@
             echo $row["data_valeur"];
         }
     }
+
+    function create_log($conn, $var, $val, $module_ID){
+        $query = "  INSERT into logs ('log_datetime','log_variable','log_done','log_value','module_ID') 
+                    VALUES ('".date('Y-m-d H:i:s')."','".$var."',0,'".$val."','".$module_ID."');";
+                    
+        $result = mysqli_query($conn, $query);
+    }
     
     if (!empty($_POST["type_cmd"]) || !empty($_POST["cmd"])){
         if ($_POST["type_cmd"] == "w"){
@@ -641,5 +648,10 @@
                     break;
             }
         }   
+    }
+
+
+    if (!empty($_POST["graph"])){
+
     }
 ?>

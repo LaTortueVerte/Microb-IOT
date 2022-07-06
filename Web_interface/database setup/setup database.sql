@@ -78,6 +78,13 @@ CREATE TABLE belongs(
    FOREIGN KEY(module_ID) REFERENCES modules(module_ID)
 );
 
+CREATE TABLE graph ( 
+   graph_ID INT NOT NULL AUTO_INCREMENT ,  
+   graphe_event DATETIME NOT NULL ,
+   graph_variable DOUBLE NOT NULL ,    
+   PRIMARY KEY  (graph_ID)
+) ENGINE = InnoDB;
+
 INSERT INTO `users` (`user_ID`, `user_email`, `user_name`, `user_pwd`, `user_role`) VALUES ('1', 'user@mail.com', 'user1', 'c92e5ffb0d3cd851b0609410147692f6', '0'); -- tortue
 INSERT INTO `component_catalogue` (`component_catalogue_ID`, `component_catalogue_name`, `component_catalogue_role`) VALUES ('1', 'Ventilateur3000', '1'); -- composant ventilateur
 INSERT INTO `component_catalogue` (`component_catalogue_ID`, `component_catalogue_name`, `component_catalogue_role`) VALUES (NULL, 'TemperatureSeter3000', '0'); -- composant thermometre

@@ -249,7 +249,7 @@
 
         //Graph button 
         document.getElementById("graph").onclick = function () {
-            location.href = "graphique.html";
+            location.href = "graphique.php";
         };
 
         // Ventilation On button

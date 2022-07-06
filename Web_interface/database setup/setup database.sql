@@ -35,7 +35,7 @@ CREATE TABLE component_catalogue(
 CREATE TABLE logs(
    log_ID INT NOT NULL AUTO_INCREMENT,
    log_datetime DATETIME,
-   log_variable INT,
+   log_variable VARCHAR(255),
    log_done BOOLEAN,
    log_value DOUBLE,
    module_ID INT NOT NULL,

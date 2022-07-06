@@ -455,3 +455,7 @@ WHERE data_variable = 'Etat_buzzer';
 CREATE TABLE `mbiot`.`graph` ( `graph_ID` INT NOT NULL AUTO_INCREMENT ,  `graphe_event` DATETIME NOT NULL ,  `graph_variable` DOUBLE NOT NULL ,    PRIMARY KEY  (`graph_ID`)) ENGINE = InnoDB;
 SELECT graph_event, graph_variable FROM `graph`
 INSERT INTO `graph`(`graph_ID`,`graph_event`,`graph_variable`)VALUES (NULL, ".$_POST["time"].", ".$_POST["temp"].");
+SELECT log_ID FROM `logs` WHERE log_done = 0 ORDER BY log_datetime ASC LIMIT 1;
+UPDATE logs    
+set  log_done = 1
+WHERE log_ID = (SELECT log_ID FROM `logs` WHERE log_done = 0 ORDER BY log_datetime ASC LIMIT 1);

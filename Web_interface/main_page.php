@@ -73,8 +73,7 @@
 
     </nav>
     <div class="second-nav-bar">
-        <button type="button" class="btn btn-outline-primary">Graphiques</button>
-        <button type="button" class="btn btn-outline-primary">Modules</button>
+        <button type="button" id="graph" class="btn btn-outline-primary">Graphiques</button>
     </div>
 
 
@@ -207,6 +206,7 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script type="text/javascript">
+        
 
         // -----------------------------------------------------------------------
         // Button & Input Events 
@@ -248,6 +248,11 @@
         // LogOut button event
         document.getElementById("logout_button").onclick = function () {
             location.href = "logout.php";
+        };
+
+        //Graph button 
+        document.getElementById("graph").onclick = function () {
+            location.href = "graphique.html";
         };
 
         // Ventilation On button

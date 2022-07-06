@@ -58,6 +58,7 @@
                         on b.user_ID = u.user_ID
                     where data_variable = 'Etat_ventilateur';";
                     read($conn, $query);
+                    create_log($conn, 'Etat_ventilateur', 1, 1);
                     break;
                 case "ventilation_off_button":
                     $query = "UPDATE data_component dc
@@ -83,6 +84,7 @@
                         on b.user_ID = u.user_ID
                     where data_variable = 'Etat_ventilateur';";
                     read($conn, $query);
+                    create_log($conn, 'Etat_ventilateur', 0, 1);
                     break;
                 case "ventilation_power_input_range":
                     if (!empty($_POST["val"])){
@@ -110,6 +112,7 @@
                         where data_variable = 'Puissance_ventilateur';
                         ";
                         read($conn, $query);
+                        create_log($conn, 'Puissance_ventilateur', $_POST["val"], 1);
                     }
                     break;
                 case "TempMin_input":
@@ -137,6 +140,7 @@
                             on b.user_ID = u.user_ID
                         where data_variable = 'temperature_min';";
                         read($conn, $query);
+                        create_log($conn, 'temperature_min', $_POST["val"], 1);
                     }
                     break;
                 case "TempMax_input":
@@ -164,6 +168,7 @@
                             on b.user_ID = u.user_ID
                         where data_variable = 'temperature_max';";
                         read($conn, $query);
+                        create_log($conn, 'temperature_max', $_POST["val"], 1);
                     }
                     break;
                 case "water_pump_on_button":
@@ -190,6 +195,7 @@
                         on b.user_ID = u.user_ID
                     where data_variable = 'Etat_pompe';";
                     read($conn, $query);
+                    create_log($conn, 'Etat_pompe', 1, 2);
                     break;
                 case "water_pump_off_button":
                     $query = "UPDATE data_component dc
@@ -215,6 +221,7 @@
                         on b.user_ID = u.user_ID
                     where data_variable = 'Etat_pompe';";
                     read($conn, $query);
+                    create_log($conn, 'Etat_pompe', 0, 2);
                     break;
                 case "door_opened_button":
                     $query = "UPDATE data_component dc
@@ -240,6 +247,7 @@
                         on b.user_ID = u.user_ID
                     where data_variable = 'Etat_porte';";
                     read($conn, $query);
+                    create_log($conn, 'Etat_porte', 1, 4);
                     break;
                 case "door_closed_button":
                     $query = "UPDATE data_component dc
@@ -265,6 +273,7 @@
                         on b.user_ID = u.user_ID
                     where data_variable = 'Etat_porte';";
                     read($conn, $query);
+                    create_log($conn, 'Etat_porte', 0, 4);
                     break;
                 case "window_opened_button":
                     $query = "UPDATE data_component dc
@@ -290,6 +299,7 @@
                         on b.user_ID = u.user_ID
                     where data_variable = 'Etat_fenetre';";
                     read($conn, $query);
+                    create_log($conn, 'Etat_fenetre', 1, 1);
                     break;
                 case "window_closed_button":
                     $query = "UPDATE data_component dc
@@ -315,6 +325,7 @@
                         on b.user_ID = u.user_ID
                     where data_variable = 'Etat_fenetre';";
                     read($conn, $query);
+                    create_log($conn, 'Etat_fenetre', 0, 1);
                     break;
                 case "security_on_button":
                     $query = "UPDATE data_component dc
@@ -340,6 +351,7 @@
                         on b.user_ID = u.user_ID
                     where data_variable = 'Etat_intrusion';";
                     read($conn, $query);
+                    create_log($conn, 'Etat_intrusion', 1, 4);
                     break;
                 case "security_off_button":
                     $query = "UPDATE data_component dc
@@ -365,6 +377,7 @@
                         on b.user_ID = u.user_ID
                     where data_variable = 'Etat_intrusion';";
                     read($conn, $query);
+                    create_log($conn, 'Etat_intrusion', 0, 4);
                     break;
                 case "buzzer_on_button":
                     $query = "UPDATE data_component dc
@@ -390,6 +403,7 @@
                         on b.user_ID = u.user_ID
                     where data_variable = 'Etat_buzzer';";
                     read($conn, $query);
+                    create_log($conn, 'Etat_buzzer', 1, 4);
                     break;
                 case "buzzer_off_button":
                     $query = "UPDATE data_component dc
@@ -415,6 +429,7 @@
                         on b.user_ID = u.user_ID
                     where data_variable = 'Etat_buzzer';";
                     read($conn, $query);
+                    create_log($conn, 'Etat_buzzer', 0, 4);
                     break;
                 default;
                     break;

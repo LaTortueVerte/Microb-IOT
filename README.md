@@ -33,19 +33,19 @@ This one allows first to make the link between the FPGA and the Arduino but espe
 ---
 
 
-les B'IoT sont des modules plug & play qui s'ajoute aux module principaux pour y ajouter un capteur avec son actionneur.
+les B'IoT sont des modules plug & play qui s'ajoutent aux modules principaux pour y ajouter un capteur avec son actionneur.
 
 
 Afin de pouvoir réaliser cette solution, nous allons utiliser un ensemble de cartes programmables. 
-D'abord, un FPGA auquel sera attaché une caméra ainsi qu'un PIR sensor (détecteur de présence). 
-Encore, un Arduino sur lesquels pourront être attachés des modules selon les besoins des utilisateurs. 
+D'abord, une carte FPGA sur laquelle sera attachée une caméra ainsi qu'un PIR sensor (détecteur de présence). 
+Encore, une carte Arduino sur lequel pourront être attachés des modules selon les besoins des utilisateurs. 
 Ces modules sont donc;  
 Capteurs DHT11 qui renverra la température et l'humidité de la salle afin de la renvoyer à l'utilisateur
 Une caméra thermique ainsi qu'un capteur MQ2 qui va détecter la présence de fumée dans la salle l'actionneur permettra ici d'ouvrir une valve d'eau qui éteindra l'incendie 
 Un capteur de niveau d'eau qui détectera une inondation, l'actionneur sera ici une petite pompe pour vider l'eau.
 
-Enfin le dernière carte sera un Raspberry Pi qui communiquera grâce au protocole UART avec l'Arduino ainsi qu'avec le FPGA. 
-Celui-ci permet d’abord de faire le lien entre le FPGA et l’Arduino mais surtout de pouvoir les faire communiquer avec le cloud via AWS. 
+Enfin le dernière carte sera une Raspberry Pi qui communiquera grâce au protocole UART avec l'Arduino ainsi qu'avec le FPGA. 
+Celui-ci permet d’abord de faire le lien entre la carte FPGA et l’Arduino mais surtout de pouvoir les faire communiquer avec le cloud via AWS. 
 
 
 

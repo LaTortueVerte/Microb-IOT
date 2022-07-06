@@ -450,3 +450,6 @@ inner join users u
 	on b.user_ID = u.user_ID     
 set  data_valeur = 0
 WHERE data_variable = 'Etat_buzzer';
+
+
+CREATE TABLE `mbiot`.`graph` ( `graph_ID` INT NOT NULL AUTO_INCREMENT ,  `graphe_event` DATETIME NOT NULL ,  `graph_variable` DOUBLE NOT NULL ,    PRIMARY KEY  (`graph_ID`)) ENGINE = InnoDB;

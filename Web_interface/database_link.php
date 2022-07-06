@@ -666,6 +666,13 @@
 
 
     if (!empty($_POST["graph"])){
-
+        $sql = "SELECT graph_variable, graph_event  FROM graph";
+        $result = mysqli_query($conn, $sql);// Execute query to database
+        if (!$result){
+            return null;
+        }
+        while($row = mysqli_fetch_array($result)){
+            echo "|".$row["graph_variable"]."_".$row["graph_event"];
+        }
     }
 ?>

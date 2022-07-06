@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS component;
 DROP TABLE IF EXISTS component_catalogue;
 DROP TABLE IF EXISTS modules;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS graph;
 
 CREATE TABLE users(
    user_ID INT NOT NULL AUTO_INCREMENT,
@@ -80,7 +81,7 @@ CREATE TABLE belongs(
 
 CREATE TABLE graph ( 
    graph_ID INT NOT NULL AUTO_INCREMENT ,  
-   graphe_event DATETIME NOT NULL ,
+   graph_event DATETIME NOT NULL ,
    graph_variable DOUBLE NOT NULL ,    
    PRIMARY KEY  (graph_ID)
 ) ENGINE = InnoDB;

@@ -38,11 +38,11 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script>
             
-            var list =[['12', '5-7-2022 23:56:25'], ['10', '5-7-2022 23:56:25'], ['15', '6-7-2022 23:56:25'], ['19', '6-7-2022 23:56:25'], ['9', '7-7-2022 23:56:25'], ['9', '7-8-2022 23:56:25'], ['9', '7-8-2022 23:54:25'], ['9', '7-7-2023 23:56:25'], ['9', '7-7-2023 23:56:25'], ];
+            var list =[];
 
             var ladate=new Date();
             var dateDuJour = (ladate.getDate()+"-"+(ladate.getMonth()+1)+"-"+ladate.getFullYear());
-            var moisActuel = ((ladate.getMonth()+1)+"-"+ladate.getFullYear());
+            var moisActuel = ladate.getFullYear() + "-" + (ladate.getMonth() + 1);
             var anneeActuel = (ladate.getFullYear());
 
             var xaxis = [];
@@ -79,21 +79,22 @@
                         xaxis.push(list[element][1]);
                     }
                     
-                    if(new_display == "day"){
+                    else if(new_display == "day"){
                         if(dateDuJour == list[element][1]){
                             yaxis.push(list[element][0]);
                             xaxis.push(list[element][1]);
                         }
                     }
 
-                    if(new_display == "month"){
-                        if(list[element][1].endsWith(moisActuel)){
+                    else if(new_display == "month"){
+                        console.log(list[element][1] + " : " + moisActuel);
+                        if(list[element][1].startsWith(moisActuel)){
                             yaxis.push(list[element][0]);
                             xaxis.push(list[element][1]);
                         }
                     }
 
-                    if(new_display == "year"){
+                    else if(new_display == "year"){
                         if(list[element][1].endsWith(anneeActuel)){
                             yaxis.push(list[element][0]);
                             xaxis.push(list[element][1]);
@@ -144,7 +145,12 @@
                         'graph' : 1
                     },
                     success: function(response){
-                        list = response;
+                        list = response.split("|");
+                        for (var i = 0 ; i < list.length ; i++){
+                            list[i] = list[i].split("_");
+                        }
+                        list.shift();
+                        console.log(typeof list + " > " + list);
                     }
                 });
                 displayGraph(current_display);

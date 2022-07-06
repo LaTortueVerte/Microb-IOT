@@ -121,4 +121,4 @@ INSERT INTO `data_component` (`data_ID`, `data_valeur`, `component_ID`, `data_va
 
 -- données concernant les capteurs
 INSERT INTO `component` (`component_ID`, `module_ID`, `component_catalogue_ID`) VALUES (NULL, '1', '7'), (NULL, '1', '8'), (NULL, '2', '9'), (NULL, '3', '10'), (NULL, '3', '11'), (NULL, '3', '12'), (NULL, '3', '13'), (NULL, '4', '14');
-INSERT INTO `data_component` (`data_ID`, `data_valeur`, `component_ID`, `data_variable`) VALUES (NULL, '0', '8', 'Humidite'), (NULL, '0', '9', 'Temperature'), (NULL, '0', '10', 'Presence_eau'), (NULL, '0', '11', 'LGP'), (NULL, '0', '12', 'CH4'), (NULL, '0', '13', 'CO'), (NULL, '0', '14', 'HCHO'), (NULL, '0', '15', 'Presence_humain');
+INSERT INTO `data_component` (`data_ID`, `data_valeur`, `component_ID`, `data_variable`) VALUES (NULL, '0', '8', 'Humidity'), (NULL, '0', '9', 'Temperature'), (NULL, '0', '10', 'Presence_eau'), (NULL, '0', '11', 'LGP'), (NULL, '0', '12', 'CH4'), (NULL, '0', '13', 'CO'), (NULL, '0', '14', 'HCHO'), (NULL, '0', '15', 'Presence_humain');

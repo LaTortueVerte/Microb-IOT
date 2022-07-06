@@ -222,10 +222,7 @@
                     'val' : val
                 },
                 success: function(response){
-                    if (cmd == 'type_cmd'){
-                        console.log(" > " + $("#" + cmd).text());
-                        $("#" + display).text(response);
-                    }
+                    $("#" + display).text(response);
                 }
             });
         }
@@ -239,7 +236,7 @@
                     'cmd' : cmd
                 },
                 success: function(response){
-                    console.log(" > " + $("#" + cmd).text());
+                    //console.log(" > " + $("#" + cmd).text());
                     $("#" + display).text(response);
                 }
             });

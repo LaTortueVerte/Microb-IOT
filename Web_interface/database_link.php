@@ -79,7 +79,7 @@
                     break;
                 case "ventilation_power_input_range":
                     if (!empty($_POST["val"])){
-                        $query = "select dc.data_valeur from data_component dc 
+                        $query = "UPDATE data_component dc
                         inner join component c
                             on dc.component_ID = c.component_ID 
                         inner join modules m
@@ -87,8 +87,9 @@
                         inner join belongs b
                             on m.module_ID = b.module_ID
                         inner join users u
-                            on b.user_ID = u.user_ID
-                        where data_variable = 'Puissance_ventilateur';";
+                            on b.user_ID = u.user_ID     
+                        set  data_valeur = ".$_POST["val"]."
+                        WHERE data_variable = 'Puissance_ventilateur';";
                         update_actuators($conn, $query);
                         $query = "select dc.data_valeur from data_component dc 
                         inner join component c
@@ -99,7 +100,8 @@
                             on m.module_ID = b.module_ID
                         inner join users u
                             on b.user_ID = u.user_ID
-                        where data_variable = 'temperature_min';";
+                        where data_variable = 'Puissance_ventilateur';
+                        ";
                         read($conn, $query);
                     }
                     break;
@@ -411,7 +413,7 @@
                     break;
             }
         }
-        else if ($_POST["cmd"] == "r"){
+        else if ($_POST["type_cmd"] == "r"){
             switch ($_POST["cmd"]) {
                 case "ventilation_module_state":
                     $query = "select dc.data_valeur from data_component dc 

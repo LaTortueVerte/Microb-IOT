@@ -1,0 +1,13 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/recho/OneDrive/Bureau/EFREI/MasterCamp/project_6/project_6.sim/sim_1/synth/func/xsim/TopLevelAlgoTestbench_func_synth.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TestLedCpnt
+INFO: [VRFC 10-311] analyzing module TopLevelControlAlgo
+INFO: [VRFC 10-311] analyzing module UART_SCOM
+INFO: [VRFC 10-311] analyzing module UART_TX
+INFO: [VRFC 10-311] analyzing module freq_div
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/recho/OneDrive/Bureau/EFREI/MasterCamp/project_David-fpga.srcs/sim_1/new/TopLevelAlgoTestbench.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'TopLevelAlgoTestbench'
+ERROR: [VRFC 10-719] formal port/generic <clk> is not declared in <toplevelcontrolalgo> [C:/Users/recho/OneDrive/Bureau/EFREI/MasterCamp/project_David-fpga.srcs/sim_1/new/TopLevelAlgoTestbench.vhd:65]
+ERROR: [VRFC 10-3353] formal port 'clock' has no actual or default value [C:/Users/recho/OneDrive/Bureau/EFREI/MasterCamp/project_David-fpga.srcs/sim_1/new/TopLevelAlgoTestbench.vhd:62]
+ERROR: [VRFC 10-3782] unit 'behavioral' ignored due to previous errors [C:/Users/recho/OneDrive/Bureau/EFREI/MasterCamp/project_David-fpga.srcs/sim_1/new/TopLevelAlgoTestbench.vhd:38]
+INFO: [VRFC 10-3070] VHDL file 'C:/Users/recho/OneDrive/Bureau/EFREI/MasterCamp/project_David-fpga.srcs/sim_1/new/TopLevelAlgoTestbench.vhd' ignored due to errors

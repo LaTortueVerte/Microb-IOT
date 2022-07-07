@@ -1,0 +1,7 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/recho/OneDrive/Bureau/EFREI/MasterCamp/project_6/project_6.sim/sim_1/synth/func/xsim/TopLevelAlgoTestbench_func_synth.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TestLedCpnt
+INFO: [VRFC 10-311] analyzing module TopLevelControlAlgo
+INFO: [VRFC 10-311] analyzing module UART_SCOM
+INFO: [VRFC 10-311] analyzing module UART_TX
+INFO: [VRFC 10-311] analyzing module freq_div
+INFO: [VRFC 10-311] analyzing module glbl

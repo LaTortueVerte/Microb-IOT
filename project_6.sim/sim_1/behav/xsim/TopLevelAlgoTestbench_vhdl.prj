@@ -1,0 +1,19 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../project_6.srcs/sources_1/new/Activation.vhd" \
+"../../../../../project_David-fpga.srcs/sources_1/new/Buzzer.vhd" \
+"../../../../../project_David-fpga.srcs/sources_1/new/ControlAlgo.vhd" \
+"../../../../../project_David-fpga.srcs/sources_1/imports/new/PIRSensor.vhd" \
+"../../../../../project_David-fpga.srcs/sources_1/new/TestLedCpnt.vhd" \
+"../../../../../project_David-fpga.srcs/sources_1/new/TopLevelControlAlgo.vhd" \
+"../../../../../project_David-fpga.srcs/sources_1/imports/new/UART_RX.vhd" \
+"../../../../../project_David-fpga.srcs/sources_1/imports/new/UART_SCOM.vhd" \
+"../../../../../project_David-fpga.srcs/sources_1/imports/new/UART_TX.vhd" \
+"../../../../../project_David-fpga.srcs/sources_1/imports/new/byte_gen.vhd" \
+"../../../../../project_David-fpga.srcs/sources_1/imports/new/counter.vhd" \
+"../../../../../project_David-fpga.srcs/sources_1/imports/new/freq_div.vhd" \
+"../../../../../project_David-fpga.srcs/sources_1/imports/new/id_code_gen.vhd" \
+"../../../../../project_David-fpga.srcs/sim_1/new/TopLevelAlgoTestbench.vhd" \
+
+# Do not sort compile order
+nosort
